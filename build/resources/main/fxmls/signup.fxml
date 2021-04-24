@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Signup">
+   <children>
+      <TextField fx:id="firstNameTF" layoutX="162.0" layoutY="39.0" />
+      <TextField fx:id="lastNameTf" layoutX="162.0" layoutY="81.0" />
+      <TextField fx:id="userNameTF" layoutX="162.0" layoutY="127.0" />
+      <TextField fx:id="passwordTF" layoutX="162.0" layoutY="171.0" />
+      <TextField fx:id="emailTF" layoutX="162.0" layoutY="254.0" />
+      <Label fx:id="myLabel" alignment="CENTER" layoutX="37.0" layoutY="330.0" prefHeight="64.0" prefWidth="526.0" text="Fill the form please!" textFill="#cf0b0b">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label alignment="CENTER" layoutX="83.0" layoutY="38.0" prefHeight="26.0" prefWidth="64.0" text="First name" />
+      <Label alignment="CENTER" layoutX="50.0" layoutY="212.0" prefHeight="26.0" prefWidth="102.0" text="Repeat Password" />
+      <Label alignment="CENTER" layoutX="83.0" layoutY="170.0" prefHeight="26.0" prefWidth="64.0" text="Password" />
+      <Label alignment="CENTER" layoutX="83.0" layoutY="126.0" prefHeight="26.0" prefWidth="64.0" text="Username" />
+      <Label alignment="CENTER" layoutX="83.0" layoutY="80.0" prefHeight="26.0" prefWidth="64.0" text="Last name" />
+      <Label alignment="CENTER" layoutY="5.0" prefHeight="18.0" prefWidth="50.0" text="Sign Up" />
+      <Line endX="365.5999755859375" endY="0.19999980926513672" layoutX="220.0" layoutY="14.0" startX="-169.5999755859375" startY="0.19999980926513672" />
+      <Line endX="-172.5999755859375" endY="345.4000244140625" layoutX="197.0" layoutY="25.0" startX="-172.5999755859375" startY="-1.1444091796875E-5" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="355.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/mainlogo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="subBtn" layoutX="173.0" layoutY="303.0" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="126.0" text="Submit">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <TextField fx:id="repeatTF" layoutX="162.0" layoutY="213.0" />
+      <Label alignment="CENTER" layoutX="83.0" layoutY="253.0" prefHeight="26.0" prefWidth="64.0" text="Email" />
+   </children>
+</AnchorPane>

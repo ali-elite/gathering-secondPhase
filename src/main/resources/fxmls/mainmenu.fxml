@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="805.0" stylesheets="@../css/tab3.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Mainmenu">
+  <tabs>
+      <Tab fx:id="gatherTab" onSelectionChanged="#update" text="Gather">
+         <content>
+            <ScrollPane fx:id="gatherScroll" prefHeight="611.0" prefWidth="366.0">
+               <content>
+                  <ToolBar fx:id="bar" prefHeight="44.0" prefWidth="805.0">
+                    <items>
+                      <Button fx:id="editBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" text="Edit Profile" />
+                        <Button fx:id="blackListBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" text="BlackList" />
+                        <Button fx:id="newThoughtBtn" mnemonicParsing="false" onAction="#makeThought" prefHeight="34.0" prefWidth="113.0" text="New Thought" />
+                    </items>
+                  </ToolBar>
+               </content>
+            </ScrollPane>
+         </content>
+      </Tab>
+    <Tab fx:id="timelineTab" text="Timeline" />
+      <Tab fx:id="exploreTab" text="Explore">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab fx:id="chatsTab" text="Chats">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab fx:id="settingTab" text="Setting">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+  </tabs>
+   <styleClass>
+      <String fx:value="MyTabPane" />
+      <String fx:value="MyTabPane" />
+   </styleClass>
+</TabPane>

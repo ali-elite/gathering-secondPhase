@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.App">
+   <children>
+      <ImageView fitHeight="338.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/gback.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="signBtn" layoutX="165.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="96.0" text="SIGN UP">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="loginBtn" layoutX="328.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="96.0" text="LOGIN">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>
