@@ -1,50 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="394.0" prefWidth="684.0" style="-fx-background-color: #000112;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxmls.Profile">
+<AnchorPane prefHeight="425.0" prefWidth="684.0" style="-fx-background-color: #B22222;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Circle fill="DODGERBLUE" layoutX="95.0" layoutY="95.0" radius="81.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label alignment="CENTER" layoutX="166.0" layoutY="170.0" prefHeight="68.0" prefWidth="154.0" text="Followers" textFill="#f2eeee">
+      <Circle fx:id="avatar" fill="DODGERBLUE" layoutX="95.0" layoutY="95.0" radius="81.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="followersLabel" alignment="CENTER" layoutX="128.0" layoutY="170.0" prefHeight="68.0" prefWidth="154.0" text="Followers" textFill="#f2eeee">
          <font>
-            <Font name="Consolas" size="28.0" />
+            <Font name="Consolas Bold Italic" size="28.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="412.0" layoutY="170.0" prefHeight="68.0" prefWidth="162.0" text="Followings" textFill="#f2eeee">
+      <Label fx:id="followingLabel" alignment="CENTER" layoutX="380.0" layoutY="170.0" prefHeight="68.0" prefWidth="162.0" text="Followings" textFill="#f2eeee">
          <font>
-            <Font name="Consolas" size="28.0" />
+            <Font name="Consolas Bold Italic" size="28.0" />
          </font>
       </Label>
-      <Label layoutX="33.0" layoutY="223.0" prefHeight="150.0" prefWidth="641.0" text="bio">
+      <Label fx:id="bioLabel" layoutX="33.0" layoutY="223.0" prefHeight="156.0" prefWidth="623.0" text="bio">
          <font>
             <Font name="Leelawadee" size="19.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="398.0" layoutY="89.0" prefHeight="46.0" prefWidth="198.0" text="Followship Status">
+      <Label fx:id="statusLabel" alignment="CENTER" layoutX="398.0" layoutY="89.0" prefHeight="46.0" prefWidth="198.0" text="Followship Status">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="320.0" layoutY="187.0" prefHeight="34.0" prefWidth="78.0" text="Label" />
-      <Label layoutX="196.0" layoutY="29.0" prefHeight="54.0" prefWidth="270.0" text="Nickname">
+      <Label fx:id="followerNumberLabel" alignment="CENTER" layoutX="282.0" layoutY="187.0" prefHeight="34.0" prefWidth="97.0" text="Label" textFill="#2b0606">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font></Label>
+      <Label fx:id="nicknameLabel" layoutX="196.0" layoutY="29.0" prefHeight="54.0" prefWidth="270.0" text="Nickname">
          <font>
             <Font name="Cooper Black" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="196.0" layoutY="95.0" prefHeight="34.0" prefWidth="112.0" text="\@ID">
+      <Label fx:id="idLabel" layoutX="196.0" layoutY="95.0" prefHeight="34.0" prefWidth="112.0" text="\@ID">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="420.0" layoutY="36.0" prefHeight="46.0" prefWidth="198.0" text="LastSeen">
+      <Label fx:id="lastseenLabel" alignment="CENTER" layoutX="420.0" layoutY="36.0" prefHeight="46.0" prefWidth="198.0" text="LastSeen">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="579.0" layoutY="187.0" prefHeight="34.0" prefWidth="78.0" text="Label" />
+      <Label fx:id="followingNumberLabel" alignment="CENTER" layoutX="557.0" layoutY="187.0" prefHeight="34.0" prefWidth="78.0" text="Label" textFill="#2b0606">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font></Label>
+      <ToolBar layoutY="393.0" prefHeight="34.0" prefWidth="684.0" style="-fx-background-color: #800000;" />
    </children>
 </AnchorPane>

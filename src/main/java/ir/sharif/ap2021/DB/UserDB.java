@@ -1,6 +1,7 @@
 package ir.sharif.ap2021.DB;
 
 import com.google.gson.Gson;
+import ir.sharif.ap2021.Model.Thought.Thought;
 import ir.sharif.ap2021.Model.User.User;
 
 import java.io.*;
@@ -14,16 +15,13 @@ public class UserDB implements DBSet<User> {
 
     @Override
     public User get(int id) {
-        return null;
-    }
 
-    @Override
-    public User getByName(String name) {
         File us = new File(userAddress);
+
         for (File f : Objects.requireNonNull(us.listFiles())) {
             try {
                 User user = gson.fromJson(new FileReader(f), User.class);
-                if (user.getUserName().equals(name)) {
+                if (user.getId() == id) {
                     return user;
                 }
             } catch (FileNotFoundException e) {
@@ -60,7 +58,7 @@ public class UserDB implements DBSet<User> {
     @Override
     public void add(User user) {
 
-        File userFile = new File(userAddress + user.getUserName() + ".txt");
+        File userFile = new File(userAddress + user.getId() + ".txt");
         if (!userFile.getParentFile().exists()) userFile.getParentFile().mkdirs();
 
         try {
@@ -107,6 +105,18 @@ public class UserDB implements DBSet<User> {
 
         }
 
+    }
+
+    @Override
+    public User getByName(String username) {
+
+        for (User user : all()) {
+            if (user.getUserName().equals(username)) {
+                return user;
+            }
+        }
+
+        return null;
     }
 
 

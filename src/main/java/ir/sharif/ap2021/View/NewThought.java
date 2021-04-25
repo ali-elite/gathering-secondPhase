@@ -25,7 +25,7 @@ public class NewThought {
 
     public void share(ActionEvent event) throws IOException {
 
-        ShareThoughtEvent e = new ShareThoughtEvent(this, text.getText(), Mainmenu.getMyUser().getUserName());
+        ShareThoughtEvent e = new ShareThoughtEvent(this, text.getText(), Mainmenu.getMyUser().getId());
         ShareThoughtListener shareThoughtListener = new ShareThoughtListener();
         shareThoughtListener.eventOccurred(e);
 

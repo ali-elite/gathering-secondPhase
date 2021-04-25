@@ -37,7 +37,7 @@ public class Signup {
     @FXML
     private Label myLabel;
     @FXML
-    private Button subBtn;
+    private Button subBtn,loginBtn;
 
 
     public void submit(ActionEvent event) throws IOException {
@@ -115,6 +115,15 @@ public class Signup {
     }
 
 
+    public void login(ActionEvent event) throws IOException {
+
+        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/login.fxml")));
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+
+    }
 }
 
 

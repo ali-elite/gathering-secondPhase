@@ -4,7 +4,70 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b02af008-67f3-44e0-a566-d039f828105c" name="Default Changelist" comment="" />
+    <list default="true" id="b02af008-67f3-44e0-a566-d039f828105c" name="Default Changelist" comment="First Commit&#10;Tweet View Fixed">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/ReloadController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/ThoughtChangeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Event/ReloadEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Event/ThoughtChangeEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/ReloadListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/ThoughtChangeListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/EditProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Profile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Users/122.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxmls/editProfile.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/fillLike.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/fillRet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/ShareThoughtController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/ShareThoughtController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/DBSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/DBSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/ThoughtDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/ThoughtDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/UserDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/UserDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Event/ShareThoughtEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Event/ShareThoughtEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/User/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/User/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Mainmenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Mainmenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/NewThought.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/NewThought.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Signup.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Signup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/ThoughtView.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/ThoughtView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Thoughts/79127.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Thoughts/79128.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Users/a.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/fxmls/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxmls/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/fxmls/mainmenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxmls/mainmenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/fxmls/profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxmls/profile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/fxmls/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxmls/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/fxmls/thought.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxmls/thought.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/ShareThoughtController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/ShareThoughtController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/DBSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/DBSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/ThoughtDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/ThoughtDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/UserDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/UserDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Event/ShareThoughtEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Event/ShareThoughtEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/User/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/User/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Mainmenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Mainmenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/NewThought.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/NewThought.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Signup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Signup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/ThoughtView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/ThoughtView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Thoughts/79127.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Thoughts/79128.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Users/a.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxmls/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxmls/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxmls/mainmenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxmls/mainmenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxmls/profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxmls/profile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxmls/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxmls/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxmls/thought.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxmls/thought.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,8 +113,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -68,12 +131,15 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1rP6KCYYw028DzJkPrDDKOqNz6X" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Login/view" />
@@ -132,6 +198,14 @@
       <option name="presentableId" value="Default" />
       <updated>1618865345590</updated>
     </task>
+    <task id="LOCAL-00001" summary="First Commit&#10;Tweet View Fixed">
+      <created>1619293711152</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1619293711152</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -147,6 +221,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="First Commit&#10;Tweet View Fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="First Commit&#10;Tweet View Fixed" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gathering___secondPhase$gathering___secondPhase__run_.ic" NAME="gathering - secondPhase [run] Coverage Results" MODIFIED="1619219044101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

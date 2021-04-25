@@ -33,12 +33,6 @@ public class ThoughtDB implements DBSet<Thought> {
         return null;
     }
 
-    @Override
-    public Thought getByName(String name) {
-
-        return null;
-    }
-
 
     @Override
     public ArrayList<Thought> all() {
@@ -110,6 +104,11 @@ public class ThoughtDB implements DBSet<Thought> {
 
         }
 
+    }
+
+    @Override
+    public Thought getByName(String username) {
+        return null;
     }
 
 

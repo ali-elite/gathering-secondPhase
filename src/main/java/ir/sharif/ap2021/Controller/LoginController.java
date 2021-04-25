@@ -28,15 +28,23 @@ public class LoginController {
     }
 
     public boolean match(String username, String password) {
-        User user = context.Users.getByName(username);
-        return user.getPassword().equals(password);
+
+        String get = "";
+        for (User user :
+                context.Users.all()) {
+            if (user.getUserName().equals(username)) {
+                get = user.getPassword();
+            }
+        }
+
+        return get.equals(password);
     }
 
     public boolean exist(String username) {
 
         boolean check = false;
 
-        for (User user :context.Users.all()) {
+        for (User user : context.Users.all()) {
             if (user.getUserName().equals(username)) {
                 check = true;
                 break;

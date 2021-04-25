@@ -1,6 +1,7 @@
 package ir.sharif.ap2021.Model.User;
 
 import com.google.gson.Gson;
+import javafx.scene.image.Image;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,6 +20,7 @@ public class User {
     public String userName;
     public String biography;
     private LocalDate birthday;
+    private String avatar;
     private String email;
     private String phoneNumber;
     private String password;
@@ -52,6 +54,7 @@ public class User {
         this.password = password;
         this.id = nextId + Objects.requireNonNull(new File(userAddress).listFiles()).length;
         this.lastSeen = LocalDateTime.now();
+        this.avatar = "/images/user.png";
 //        likedThoughts = new ArrayList<>();
         thoughts = new ArrayList<>();
         followers = new ArrayList<>();
@@ -81,6 +84,15 @@ public class User {
 //    public ArrayList<UserCategory> getCategories() {
 //        return categories;
 //    }
+
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     public void setUserName(String userName) {
         this.userName = userName;

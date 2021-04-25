@@ -5,11 +5,11 @@ import java.util.EventObject;
 public class ShareThoughtEvent extends EventObject {
 
     private String text;
-    private String username;
+    private int userId;
 
-    public ShareThoughtEvent(Object source, String text, String username) {
+    public ShareThoughtEvent(Object source, String text, int userId) {
         super(source);
-        this.username = username;
+        this.userId = userId;
         this.text = text;
     }
 
@@ -18,7 +18,7 @@ public class ShareThoughtEvent extends EventObject {
         return text;
     }
 
-    public String getUsername() {
-        return username;
+    public int getUserId() {
+        return userId;
     }
 }

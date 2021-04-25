@@ -16,7 +16,7 @@
                <content>
                   <ToolBar fx:id="bar" prefHeight="44.0" prefWidth="805.0">
                     <items>
-                      <Button fx:id="editBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" text="Edit Profile" />
+                      <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editProfile" prefHeight="34.0" prefWidth="90.0" text="Edit Profile" />
                         <Button fx:id="blackListBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" text="BlackList" />
                         <Button fx:id="newThoughtBtn" mnemonicParsing="false" onAction="#makeThought" prefHeight="34.0" prefWidth="113.0" text="New Thought" />
                     </items>

@@ -1,52 +1,68 @@
-ir/sharif/ap2021/Listener/LoginFormListener.java
- ir.sharif.ap2021.Listener.LoginFormListener
+ir/sharif/ap2021/Event/ShareThoughtEvent.java
+ ir.sharif.ap2021.Event.ShareThoughtEvent
 ir/sharif/ap2021/DB/DBSet.java
  ir.sharif.ap2021.DB.DBSet
-ir/sharif/ap2021/Controller/ScreenController.java
- ir.sharif.ap2021.Controller.ScreenController
-ir/sharif/ap2021/View/Login.java
- ir.sharif.ap2021.View.Login
 ir/sharif/ap2021/App.java
  ir.sharif.ap2021.App
 ir/sharif/ap2021/Event/LoginFormEvent.java
  ir.sharif.ap2021.Event.LoginFormEvent
-ir/sharif/ap2021/Listener/RegistrationFormListener.java
- ir.sharif.ap2021.Listener.RegistrationFormListener
-ir/sharif/ap2021/Validation/AuthenticationException.java
- ir.sharif.ap2021.Validation.AuthenticationException
-ir/sharif/ap2021/Event/RegistrationFormEvent.java
- ir.sharif.ap2021.Event.RegistrationFormEvent
-ir/sharif/ap2021/Event/UserPassEvent.java
- ir.sharif.ap2021.Event.UserPassEvent
-ir/sharif/ap2021/View/Signup.java
- ir.sharif.ap2021.View.Signup
-ir/sharif/ap2021/Listener/FormListener.java
- ir.sharif.ap2021.Listener.FormListener
-ir/sharif/ap2021/Controller/RegistrationController.java
- ir.sharif.ap2021.Controller.RegistrationController
-ir/sharif/ap2021/DB/UserDB.java
- ir.sharif.ap2021.DB.UserDB
 ir/sharif/ap2021/Listener/ShareThoughtListener.java
  ir.sharif.ap2021.Listener.ShareThoughtListener
-ir/sharif/ap2021/DB/Context.java
- ir.sharif.ap2021.DB.Context
-ir/sharif/ap2021/Controller/LoginController.java
- ir.sharif.ap2021.Controller.LoginController
-ir/sharif/ap2021/Event/ShareThoughtEvent.java
- ir.sharif.ap2021.Event.ShareThoughtEvent
-ir/sharif/ap2021/Model/User/User.java
- ir.sharif.ap2021.Model.User.User
-ir/sharif/ap2021/DB/ThoughtDB.java
- ir.sharif.ap2021.DB.ThoughtDB
-ir/sharif/ap2021/Model/Thought/Thought.java
- ir.sharif.ap2021.Model.Thought.Thought
+ir/sharif/ap2021/Listener/RegistrationFormListener.java
+ ir.sharif.ap2021.Listener.RegistrationFormListener
+ir/sharif/ap2021/Event/UserPassEvent.java
+ ir.sharif.ap2021.Event.UserPassEvent
 ir/sharif/ap2021/Controller/ShareThoughtController.java
  ir.sharif.ap2021.Controller.ShareThoughtController
+ir/sharif/ap2021/Listener/FormListener.java
+ ir.sharif.ap2021.Listener.FormListener
+ir/sharif/ap2021/Listener/LoginFormListener.java
+ ir.sharif.ap2021.Listener.LoginFormListener
+ir/sharif/ap2021/Event/RegistrationFormEvent.java
+ ir.sharif.ap2021.Event.RegistrationFormEvent
+ir/sharif/ap2021/Controller/ScreenController.java
+ ir.sharif.ap2021.Controller.ScreenController
+ir/sharif/ap2021/Validation/AuthenticationException.java
+ ir.sharif.ap2021.Validation.AuthenticationException
+ir/sharif/ap2021/Controller/LoginController.java
+ ir.sharif.ap2021.Controller.LoginController
+ir/sharif/ap2021/DB/Context.java
+ ir.sharif.ap2021.DB.Context
+ir/sharif/ap2021/View/Signup.java
+ ir.sharif.ap2021.View.Signup
+ir/sharif/ap2021/Model/Thought/Thought.java
+ ir.sharif.ap2021.Model.Thought.Thought
+ir/sharif/ap2021/Model/User/User.java
+ ir.sharif.ap2021.Model.User.User
+ir/sharif/ap2021/Listener/ThoughtChangeListener.java
+ ir.sharif.ap2021.Listener.ThoughtChangeListener
+ir/sharif/ap2021/DB/UserDB.java
+ ir.sharif.ap2021.DB.UserDB
+ir/sharif/ap2021/Controller/RegistrationController.java
+ ir.sharif.ap2021.Controller.RegistrationController
+ir/sharif/ap2021/Listener/ReloadListener.java
+ ir.sharif.ap2021.Listener.ReloadListener
+ir/sharif/ap2021/View/Login.java
+ ir.sharif.ap2021.View.Login
+ir/sharif/ap2021/Event/ReloadEvent.java
+ ir.sharif.ap2021.Event.ReloadEvent
+ir/sharif/ap2021/DB/ThoughtDB.java
+ ir.sharif.ap2021.DB.ThoughtDB
+ir/sharif/ap2021/Event/ThoughtChangeEvent.java
+ ir.sharif.ap2021.Event.ThoughtChangeEvent
 ir/sharif/ap2021/View/NewThought.java
  ir.sharif.ap2021.View.NewThought
+ir/sharif/ap2021/Controller/ThoughtChangeController.java
+ ir.sharif.ap2021.Controller.ThoughtChangeController
 ir/sharif/ap2021/View/ThoughtView.java
  ir.sharif.ap2021.View.ThoughtView
 ir/sharif/ap2021/Listener/UserSetListener.java
  ir.sharif.ap2021.Listener.UserSetListener
 ir/sharif/ap2021/View/Mainmenu.java
  ir.sharif.ap2021.View.Mainmenu
+ir/sharif/ap2021/Controller/ReloadController.java
+ ir.sharif.ap2021.Controller.ReloadController
+ir/sharif/ap2021/View/Profile.java
+ ir.sharif.ap2021.View.Profile
+ir/sharif/ap2021/View/EditProfile.java
+ ir.sharif.ap2021.View.EditProfile

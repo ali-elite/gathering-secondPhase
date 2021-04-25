@@ -6,8 +6,6 @@ public interface DBSet<T> {
 
     T get(int id);
 
-    T getByName(String name);
-
     ArrayList<T> all();
 
     void add(T t);
@@ -16,4 +14,5 @@ public interface DBSet<T> {
 
     void update(T t);
 
+    T getByName(String username);
 }
