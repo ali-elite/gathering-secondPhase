@@ -17,7 +17,7 @@ public class ShareThoughtController {
 
     public void share(ShareThoughtEvent formEvent) {
 
-        User user = context.Users.get(formEvent.getUserId());
+        User user = StaticController.getMyUser();
 
         Thought thought = new Thought("t", user, user, formEvent.getText(), LocalDateTime.now());
 

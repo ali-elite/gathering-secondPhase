@@ -1,10 +1,5 @@
 package ir.sharif.ap2021.Model.User;
 
-import com.google.gson.Gson;
-import javafx.scene.image.Image;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -38,15 +33,14 @@ public class User {
     //    private final ArrayList<UserCategory> categories;
     private final ArrayList<Integer> blackList;
     private final ArrayList<Integer> muteList;
-    //    private final ArrayList<Request> requests;
-//    private final ArrayList<SystemMessage> systemMessages;
+    private final ArrayList<Integer> notifications;
 //    private final ArrayList<ChatScreen> chatScreens;
-
     private final String userAddress = "./src/main/resources/Users";
-    protected static final Logger logger = LogManager.getLogger(User.class);
+
 
 
     public User(String firstName, String lastName, String userName, String email, String password) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -61,9 +55,8 @@ public class User {
         followings = new ArrayList<>();
 //        categories = new ArrayList<>();
         blackList = new ArrayList<>();
-//        requests = new ArrayList<>();
+        notifications = new ArrayList<>();
         muteList = new ArrayList<>();
-//        systemMessages = new ArrayList<>();
 //        chatScreens = new ArrayList<>();
 
     }
@@ -190,13 +183,9 @@ public class User {
         return lastSeen;
     }
 
-//    public ArrayList<Request> getRequests() {
-//        return requests;
-//    }
-//
-//    public ArrayList<SystemMessage> getSystemMessages() {
-//        return systemMessages;
-//    }
+    public ArrayList<Integer> getNotifications() {
+        return notifications;
+    }
 
     public boolean isPrivate() {
         return isPrivate;
@@ -237,92 +226,5 @@ public class User {
     public ArrayList<Integer> getMuteList() {
         return muteList;
     }
-
-
-//    //save
-//    public void saveUser() {
-//
-//        Gson gson = new Gson();
-//        String userdata = gson.toJson(this);
-//
-//        File userFile = new File(userAddress + this.userName + ".txt");
-//        try (PrintStream ps = new PrintStream(userFile)) {
-//            ps.print(userdata);
-//            ps.close();
-//            ps.flush();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//
-//        logger.info("user " + id + "saved as a json file");
-//
-//    }
-//
-//    //load
-//
-//    public static Thought loadThought(File ThoughtFile) {
-//
-//        String str = "";
-//        try {
-//            str = FileUtils.readFileToString(ThoughtFile);
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        Gson gson = new Gson();
-//        Thought thought = gson.fromJson(str, Thought.class);
-//
-//        return thought;
-//
-//    }
-//
-//
-//    public User loadUser() {
-//
-//        File userFile = new File("./USERS/" + this.userName + ".txt");
-//
-//        String str = "";
-//        try {
-//            str = FileUtils.readFileToString(userFile);
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        Gson gson = new Gson();
-//        User user = gson.fromJson(str, User.class);
-//
-//        logger.info("user " + id + "loaded from a json file");
-//
-//        return user;
-//
-//    }
-//
-//    public static User findUser(int ID) {
-//
-//
-//        File us = new File("./USERS/");
-//
-//        for (File f : Objects.requireNonNull(us.listFiles())) {
-//
-//            String str = "";
-//            try {
-//                str = FileUtils.readFileToString(f);
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            Gson gson = new Gson();
-//            User fUser = gson.fromJson(str, User.class);
-//
-//            if (fUser.getId() == ID) {
-//                logger.info("user " + fUser.getId() + " file founded and opened ");
-//                return fUser;
-//            }
-//
-//        }
-//
-//        return null;
-//    }
-
 
 }

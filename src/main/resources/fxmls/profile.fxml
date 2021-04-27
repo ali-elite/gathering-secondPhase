@@ -9,12 +9,12 @@
 <AnchorPane prefHeight="425.0" prefWidth="684.0" style="-fx-background-color: #B22222;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Circle fx:id="avatar" fill="DODGERBLUE" layoutX="95.0" layoutY="95.0" radius="81.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label fx:id="followersLabel" alignment="CENTER" layoutX="128.0" layoutY="170.0" prefHeight="68.0" prefWidth="154.0" text="Followers" textFill="#f2eeee">
+      <Label fx:id="followersLabel" alignment="CENTER" layoutX="128.0" layoutY="170.0" onMousePressed="#selectFollower" prefHeight="68.0" prefWidth="154.0" text="Followers" textFill="#f2eeee">
          <font>
             <Font name="Consolas Bold Italic" size="28.0" />
          </font>
       </Label>
-      <Label fx:id="followingLabel" alignment="CENTER" layoutX="380.0" layoutY="170.0" prefHeight="68.0" prefWidth="162.0" text="Followings" textFill="#f2eeee">
+      <Label fx:id="followingLabel" alignment="CENTER" layoutX="380.0" layoutY="170.0" onMousePressed="#selectFollowing" prefHeight="68.0" prefWidth="162.0" text="Followings" textFill="#f2eeee">
          <font>
             <Font name="Consolas Bold Italic" size="28.0" />
          </font>

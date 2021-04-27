@@ -8,7 +8,7 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="805.0" stylesheets="@../css/tab3.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Mainmenu">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="805.0" stylesheets="@../css/tab3.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Menu.Mainmenu">
   <tabs>
       <Tab fx:id="gatherTab" onSelectionChanged="#update" text="Gather">
          <content>
@@ -16,8 +16,9 @@
                <content>
                   <ToolBar fx:id="bar" prefHeight="44.0" prefWidth="805.0">
                     <items>
-                      <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editProfile" prefHeight="34.0" prefWidth="90.0" text="Edit Profile" />
                         <Button fx:id="blackListBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" text="BlackList" />
+                        <Button fx:id="notifBtn" mnemonicParsing="false" onAction="#showNotif" prefHeight="34.0" prefWidth="90.0" text="Notifications" />
+                      <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editProfile" prefHeight="34.0" prefWidth="90.0" text="Edit Profile" />
                         <Button fx:id="newThoughtBtn" mnemonicParsing="false" onAction="#makeThought" prefHeight="34.0" prefWidth="113.0" text="New Thought" />
                     </items>
                   </ToolBar>

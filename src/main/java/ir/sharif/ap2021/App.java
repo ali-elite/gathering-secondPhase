@@ -44,6 +44,7 @@ public class App extends Application {
         Parent root;
 
         if(event.getSource()==signBtn){
+
             stage = (Stage) signBtn.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxmls/signup.fxml"));
         }

@@ -90,8 +90,7 @@ public class UserDB implements DBSet<User> {
 
         for (File f : Objects.requireNonNull(us.listFiles())) {
 
-
-            if (f.getName().equals(user.getUserName() + ".txt")) {
+            if (f.getName().equals(user.getId() + ".txt")) {
                 try {
                     FileWriter fileWriter = new FileWriter(f);
                     gson.toJson(user, fileWriter);
