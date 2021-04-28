@@ -1,4 +1,4 @@
-package ir.sharif.ap2021.View.Menus;
+package ir.sharif.ap2021.View.Menu;
 
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.DB.Context;
@@ -7,6 +7,7 @@ import ir.sharif.ap2021.Event.MainMenuEvent;
 import ir.sharif.ap2021.Listener.LoginFormListener;
 import ir.sharif.ap2021.Listener.MainMenuListener;
 import ir.sharif.ap2021.Validation.AuthenticationException;
+import ir.sharif.ap2021.View.Menu.Mainmenu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

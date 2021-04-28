@@ -126,6 +126,14 @@ public class OutProfile implements Initializable {
 
         }
 
+        if (user.isPrivate()) {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Your follow request has sent successfully!");
+            alert.showAndWait();
+
+        }
+
 
     }
 
@@ -155,6 +163,8 @@ public class OutProfile implements Initializable {
 
         if (StaticController.getMyUser().getFollowings().contains(user.getId())) {
             followIMG.setImage(new Image("/images/unfollow.png"));
+        } else {
+            followIMG.setImage(new Image("/images/follow.png"));
         }
 
         if (!user.isPrivate()) {

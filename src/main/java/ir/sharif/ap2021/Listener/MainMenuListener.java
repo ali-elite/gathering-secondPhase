@@ -25,6 +25,10 @@ public class MainMenuListener {
             mainMenuController.thought(event.getMainmenu());
         }
 
+        if (event.getOrder().equals("notif")){
+            mainMenuController.notif(event.getMainmenu());
+        }
+
     }
 
 }

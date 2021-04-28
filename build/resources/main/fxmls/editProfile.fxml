@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="578.0" prefWidth="676.0" style="-fx-background-color: #32CD32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.EditProfile">
+<AnchorPane prefHeight="578.0" prefWidth="676.0" style="-fx-background-color: #32CD32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Menu.EditProfile">
    <children>
       <TextField fx:id="firstNameTF" layoutX="162.0" layoutY="39.0" />
       <TextField fx:id="lastNameTf" layoutX="162.0" layoutY="81.0" />

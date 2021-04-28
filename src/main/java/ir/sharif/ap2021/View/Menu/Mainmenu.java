@@ -113,8 +113,8 @@ public class Mainmenu implements Initializable {
 
     }
 
-    public void showNotif(ActionEvent event) {
-
+    public void showNotif(ActionEvent event) throws IOException {
+        mainMenuListener.eventOccurred(new MainMenuEvent(this,"notif",null,this));
     }
 
 }

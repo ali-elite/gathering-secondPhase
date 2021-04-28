@@ -3,9 +3,7 @@ package ir.sharif.ap2021.DB;
 import com.google.gson.Gson;
 import ir.sharif.ap2021.Model.Notification.Notification;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -43,6 +41,25 @@ public class NotificationDB implements DBSet<Notification>{
     @Override
     public void add(Notification notification) {
 
+        File notificationFile = new File(notifAddress + notification.getId() + ".txt");
+        if (!notificationFile.getParentFile().exists()) notificationFile.getParentFile().mkdirs();
+
+        try {
+            notificationFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter fileWriter = new FileWriter(notificationFile);
+            gson.toJson(notification, fileWriter);
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override
@@ -52,6 +69,25 @@ public class NotificationDB implements DBSet<Notification>{
 
     @Override
     public void update(Notification notification) {
+
+
+        File us = new File(notifAddress);
+
+        for (File f : Objects.requireNonNull(us.listFiles())) {
+
+            if (f.getName().equals(notification.getId() + ".txt")) {
+                try {
+                    FileWriter fileWriter = new FileWriter(f);
+                    gson.toJson(notification, fileWriter);
+                    fileWriter.flush();
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
 
     }
 

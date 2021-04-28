@@ -1,4 +1,4 @@
-package ir.sharif.ap2021.View.Menus;
+package ir.sharif.ap2021.View.Menu;
 
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.MainMenuEvent;

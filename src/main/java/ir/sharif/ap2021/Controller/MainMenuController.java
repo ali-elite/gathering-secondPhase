@@ -1,7 +1,9 @@
 package ir.sharif.ap2021.Controller;
 
 import ir.sharif.ap2021.DB.Context;
+import ir.sharif.ap2021.Model.Notification.Notification;
 import ir.sharif.ap2021.View.Menu.Mainmenu;
+import ir.sharif.ap2021.View.Menu.Notifications;
 import ir.sharif.ap2021.View.ModelView.ThoughtView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
@@ -43,5 +45,12 @@ public class MainMenuController {
 
             Mainmenu.getThoughts().add((Pane) loader.load());
         }
+    }
+
+    public void notif(Mainmenu mainmenu) throws IOException {
+
+        Notifications notifications = new Notifications();
+        notifications.show();
+
     }
 }
