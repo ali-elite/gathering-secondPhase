@@ -5,6 +5,7 @@ import ir.sharif.ap2021.Event.ThoughtEvent;
 import ir.sharif.ap2021.Listener.ThoughtListener;
 import ir.sharif.ap2021.Model.Thought.Thought;
 import ir.sharif.ap2021.Model.User.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -22,11 +23,14 @@ import java.util.ResourceBundle;
 public class ThoughtView implements Initializable {
 
 
-    private ThoughtListener thoughtListener = new ThoughtListener();
+    private ThoughtListener thoughtListener = new ThoughtListener(this);
 
     private User mainUser;
     private User ownerUser;
     private Thought thought;
+
+    private int parent;
+
 
     @FXML
     private Label text;
@@ -36,6 +40,10 @@ public class ThoughtView implements Initializable {
     private Label likes, rets, opinions, statusLabel, timeLabel;
     @FXML
     private ImageView likeIMG, retIMG;
+
+    public void setParent(int parent) {
+        this.parent = parent;
+    }
 
     public User getMainUser() {
         return mainUser;
@@ -89,10 +97,15 @@ public class ThoughtView implements Initializable {
 
     }
 
+    public void reload() {
+        initialize(null, null);
+    }
+
+
     public void like(MouseEvent mouseEvent) throws IOException {
 
 
-        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "like", thought, this);
+        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "like", thought);
         thoughtListener.eventOccurred(thoughtChangeEvent);
 
 
@@ -100,17 +113,56 @@ public class ThoughtView implements Initializable {
 
     public void ret(MouseEvent mouseEvent) throws IOException {
 
-        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "ret", thought, this);
+        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "ret", thought);
         thoughtListener.eventOccurred(thoughtChangeEvent);
 
     }
 
-    public void mention(MouseEvent mouseEvent) {
+    public void mention(MouseEvent mouseEvent) throws IOException {
+
+        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "mention", thought);
+        thoughtListener.eventOccurred(thoughtChangeEvent);
 
     }
 
 
-    public void reload() {
-        initialize(null, null);
+    public void saveMessage(ActionEvent event) {
+        // later
     }
+
+    public void forwardMessage(ActionEvent event) {
+
+        //later
+    }
+
+    public void muteAuthor(ActionEvent event) throws IOException {
+
+        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "muteAuthor", thought);
+        thoughtListener.eventOccurred(thoughtChangeEvent);
+
+    }
+
+    public void reportSpam(ActionEvent event) throws IOException {
+
+        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "spam", thought);
+        thoughtListener.eventOccurred(thoughtChangeEvent);
+
+    }
+
+    public void authorProfile(ActionEvent event) throws IOException {
+
+        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "profile", thought);
+        thoughtListener.eventOccurred(thoughtChangeEvent);
+
+    }
+
+    public void showOpinions(ActionEvent event) throws IOException {
+
+        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "opinions", thought);
+        thoughtListener.eventOccurred(thoughtChangeEvent);
+
+    }
+
+
+
 }

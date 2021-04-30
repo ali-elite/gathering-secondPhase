@@ -1,16 +1,27 @@
 package ir.sharif.ap2021.Listener;
 
+
 import ir.sharif.ap2021.Controller.ThoughtController;
 import ir.sharif.ap2021.Event.ThoughtEvent;
+import ir.sharif.ap2021.View.ModelView.ThoughtView;
 
 import java.io.IOException;
 
 
 public class ThoughtListener {
 
-    private final ThoughtController thoughtController = new ThoughtController();
+
+     ThoughtView thoughtView;
+     ThoughtController thoughtController = new ThoughtController();
+
+
+    public ThoughtListener(ThoughtView thoughtView) {
+        this.thoughtView = thoughtView;
+    }
+
 
     public void eventOccurred(ThoughtEvent formEvent) throws IOException {
-        thoughtController.change(formEvent);
+        thoughtController.change(formEvent,thoughtView);
     }
+
 }

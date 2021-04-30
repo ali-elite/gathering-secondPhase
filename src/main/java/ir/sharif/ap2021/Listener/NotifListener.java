@@ -2,32 +2,36 @@ package ir.sharif.ap2021.Listener;
 
 import ir.sharif.ap2021.Controller.NotifController;
 import ir.sharif.ap2021.Event.NotifEvent;
+import ir.sharif.ap2021.Model.Notification.Notification;
 
 import java.io.IOException;
 
 public class NotifListener {
 
-    private NotifController notifController = new NotifController();
+     NotifController notifController = new NotifController();
+     Notification notification;
+
+    public NotifListener(Notification notification) {
+        this.notification = notification;
+    }
 
     public void eventOccurred(NotifEvent event) throws IOException {
 
-        if (event.getOreder().equals("load")) {
+        if (event.getOrder().equals("load")) {
             notifController.load();
         }
 
-        if(event.getOreder().equals("accept")){
-            notifController.accept(event.getNotification());
+        if(event.getOrder().equals("accept")){
+            notifController.accept(notification);
         }
 
-        if(event.getOreder().equals("reject")){
-            notifController.reject(event.getNotification());
+        if(event.getOrder().equals("reject")){
+            notifController.reject(notification);
         }
 
-        if(event.getOreder().equals("remove")){
-            notifController.remove(event.getNotification());
+        if(event.getOrder().equals("remove")){
+            notifController.remove(notification);
         }
-
-
 
 
 

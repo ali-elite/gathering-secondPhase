@@ -8,22 +8,17 @@ public class MainMenuEvent extends EventObject {
 
     String order;
     String username;
-    Mainmenu mainmenu;
 
 
-    public MainMenuEvent(Object source, String order,String username, Mainmenu mainmenu) {
+    public MainMenuEvent(Object source, String order,String username) {
         super(source);
         this.order = order;
         this.username = username;
-        this.mainmenu = mainmenu;
+
     }
 
     public String getOrder() {
         return order;
-    }
-
-    public Mainmenu getMainmenu() {
-        return mainmenu;
     }
 
     public String getUsername() {

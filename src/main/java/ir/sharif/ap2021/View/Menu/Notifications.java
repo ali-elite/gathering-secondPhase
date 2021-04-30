@@ -1,7 +1,6 @@
 package ir.sharif.ap2021.View.Menu;
 
 import ir.sharif.ap2021.Controller.StaticController;
-import ir.sharif.ap2021.Event.MainMenuEvent;
 import ir.sharif.ap2021.Event.NotifEvent;
 import ir.sharif.ap2021.Listener.NotifListener;
 import javafx.event.ActionEvent;
@@ -11,8 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -26,13 +25,13 @@ import java.util.ResourceBundle;
 
 public class Notifications implements Initializable {
 
-    private NotifListener notifListener = new NotifListener();
+    private NotifListener notifListener = new NotifListener(null);
     private static final ArrayList<Pane> notifViews = new ArrayList<>();
 
     @FXML
     private ScrollPane scrollPane;
     @FXML
-    private ButtonBar bar;
+    private ToolBar bar;
     @FXML
     private Button backBtn;
 
@@ -63,7 +62,7 @@ public class Notifications implements Initializable {
         vBox.getChildren().add(bar);
 
         try {
-            notifListener.eventOccurred(new NotifEvent(this, "load",null));
+            notifListener.eventOccurred(new NotifEvent(this, "load"));
         } catch (IOException e) {
             e.printStackTrace();
         }

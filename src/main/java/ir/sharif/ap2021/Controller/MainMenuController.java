@@ -1,7 +1,6 @@
 package ir.sharif.ap2021.Controller;
 
 import ir.sharif.ap2021.DB.Context;
-import ir.sharif.ap2021.Model.Notification.Notification;
 import ir.sharif.ap2021.View.Menu.Mainmenu;
 import ir.sharif.ap2021.View.Menu.Notifications;
 import ir.sharif.ap2021.View.ModelView.ThoughtView;
@@ -29,7 +28,7 @@ public class MainMenuController {
     }
 
 
-    public void thought(Mainmenu mainmenu) throws IOException {
+    public void gatherThought(Mainmenu mainmenu) throws IOException {
 
         Mainmenu.getThoughts().clear();
         for (int i = StaticController.getMyUser().getThoughts().size() - 1; i > -1; i--) {
@@ -39,6 +38,7 @@ public class MainMenuController {
             thoughtView.setThought(context.Thoughts.get(StaticController.getMyUser().getThoughts().get(i)));
             thoughtView.setOwnerUser(context.Users.get(context.Thoughts.get(StaticController.getMyUser().getThoughts().get(i)).getUser()));
             thoughtView.setMainUser(StaticController.getMyUser());
+            thoughtView.setParent(0);
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/thought.fxml"));
             loader.setController(thoughtView);

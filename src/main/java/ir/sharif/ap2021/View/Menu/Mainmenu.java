@@ -39,9 +39,11 @@ public class Mainmenu implements Initializable {
 
 
     private static final ArrayList<Pane> thoughts = new ArrayList<>();
-    private MainMenuListener mainMenuListener = new MainMenuListener();
+    private MainMenuListener mainMenuListener = new MainMenuListener(new Mainmenu());
 
-
+    public ScrollPane getGatherScroll() {
+        return gatherScroll;
+    }
 
     public static ArrayList<Pane> getThoughts() {
         return thoughts;
@@ -73,7 +75,7 @@ public class Mainmenu implements Initializable {
         vBox.getChildren().add(bar);
 
         try {
-            mainMenuListener.eventOccurred(new MainMenuEvent(this, "thought", null, this));
+            mainMenuListener.eventOccurred(new MainMenuEvent(this, "gatherThought", null));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,7 +116,7 @@ public class Mainmenu implements Initializable {
     }
 
     public void showNotif(ActionEvent event) throws IOException {
-        mainMenuListener.eventOccurred(new MainMenuEvent(this,"notif",null,this));
+        mainMenuListener.eventOccurred(new MainMenuEvent(this,"notif",null));
     }
 
 }

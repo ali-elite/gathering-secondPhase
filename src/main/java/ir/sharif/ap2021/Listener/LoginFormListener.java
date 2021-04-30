@@ -7,7 +7,7 @@ import ir.sharif.ap2021.Validation.AuthenticationException;
 
 public class LoginFormListener implements FormListener {
 
-    private final LoginController loginController = new LoginController();
+    LoginController loginController = new LoginController();
 
     @Override
     public void eventOccurred(RegistrationFormEvent formEvent) throws AuthenticationException {

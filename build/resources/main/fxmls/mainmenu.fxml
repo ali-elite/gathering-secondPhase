@@ -8,25 +8,36 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="805.0" stylesheets="@../css/tab3.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Menu.Mainmenu">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/tab3.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Menu.Mainmenu">
   <tabs>
       <Tab fx:id="gatherTab" onSelectionChanged="#update" text="Gather">
          <content>
-            <ScrollPane fx:id="gatherScroll" prefHeight="611.0" prefWidth="366.0">
+            <ScrollPane fx:id="gatherScroll" fitToHeight="true" fitToWidth="true" prefHeight="560.0" prefWidth="600.0">
                <content>
-                  <ToolBar fx:id="bar" prefHeight="44.0" prefWidth="805.0">
+                  <ToolBar fx:id="bar" prefHeight="26.0" prefWidth="805.0" style="-fx-background-color: black;" stylesheets="@../css/tab3.css">
                     <items>
-                        <Button fx:id="blackListBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" text="BlackList" />
-                        <Button fx:id="notifBtn" mnemonicParsing="false" onAction="#showNotif" prefHeight="34.0" prefWidth="90.0" text="Notifications" />
-                      <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editProfile" prefHeight="34.0" prefWidth="90.0" text="Edit Profile" />
-                        <Button fx:id="newThoughtBtn" mnemonicParsing="false" onAction="#makeThought" prefHeight="34.0" prefWidth="113.0" text="New Thought" />
+                        <Button fx:id="blackListBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: yellow;" text="BlackList" />
+                        <Button fx:id="notifBtn" mnemonicParsing="false" onAction="#showNotif" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: yellow;" text="Notifications" />
+                      <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editProfile" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: yellow;" text="Edit Profile" />
+                        <Button fx:id="newThoughtBtn" mnemonicParsing="false" onAction="#makeThought" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: yellow;" text="New Thought" />
                     </items>
                   </ToolBar>
                </content>
             </ScrollPane>
          </content>
       </Tab>
-    <Tab fx:id="timelineTab" text="Timeline" />
+    <Tab fx:id="timelineTab" text="Timeline">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane layoutX="19.0" layoutY="20.0" prefHeight="570.0" prefWidth="768.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </content></Tab>
       <Tab fx:id="exploreTab" text="Explore">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />

@@ -65,8 +65,8 @@ public class Login {
             if (check) {
 
                 StaticController.setMyStage(((Stage) subBtn.getScene().getWindow()));
-                MainMenuListener mainMenuListener = new MainMenuListener();
-                mainMenuListener.eventOccurred(new MainMenuEvent(this, "load", usernameTF.getText(), new Mainmenu()));
+                MainMenuListener mainMenuListener = new MainMenuListener(new Mainmenu());
+                mainMenuListener.eventOccurred(new MainMenuEvent(this, "load", usernameTF.getText()));
 
             }
         }

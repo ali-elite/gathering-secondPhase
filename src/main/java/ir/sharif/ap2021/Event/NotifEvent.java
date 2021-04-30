@@ -1,25 +1,18 @@
 package ir.sharif.ap2021.Event;
 
-import ir.sharif.ap2021.Model.Notification.Notification;
-
 import java.util.EventObject;
 
 public class NotifEvent extends EventObject {
 
-    String oreder;
-    Notification notification;
+    String order;
 
-    public NotifEvent(Object source, String oreder, Notification notification) {
+    public NotifEvent(Object source, String order) {
         super(source);
-        this.oreder = oreder;
-        this.notification = notification;
+        this.order = order;
     }
 
-    public String getOreder() {
-        return oreder;
+    public String getOrder() {
+        return order;
     }
 
-    public Notification getNotification() {
-        return notification;
-    }
 }

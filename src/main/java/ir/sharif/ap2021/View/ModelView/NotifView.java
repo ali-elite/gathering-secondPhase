@@ -20,8 +20,8 @@ import java.util.ResourceBundle;
 public class NotifView implements Initializable {
 
     private Notification notification;
+    private NotifListener notifListener;
     private User user;
-    private NotifListener notifListener = new NotifListener();
 
     @FXML
     private Label textLabel;
@@ -37,6 +37,7 @@ public class NotifView implements Initializable {
 
     public void setNotification(Notification notification) {
         this.notification = notification;
+        notifListener = new NotifListener(notification);
     }
 
     public User getUser() {
@@ -49,20 +50,20 @@ public class NotifView implements Initializable {
 
     public void accept(ActionEvent event) throws IOException {
 
-        notifListener.eventOccurred(new NotifEvent(this, "accept", notification));
+        notifListener.eventOccurred(new NotifEvent(this, "accept"));
         initialize(null, null);
 
     }
 
     public void reject(ActionEvent event) throws IOException {
 
-        notifListener.eventOccurred(new NotifEvent(this, "reject", notification));
+        notifListener.eventOccurred(new NotifEvent(this, "reject"));
         initialize(null, null);
     }
 
     public void remove(ActionEvent event) throws IOException {
 
-        notifListener.eventOccurred(new NotifEvent(this, "remove", notification));
+        notifListener.eventOccurred(new NotifEvent(this, "remove"));
         initialize(null, null);
     }
 
