@@ -7,6 +7,7 @@ public class ThoughtEvent extends EventObject {
 
     private String type;
     private Thought thought;
+    private String mentionText;
 
 
 
@@ -25,4 +26,11 @@ public class ThoughtEvent extends EventObject {
         return thought;
     }
 
+    public String getMentionText() {
+        return mentionText;
+    }
+
+    public void setMentionText(String mentionText) {
+        this.mentionText = mentionText;
+    }
 }

@@ -3,10 +3,14 @@ package ir.sharif.ap2021.Controller;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.UserSelectionEvent;
 import ir.sharif.ap2021.Model.User.User;
-import ir.sharif.ap2021.View.ModelView.OutProfile;
 import ir.sharif.ap2021.View.Menu.UserSelect;
+import ir.sharif.ap2021.View.ModelView.OutProfile;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class UserSelectionController {
 
@@ -30,7 +34,6 @@ public class UserSelectionController {
             userSelect.show();
 
         }
-
 
 
         if (event.getOrder().equals("following")) {
@@ -60,6 +63,14 @@ public class UserSelectionController {
 
         }
 
+        if (event.getOrder().equals("normal")) {
+
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/mainmenu.fxml")));
+            Scene scene = new Scene(root);
+            StaticController.getMyStage().setScene(scene);
 
         }
+
+
+    }
 }

@@ -8,28 +8,35 @@ import ir.sharif.ap2021.Model.User.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
 public class ThoughtView implements Initializable {
 
 
-    private ThoughtListener thoughtListener = new ThoughtListener(this);
+    ThoughtListener thoughtListener = new ThoughtListener(this);
 
     private User mainUser;
     private User ownerUser;
+    private User doedUser;
     private Thought thought;
-
     private int parent;
+    private boolean isComments;
 
 
     @FXML
@@ -40,6 +47,24 @@ public class ThoughtView implements Initializable {
     private Label likes, rets, opinions, statusLabel, timeLabel;
     @FXML
     private ImageView likeIMG, retIMG;
+    @FXML
+    private TextArea replyText;
+    @FXML
+    private Button replyBtn, insertBtn;
+    @FXML
+    private AnchorPane replyPane;
+
+
+    private final ArrayList<Pane> comments = new ArrayList<>();
+
+
+    public ArrayList<Pane> getComments() {
+        return comments;
+    }
+
+    public int getParent() {
+        return parent;
+    }
 
     public void setParent(int parent) {
         this.parent = parent;
@@ -59,6 +84,14 @@ public class ThoughtView implements Initializable {
 
     public void setOwnerUser(User ownerUser) {
         this.ownerUser = ownerUser;
+    }
+
+    public User getDoedUser() {
+        return doedUser;
+    }
+
+    public void setDoedUser(User doedUser) {
+        this.doedUser = doedUser;
     }
 
     public Thought getThought() {
@@ -91,9 +124,16 @@ public class ThoughtView implements Initializable {
         opinions.setText(String.valueOf(thought.getOpinions().size()));
         avatar.setFill(new ImagePattern(new Image(ownerUser.getAvatar())));
 
-        if (thought.getText().equals("t")) {
+        if (thought.getType().equals("t")) {
             statusLabel.setText(" Shared his thought:");
+        } else {
+            statusLabel.setText(" Replied to: " + "@" + doedUser.getUserName());
         }
+
+        replyBtn.setVisible(false);
+        replyText.setVisible(false);
+        insertBtn.setVisible(false);
+
 
     }
 
@@ -120,8 +160,9 @@ public class ThoughtView implements Initializable {
 
     public void mention(MouseEvent mouseEvent) throws IOException {
 
-        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "mention", thought);
-        thoughtListener.eventOccurred(thoughtChangeEvent);
+        replyBtn.setVisible(!replyBtn.isVisible());
+        replyText.setVisible(!replyText.isVisible());
+        insertBtn.setVisible(!insertBtn.isVisible());
 
     }
 
@@ -137,8 +178,17 @@ public class ThoughtView implements Initializable {
 
     public void muteAuthor(ActionEvent event) throws IOException {
 
-        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "muteAuthor", thought);
-        thoughtListener.eventOccurred(thoughtChangeEvent);
+        if (StaticController.getMyUser().getMuteList().contains(thought.getUser())) {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("You have already muted the author");
+            alert.showAndWait();
+
+        } else {
+
+            ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "muteAuthor", thought);
+            thoughtListener.eventOccurred(thoughtChangeEvent);
+        }
 
     }
 
@@ -151,6 +201,14 @@ public class ThoughtView implements Initializable {
 
     public void authorProfile(ActionEvent event) throws IOException {
 
+        if (mainUser.getId() == ownerUser.getId()) {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("This is your thought");
+            alert.showAndWait();
+
+        }
+
         ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "profile", thought);
         thoughtListener.eventOccurred(thoughtChangeEvent);
 
@@ -158,11 +216,27 @@ public class ThoughtView implements Initializable {
 
     public void showOpinions(ActionEvent event) throws IOException {
 
-        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "opinions", thought);
-        thoughtListener.eventOccurred(thoughtChangeEvent);
+        if (thought.getOpinions().isEmpty()) {
 
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("No Opinion");
+            alert.showAndWait();
+
+        } else {
+
+            ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "opinions", thought);
+            thoughtListener.eventOccurred(thoughtChangeEvent);
+        }
     }
 
 
+
+    public void reply(ActionEvent event) throws IOException {
+
+        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "mention", thought);
+        thoughtChangeEvent.setMentionText(replyText.getText());
+        thoughtListener.eventOccurred(thoughtChangeEvent);
+
+    }
 
 }

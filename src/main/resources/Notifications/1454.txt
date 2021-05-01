@@ -1,1 +1,0 @@
-{"sender":123,"recevier":122,"isAnswered":false,"isRequest":false,"text":"You Unfollowed b","id":1454,"nextId":1445,"notificationAddress":"./src/main/resources/Notifications"}

@@ -1,1 +1,0 @@
-{"sender":122,"recevier":123,"isAnswered":true,"isRequest":true,"text":"User a followed you!","id":1445,"nextId":1445,"notificationAddress":"./src/main/resources/Notifications"}

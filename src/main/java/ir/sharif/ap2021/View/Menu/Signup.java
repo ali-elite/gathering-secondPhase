@@ -100,7 +100,9 @@ public class Signup {
             if (check) {
 
                 StaticController.setMyStage(((Stage) subBtn.getScene().getWindow()));
-                MainMenuListener mainMenuListener = new MainMenuListener(new Mainmenu());
+                Mainmenu mainmenu = new Mainmenu();
+                StaticController.setMyMainMenu(mainmenu);
+                MainMenuListener mainMenuListener = new MainMenuListener(mainmenu);
                 mainMenuListener.eventOccurred(new MainMenuEvent(this, "load", userNameTF.getText()));
 
             }

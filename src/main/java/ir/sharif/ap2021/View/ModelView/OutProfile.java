@@ -141,11 +141,17 @@ public class OutProfile implements Initializable {
 
         UserSelectionListener userSelectionListener = new UserSelectionListener();
 
-        if (from.equals("follower")) {
-            userSelectionListener.eventOccurred(new UserSelectionEvent(this, "follower", null, null));
-        }
-        if (from.equals("following")) {
-            userSelectionListener.eventOccurred(new UserSelectionEvent(this, "following", null, null));
+
+        if (from == null) {
+            userSelectionListener.eventOccurred(new UserSelectionEvent(this, "normal", null, null));
+        } else {
+
+            if (from.equals("follower")) {
+                userSelectionListener.eventOccurred(new UserSelectionEvent(this, "follower", null, null));
+            }
+            if (from.equals("following")) {
+                userSelectionListener.eventOccurred(new UserSelectionEvent(this, "following", null, null));
+            }
         }
 
 

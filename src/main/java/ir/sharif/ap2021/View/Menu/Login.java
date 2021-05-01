@@ -1,13 +1,11 @@
 package ir.sharif.ap2021.View.Menu;
 
 import ir.sharif.ap2021.Controller.StaticController;
-import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.LoginFormEvent;
 import ir.sharif.ap2021.Event.MainMenuEvent;
 import ir.sharif.ap2021.Listener.LoginFormListener;
 import ir.sharif.ap2021.Listener.MainMenuListener;
 import ir.sharif.ap2021.Validation.AuthenticationException;
-import ir.sharif.ap2021.View.Menu.Mainmenu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,7 +63,9 @@ public class Login {
             if (check) {
 
                 StaticController.setMyStage(((Stage) subBtn.getScene().getWindow()));
-                MainMenuListener mainMenuListener = new MainMenuListener(new Mainmenu());
+                Mainmenu mainmenu = new Mainmenu();
+                StaticController.setMyMainMenu(mainmenu);
+                MainMenuListener mainMenuListener = new MainMenuListener(mainmenu);
                 mainMenuListener.eventOccurred(new MainMenuEvent(this, "load", usernameTF.getText()));
 
             }

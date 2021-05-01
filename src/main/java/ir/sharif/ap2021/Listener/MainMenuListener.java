@@ -23,12 +23,20 @@ public class MainMenuListener {
             mainMenuController.load(mainmenu,event.getUsername());
         }
 
-        if (event.getOrder().equals("update")){
-            mainMenuController.update(mainmenu);
-        }
+//        if (event.getOrder().equals("update")){
+//            mainMenuController.update(mainmenu);
+//        }
 
         if (event.getOrder().equals("gatherThought")){
             mainMenuController.gatherThought(mainmenu);
+        }
+
+        if (event.getOrder().equals("exploreThought")){
+            mainMenuController.exploreThought(mainmenu);
+        }
+
+        if (event.getOrder().equals("timeLineThought")){
+            mainMenuController.timeLineThought(mainmenu);
         }
 
         if (event.getOrder().equals("notif")){

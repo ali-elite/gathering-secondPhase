@@ -10,21 +10,22 @@ import java.util.Objects;
 
 public class Thought {
 
-    protected int user;
-    protected int doed;
-    protected String type;
+    private int user;
+    private int doed;
+    private int parent;
+    private String type;
     private long likes;
     private long spamReports;
-    protected String text;
+    private String text;
     private ArrayList<Integer> opinions;
     private ArrayList<Integer> likers;
     private ArrayList<Integer> rethoughters;
 
 
-    protected LocalDateTime localDateTime;
+    private LocalDateTime localDateTime;
     private long rethought;
     private static int nextId = 79127;
-    protected int id;
+    private int id;
     private static final String thoughtAddress = "./src/main/resources/Thoughts";
 
 
@@ -52,6 +53,14 @@ public class Thought {
 
     public LocalDateTime getLocalDateTime() {
         return localDateTime;
+    }
+
+    public int getParent() {
+        return parent;
+    }
+
+    public void setParent(int parent) {
+        this.parent = parent;
     }
 
     public ArrayList<Integer> getLikers() {
