@@ -7,6 +7,7 @@ import ir.sharif.ap2021.Event.UserSelectionEvent;
 import ir.sharif.ap2021.Listener.OutProfileListener;
 import ir.sharif.ap2021.Listener.UserSelectionListener;
 import ir.sharif.ap2021.Model.User.User;
+import ir.sharif.ap2021.Validation.AuthenticationException;
 import ir.sharif.ap2021.Validation.RepeatActionException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,16 +71,15 @@ public class OutProfile implements Initializable {
     }
 
 
-    public void doMessage(ActionEvent event) {
+    public void doMessage(ActionEvent event) throws RepeatActionException, IOException {
 
         if (user.isPrivate() && !user.getFollowers().contains(StaticController.getMyUser().getId())) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText("You need to follow this user before starting a conversation!");
             alert.showAndWait();
         } else {
-            // will done after
+            outProfileListener.eventOccurred(new OutProfileEvent(this, user, "message"));
         }
-
 
     }
 
@@ -137,7 +137,7 @@ public class OutProfile implements Initializable {
 
     }
 
-    public void doBack(ActionEvent event) throws IOException {
+    public void doBack(ActionEvent event) throws IOException, AuthenticationException {
 
         UserSelectionListener userSelectionListener = new UserSelectionListener();
 

@@ -23,10 +23,6 @@ public class MainMenuListener {
             mainMenuController.load(mainmenu,event.getUsername());
         }
 
-//        if (event.getOrder().equals("update")){
-//            mainMenuController.update(mainmenu);
-//        }
-
         if (event.getOrder().equals("gatherThought")){
             mainMenuController.gatherThought(mainmenu);
         }
@@ -41,6 +37,14 @@ public class MainMenuListener {
 
         if (event.getOrder().equals("notif")){
             mainMenuController.notif(mainmenu);
+        }
+
+        if (event.getOrder().equals("chats")){
+            mainMenuController.chats(mainmenu);
+        }
+
+        if (event.getOrder().equals("group")){
+            mainMenuController.group(mainmenu);
         }
 
     }

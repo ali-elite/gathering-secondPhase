@@ -3,6 +3,7 @@ package ir.sharif.ap2021.View.Menu;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.UserSelectionEvent;
 import ir.sharif.ap2021.Listener.UserSelectionListener;
+import ir.sharif.ap2021.Validation.AuthenticationException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -56,6 +57,7 @@ public class UserSelect implements Initializable {
         UserSelect.type = type;
     }
 
+
     public void back(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) backBtn.getScene().getWindow();
@@ -78,7 +80,7 @@ public class UserSelect implements Initializable {
                 selectedUser = listview.getSelectionModel().getSelectedItem();
                 try {
                     userSelectionListener.eventOccurred(new UserSelectionEvent(this,"load",selectedUser,type));
-                } catch (IOException e) {
+                } catch (IOException | AuthenticationException e) {
                     e.printStackTrace();
                 }
 

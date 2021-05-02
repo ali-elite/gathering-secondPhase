@@ -3,6 +3,7 @@ package ir.sharif.ap2021.Controller;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.UserSelectionEvent;
 import ir.sharif.ap2021.Model.User.User;
+import ir.sharif.ap2021.Validation.AuthenticationException;
 import ir.sharif.ap2021.View.Menu.UserSelect;
 import ir.sharif.ap2021.View.ModelView.OutProfile;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,7 @@ public class UserSelectionController {
 
     Context context = new Context();
 
-    public void set(UserSelectionEvent event) throws IOException {
+    public void set(UserSelectionEvent event) throws IOException, AuthenticationException {
 
         if (event.getOrder().equals("follower")) {
 
@@ -56,6 +57,10 @@ public class UserSelectionController {
 
         if (event.getOrder().equals("load")) {
 
+            if (!exist(event.getUsername())) {
+                throw new AuthenticationException("Username doesn't exist");
+            }
+
             OutProfile.setUser(context.Users.getByName(event.getUsername()));
             OutProfile.setFrom(event.getType());
             OutProfile outProfile = new OutProfile();
@@ -71,6 +76,21 @@ public class UserSelectionController {
 
         }
 
+
+    }
+
+    public boolean exist(String username) {
+
+        boolean check = false;
+
+        for (User user : context.Users.all()) {
+            if (user.getUserName().equals(username)) {
+                check = true;
+                break;
+            }
+        }
+
+        return check;
 
     }
 }

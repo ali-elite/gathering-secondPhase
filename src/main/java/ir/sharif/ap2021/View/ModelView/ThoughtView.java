@@ -35,8 +35,6 @@ public class ThoughtView implements Initializable {
     private User ownerUser;
     private User doedUser;
     private Thought thought;
-    private int parent;
-    private boolean isComments;
 
 
     @FXML
@@ -60,14 +58,6 @@ public class ThoughtView implements Initializable {
 
     public ArrayList<Pane> getComments() {
         return comments;
-    }
-
-    public int getParent() {
-        return parent;
-    }
-
-    public void setParent(int parent) {
-        this.parent = parent;
     }
 
     public User getMainUser() {
@@ -168,6 +158,7 @@ public class ThoughtView implements Initializable {
 
 
     public void saveMessage(ActionEvent event) {
+
         // later
     }
 

@@ -1,0 +1,1 @@
+{"id":4314,"text":"Oh Hi Bro!","sender":123,"isForwarded":false,"seenUsers":[123,124,122],"messageAddress":"./src/main/resources/Messages"}

@@ -49,7 +49,12 @@ public class Notifications implements Initializable {
     }
 
 
-    public void back(ActionEvent event) {
+    public void back(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/mainmenu.fxml")));
+        Scene scene = new Scene(root);
+        StaticController.getMyStage().setScene(scene);
+
 
     }
 

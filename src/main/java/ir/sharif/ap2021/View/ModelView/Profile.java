@@ -4,6 +4,7 @@ import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.UserSelectionEvent;
 import ir.sharif.ap2021.Listener.UserSelectionListener;
 import ir.sharif.ap2021.Model.User.User;
+import ir.sharif.ap2021.Validation.AuthenticationException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -54,7 +55,7 @@ public class Profile implements Initializable {
 
     }
 
-    public void selectFollower(MouseEvent mouseEvent) throws IOException {
+    public void selectFollower(MouseEvent mouseEvent) throws IOException, AuthenticationException {
 
 
         if (StaticController.getMyUser().getFollowers().isEmpty()) {
@@ -68,7 +69,7 @@ public class Profile implements Initializable {
 
     }
 
-    public void selectFollowing(MouseEvent mouseEvent) throws IOException {
+    public void selectFollowing(MouseEvent mouseEvent) throws IOException, AuthenticationException {
 
         if (StaticController.getMyUser().getFollowings().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);

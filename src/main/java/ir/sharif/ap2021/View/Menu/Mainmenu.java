@@ -2,28 +2,29 @@ package ir.sharif.ap2021.View.Menu;
 
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.MainMenuEvent;
+import ir.sharif.ap2021.Event.UserSelectionEvent;
 import ir.sharif.ap2021.Listener.MainMenuListener;
+import ir.sharif.ap2021.Listener.UserSelectionListener;
+import ir.sharif.ap2021.Validation.AuthenticationException;
 import ir.sharif.ap2021.View.ModelView.Profile;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 
-public class Mainmenu implements Initializable {
+public class Mainmenu {
 
     @FXML
     private TabPane mainTabPane;
@@ -32,14 +33,20 @@ public class Mainmenu implements Initializable {
     @FXML
     private Button editBtn, blackListBtn, newThoughtBtn, notifBtn;
     @FXML
-    private ScrollPane gatherScroll, timeLineScroll, exploreScroll;
+    private ScrollPane gatherScroll, timeLineScroll, exploreScroll,chatScroll;
     @FXML
-    private ToolBar bar;
+    private ToolBar bar,categoryBar;
+    @FXML
+    private AnchorPane searchPane;
+    @FXML
+    private TextField searchTextField;
+
 
     private static Tab selected;
 
     private static final ArrayList<Pane> thoughts = new ArrayList<>();
     private MainMenuListener mainMenuListener = new MainMenuListener(this);
+    private UserSelectionListener userSelectionListener = new UserSelectionListener();
 
 
     public Tab getSelected() {
@@ -79,17 +86,6 @@ public class Mainmenu implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        if (selected == null) {
-            setSelected(gatherTab);
-        }
-
-    }
-
-
-
     public void makeThought(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) newThoughtBtn.getScene().getWindow();
@@ -111,7 +107,6 @@ public class Mainmenu implements Initializable {
     public void showNotif(ActionEvent event) throws IOException {
         mainMenuListener.eventOccurred(new MainMenuEvent(this, "notif", null));
     }
-
 
 
     public void timeLineUpdate(Event event) {
@@ -139,7 +134,6 @@ public class Mainmenu implements Initializable {
 
         setSelected(exploreTab);
 
-
         try {
             mainMenuListener.eventOccurred(new MainMenuEvent(this, "exploreThought", null));
         } catch (IOException e) {
@@ -147,6 +141,8 @@ public class Mainmenu implements Initializable {
         }
 
         VBox vbox = new VBox();
+
+        vbox.getChildren().add(searchPane);
 
         for (Pane p : thoughts) {
             vbox.getChildren().add(p);
@@ -185,7 +181,67 @@ public class Mainmenu implements Initializable {
 
     }
 
+    public void chatUpdate(Event event) {
+
+        setSelected(chatsTab);
+
+        try {
+            mainMenuListener.eventOccurred(new MainMenuEvent(this, "chats", null));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        VBox vbox = new VBox();
+        vbox.getChildren().add(categoryBar);
+
+        for (Pane p : thoughts) {
+            vbox.getChildren().add(p);
+        }
+
+        chatScroll.setContent(vbox);
 
 
+    }
 
+
+    public void doSearch(ActionEvent event) {
+
+        if (searchTextField.getText().equals(StaticController.getMyUser().getUserName())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("You cannot search yourself");
+            alert.showAndWait();
+        } else {
+
+            try {
+                userSelectionListener.eventOccurred(new UserSelectionEvent(this, "load", searchTextField.getText(), null));
+
+            } catch (AuthenticationException | IOException e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+    }
+
+    public void categoryMessage(ActionEvent event) {
+    }
+
+    public void makeGroup(ActionEvent event) throws IOException {
+
+        if (StaticController.getMyUser().getFollowers().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Your follower list is empty!");
+            alert.showAndWait();
+        } else {
+            mainMenuListener.eventOccurred(new MainMenuEvent(this,"group",null));
+        }
+
+
+    }
+
+
+    public void makeCategory(ActionEvent event) throws IOException {
+
+
+    }
 }

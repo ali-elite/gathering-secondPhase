@@ -2,7 +2,6 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -34,22 +33,32 @@
          </content></Tab>
       <Tab fx:id="exploreTab" onSelectionChanged="#exploreUpdate" text="Explore">
          <content>
-            <ScrollPane fx:id="exploreScroll" fitToWidth="true" prefHeight="571.0" prefWidth="426.0">
+            <ScrollPane fx:id="exploreScroll" fitToWidth="true" prefHeight="571.0" prefWidth="800.0">
                <content>
-                  <AnchorPane fx:id="searchPane" prefHeight="150.0" prefWidth="800.0" style="-fx-background-color: black;">
+                  <AnchorPane fx:id="searchPane" prefHeight="150.0" prefWidth="800.0" style="-fx-background-color: #2b0606;">
                      <children>
-                        <TextField fx:id="searchTextField" layoutX="145.0" layoutY="32.0" prefHeight="35.0" prefWidth="476.0" promptText="Enter username to search" style="-fx-background-color: yellow;" />
-                        <Label fx:id="myLabel" layoutX="80.0" layoutY="85.0" prefHeight="50.0" prefWidth="655.0" text="Label" />
+                        <TextField fx:id="searchTextField" layoutX="145.0" layoutY="32.0" prefHeight="35.0" prefWidth="476.0" promptText="Enter username to search" style="-fx-background-color: #000112;" />
+                        <Button fx:id="searchBtn" layoutX="273.0" layoutY="97.0" mnemonicParsing="false" onAction="#doSearch" prefHeight="26.0" prefWidth="201.0" style="-fx-background-color: #000112;" text="Search" />
                      </children>
                   </AnchorPane>
                </content>
             </ScrollPane>
          </content>
       </Tab>
-      <Tab fx:id="chatsTab" text="Chats">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        </content>
+      <Tab fx:id="chatsTab" onSelectionChanged="#chatUpdate" text="Chats">
+         <content>
+            <ScrollPane fx:id="chatScroll" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <ToolBar fx:id="categoryBar" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: black;" stylesheets="@../css/tab3.css">
+                     <items>
+                        <Button fx:id="categoryMessageBtn" mnemonicParsing="false" onAction="#categoryMessage" prefHeight="34.0" prefWidth="144.0" style="-fx-background-color: yellow;" text="Category Message" />
+                        <Button fx:id="makeCategoryBtn" mnemonicParsing="false" onAction="#makeCategory" prefHeight="34.0" prefWidth="144.0" style="-fx-background-color: yellow;" text="New Category" />
+                        <Button fx:id="makeGroupBtn" mnemonicParsing="false" onAction="#makeGroup" prefHeight="34.0" prefWidth="144.0" style="-fx-background-color: yellow;" text="New Group" />
+                     </items>
+                  </ToolBar>
+               </content>
+            </ScrollPane>
+         </content>
       </Tab>
       <Tab fx:id="settingTab" text="Setting">
         <content>

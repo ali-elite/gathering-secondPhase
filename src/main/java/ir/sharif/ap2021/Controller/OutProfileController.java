@@ -2,15 +2,23 @@ package ir.sharif.ap2021.Controller;
 
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.OutProfileEvent;
+import ir.sharif.ap2021.Model.Chat.Chat;
 import ir.sharif.ap2021.Model.Notification.Notification;
 import ir.sharif.ap2021.Model.User.User;
 import ir.sharif.ap2021.Validation.RepeatActionException;
+import ir.sharif.ap2021.View.Menu.ChatMenu;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class OutProfileController {
 
     Context context = new Context();
 
-    public void control(OutProfileEvent event) throws RepeatActionException {
+    public void control(OutProfileEvent event) throws RepeatActionException, IOException {
 
         if (event.getOrder().equals("block")) {
 
@@ -27,7 +35,7 @@ public class OutProfileController {
         if (event.getOrder().equals("follow")) {
 
             User user = StaticController.getMyUser();
-            User follower = context.Users.get(event.getUser().getId());
+            User follower = event.getUser();
 
             if (user.getFollowings().contains(follower.getId())) {
 
@@ -106,6 +114,48 @@ public class OutProfileController {
             User follower = event.getUser();
             follower.addReport();
             context.Users.update(follower);
+
+        }
+
+        if (event.getOrder().equals("message")) {
+
+            boolean set = false;
+            for (Integer z : StaticController.getMyUser().getChats()) {
+
+                Chat chat = context.Chats.get(z);
+                if (chat.getUsers().contains(StaticController.getMyUser().getId())
+                        && chat.getUsers().contains(event.getUser().getId())) {
+                    ChatMenu.setChat(chat);
+                    set = true;
+                    break;
+                }
+
+            }
+
+            if (!set) {
+
+                User user1 = StaticController.getMyUser();
+                User user2 = event.getUser();
+
+                Chat chat = new Chat("sag", false);
+
+                chat.getUsers().add(StaticController.getMyUser().getId());
+                chat.getUsers().add(event.getUser().getId());
+                user1.getChats().add(chat.getId());
+                user2.getChats().add(chat.getId());
+
+                ChatMenu.setChat(chat);
+
+                context.Chats.add(chat);
+                context.Users.update(user1);
+                context.Users.update(user2);
+            }
+
+
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/chatmenu.fxml")));
+            Scene scene = new Scene(root);
+            StaticController.getMyStage().setScene(scene);
+
 
         }
 

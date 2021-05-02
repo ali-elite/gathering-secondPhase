@@ -1,6 +1,6 @@
 package ir.sharif.ap2021.Model.User;
 
-import java.io.*;
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class User {
     private final ArrayList<Integer> blackList;
     private final ArrayList<Integer> muteList;
     private final ArrayList<Integer> notifications;
-//    private final ArrayList<ChatScreen> chatScreens;
+    private final ArrayList<Integer> chats;
     private final String userAddress = "./src/main/resources/Users";
 
 
@@ -57,7 +57,7 @@ public class User {
         blackList = new ArrayList<>();
         notifications = new ArrayList<>();
         muteList = new ArrayList<>();
-//        chatScreens = new ArrayList<>();
+        chats = new ArrayList<>();
 
     }
 
@@ -70,16 +70,10 @@ public class User {
         this.lastName = lastName;
     }
 
-//    public ArrayList<ChatScreen> getChatScreens() {
-//        return chatScreens;
-//    }
-//
-//    public ArrayList<UserCategory> getCategories() {
-//        return categories;
-//    }
 
-
-
+    public ArrayList<Integer> getChats() {
+        return chats;
+    }
 
     public String getAvatar() {
         return avatar;

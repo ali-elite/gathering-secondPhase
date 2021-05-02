@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Menu.ChatMenu">
+   <children>
+      <ScrollPane fx:id="screenScroll" fitToHeight="true" fitToWidth="true" prefHeight="487.0" prefWidth="800.0">
+         <content>
+            <ToolBar fx:id="bar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="808.0" style="-fx-background-color: black;">
+              <items>
+                <Button fx:id="backBtn" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: yellow;" text="Back" />
+              </items>
+            </ToolBar>
+         </content></ScrollPane>
+      <AnchorPane layoutY="486.0" prefHeight="114.0" prefWidth="800.0" style="-fx-background-color: black;">
+         <children>
+            <TextArea fx:id="textField" layoutX="7.0" layoutY="8.0" prefHeight="98.0" prefWidth="668.0" promptText="Enter your message..." style="-fx-background-color: yellow;" />
+            <Button fx:id="sendBtn" layoutX="681.0" layoutY="10.0" mnemonicParsing="false" onAction="#send" prefHeight="56.0" prefWidth="110.0" style="-fx-background-color: yellow;" text="Send" />
+            <Button fx:id="attachBtn" layoutX="706.0" layoutY="76.0" mnemonicParsing="false" onAction="#attach" prefHeight="30.0" prefWidth="59.0" style="-fx-background-color: yellow;" text="Attach" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

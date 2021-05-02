@@ -1,0 +1,1 @@
+{"id":45,"isGroup":true,"chatAddress":"./src/main/resources/Chats","name":"TesTBros","users":[125,124,123,122],"messages":[4313,4314,4315]}
