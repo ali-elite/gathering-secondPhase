@@ -157,14 +157,17 @@ public class ThoughtView implements Initializable {
     }
 
 
-    public void saveMessage(ActionEvent event) {
+    public void saveMessage(ActionEvent event) throws IOException {
 
-        // later
+        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "saveMessage", thought);
+        thoughtListener.eventOccurred(thoughtChangeEvent);
+
     }
 
-    public void forwardMessage(ActionEvent event) {
+    public void forwardMessage(ActionEvent event) throws IOException {
 
-        //later
+        ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "forwardMessage", thought);
+        thoughtListener.eventOccurred(thoughtChangeEvent);
     }
 
     public void muteAuthor(ActionEvent event) throws IOException {

@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
@@ -29,7 +30,7 @@ public class MessageView implements Initializable {
     @FXML
     private Circle avatar;
     @FXML
-    private Label textLabel,forwardLabel;
+    private Label textLabel,forwardLabel,userLabel;
     @FXML
     private Polygon triangle;
     @FXML
@@ -54,17 +55,22 @@ public class MessageView implements Initializable {
 
     public void editMessage(ActionEvent event) {
     }
+    public void deleteMessage(ActionEvent event) {
+    }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         textLabel.setText(message.getText());
+        userLabel.setText(sender.getUserName());
         avatar.setFill(new ImagePattern(new Image(sender.getAvatar())));
         forwardLabel.setVisible(message.isForwarded());
 
         if(sender.getId() == StaticController.getMyUser().getId()){
-            textPane.setStyle("-fx-background-color: green");
+            textPane.setStyle("-fx-background-color: darkgreen");
+            triangle.setFill(Color.DARKGREEN);
+            triangle.setStroke(Color.DARKGREEN);
         }
 
 

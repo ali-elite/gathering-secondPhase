@@ -47,7 +47,7 @@ public class RegistrationController {
         boolean check = true;
 
         for (User user :context.Users.all()) {
-            if (user.getUserName().equals(username)) {
+            if (user.getUserName().equals(username) && !user.isDeleted()) {
                 check = false;
                 break;
             }

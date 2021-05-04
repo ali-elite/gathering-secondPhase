@@ -30,9 +30,20 @@ public class EditProfileController {
         user.setBiography(event.getBio());
 
         if (event.getAvatar().equals("change")) {
-            user.setAvatar("/Avatars/" + user.getId() + ".png");
+
+            String pathName = StaticController.getMyUser().getAvatar();
+            String avatar;
+
+            if (pathName.equals("/images/user.png")) {
+                avatar = "/Avatars/" + StaticController.getMyUser().getId() +".png";
+            } else {
+                avatar = pathName.substring(0, pathName.length() - 4) + "-1.png";
+            }
+
+            user.setAvatar(avatar);
         }
-        
+
+
         context.Users.update(user);
     }
 
@@ -63,4 +74,8 @@ public class EditProfileController {
 
         return check;
     }
+
+
+
+
 }

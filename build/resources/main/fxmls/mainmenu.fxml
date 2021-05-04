@@ -2,12 +2,16 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <TabPane fx:id="mainTabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/tab3.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Menu.Mainmenu">
   <tabs>
@@ -60,9 +64,41 @@
             </ScrollPane>
          </content>
       </Tab>
-      <Tab fx:id="settingTab" text="Setting">
+      <Tab fx:id="settingTab" onSelectionChanged="#settingUpdate" text="Setting">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ToolBar layoutX="1.0" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: black;">
+                    <items>
+                      <Button mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="390.0" style="-fx-background-color: red;" text="Delete User" />
+                        <Button mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="390.0" style="-fx-background-color: skyblue;" text="Log Out" />
+                    </items>
+                  </ToolBar>
+                  <AnchorPane layoutX="1.0" layoutY="50.0" prefHeight="522.0" prefWidth="800.0" style="-fx-background-color: black;">
+                     <children>
+                        <TextField fx:id="password" layoutX="36.0" layoutY="23.0" prefHeight="40.0" prefWidth="474.0" promptText="Enter your new password..." />
+                        <Pane layoutX="3.0" layoutY="146.0" prefHeight="19.0" prefWidth="800.0" style="-fx-background-color: yellow;" />
+                        <TextField fx:id="repeat" layoutX="35.0" layoutY="82.0" prefHeight="40.0" prefWidth="476.0" promptText="Repeat your new password..." />
+                        <Button layoutX="585.0" layoutY="50.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: lime;" text="Change Password" />
+                        <ChoiceBox fx:id="privacy" layoutX="46.0" layoutY="181.0" prefHeight="26.0" prefWidth="226.0" style="-fx-background-color: yellow;" />
+                        <Pane layoutX="3.0" layoutY="295.0" prefHeight="19.0" prefWidth="800.0" style="-fx-background-color: yellow;" />
+                        <Button layoutX="531.0" layoutY="208.0" mnemonicParsing="false" onAction="#confirmLsPrivacy" prefHeight="43.0" prefWidth="218.0" style="-fx-background-color: lime;" text="Confrim Accout Last Seen Privacy" />
+                        <CheckBox fx:id="diactive" alignment="CENTER" layoutX="46.0" layoutY="450.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="268.0" text="Diactive Account" textFill="RED">
+                           <font>
+                              <Font name="System Bold" size="23.0" />
+                           </font>
+                        </CheckBox>
+                        <Button layoutX="531.0" layoutY="445.0" mnemonicParsing="false" onAction="#confirmActivity" prefHeight="43.0" prefWidth="218.0" style="-fx-background-color: lime;" text="Confrim Accout Activity" />
+                        <Pane layoutX="2.0" layoutY="405.0" prefHeight="19.0" prefWidth="800.0" style="-fx-background-color: yellow;" />
+                        <CheckBox fx:id="privateCheck" alignment="CENTER" layoutX="46.0" layoutY="338.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="268.0" text="Private" textFill="#f2ff00">
+                           <font>
+                              <Font name="System Bold" size="23.0" />
+                           </font>
+                        </CheckBox>
+                        <Button layoutX="531.0" layoutY="338.0" mnemonicParsing="false" onAction="#confirmPrivacy" prefHeight="43.0" prefWidth="218.0" style="-fx-background-color: lime;" text="Confrim Privacy" />
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
         </content>
       </Tab>
   </tabs>

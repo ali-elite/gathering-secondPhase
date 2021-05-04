@@ -2,6 +2,7 @@ package ir.sharif.ap2021.View.Menu;
 
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.MainMenuEvent;
+import ir.sharif.ap2021.Event.PrivacyEvent;
 import ir.sharif.ap2021.Event.UserSelectionEvent;
 import ir.sharif.ap2021.Listener.MainMenuListener;
 import ir.sharif.ap2021.Listener.UserSelectionListener;
@@ -33,13 +34,17 @@ public class Mainmenu {
     @FXML
     private Button editBtn, blackListBtn, newThoughtBtn, notifBtn;
     @FXML
-    private ScrollPane gatherScroll, timeLineScroll, exploreScroll,chatScroll;
+    private ScrollPane gatherScroll, timeLineScroll, exploreScroll, chatScroll;
     @FXML
-    private ToolBar bar,categoryBar;
+    private ToolBar bar, categoryBar;
     @FXML
     private AnchorPane searchPane;
     @FXML
-    private TextField searchTextField;
+    private TextField searchTextField, password, repeat;
+    @FXML
+    private ChoiceBox<String> privacy;
+    @FXML
+    private CheckBox diactive,privateCheck;
 
 
     private static Tab selected;
@@ -55,7 +60,6 @@ public class Mainmenu {
 
     public static void setSelected(Tab selected) {
         Mainmenu.selected = selected;
-
     }
 
     public ScrollPane getGatherScroll() {
@@ -107,6 +111,7 @@ public class Mainmenu {
     public void showNotif(ActionEvent event) throws IOException {
         mainMenuListener.eventOccurred(new MainMenuEvent(this, "notif", null));
     }
+
 
 
     public void timeLineUpdate(Event event) {
@@ -203,6 +208,14 @@ public class Mainmenu {
 
     }
 
+    public void settingUpdate(Event event) {
+
+        String[] items = {"Any one", "No one", "Just followers"};
+        privacy.getItems().addAll(items);
+
+        diactive.setSelected(!StaticController.getMyUser().isActive());
+    }
+
 
     public void doSearch(ActionEvent event) {
 
@@ -223,8 +236,6 @@ public class Mainmenu {
         }
     }
 
-    public void categoryMessage(ActionEvent event) {
-    }
 
     public void makeGroup(ActionEvent event) throws IOException {
 
@@ -233,7 +244,7 @@ public class Mainmenu {
             alert.setContentText("Your follower list is empty!");
             alert.showAndWait();
         } else {
-            mainMenuListener.eventOccurred(new MainMenuEvent(this,"group",null));
+            mainMenuListener.eventOccurred(new MainMenuEvent(this, "group", null));
         }
 
 
@@ -242,6 +253,83 @@ public class Mainmenu {
 
     public void makeCategory(ActionEvent event) throws IOException {
 
+    }
+
+    public void categoryMessage(ActionEvent event) {
+    }
+
+
+    public void changePassword(ActionEvent event) throws IOException {
+
+        if (!password.getText().equals(repeat.getText())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Passwords are not match");
+            alert.showAndWait();
+        } else if (password.getText().equals("") | repeat.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please fill both fields");
+            alert.showAndWait();
+        } else {
+            mainMenuListener.privacyEventOccurred(new PrivacyEvent(this, "changePassword", password.getText()
+                    , null, false));
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Password Changed Successfully");
+            alert.showAndWait();
+        }
 
     }
+
+    public void confirmLsPrivacy(ActionEvent event) throws IOException {
+        mainMenuListener.privacyEventOccurred(new PrivacyEvent(this, "lastSeen", null
+                , privacy.getValue(), false));
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Lastseen Privacy Changed Successfully");
+        alert.showAndWait();
+    }
+
+    public void confirmActivity(ActionEvent event) throws IOException {
+        mainMenuListener.privacyEventOccurred(new PrivacyEvent(this, "changeActivity", null
+                , null, diactive.isSelected()));
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Activity Changed Successfully");
+        alert.showAndWait();
+    }
+
+    public void confirmPrivacy(ActionEvent event) throws IOException {
+        mainMenuListener.privacyEventOccurred(new PrivacyEvent(this, "changePrivacy", null
+                , null, privateCheck.isSelected()));
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Privacy Changed Successfully");
+        alert.showAndWait();
+    }
+
+    public void deleteUser(ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Are you sure you wanna leave the gathering? :( ");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                try {
+                    mainMenuListener.eventOccurred(new MainMenuEvent(this,"delete",null));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+    }
+
+    public void logOut(ActionEvent event) throws IOException {
+
+        mainMenuListener.eventOccurred(new MainMenuEvent(this,"logOut",null));
+
+    }
+
+
 }

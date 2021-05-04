@@ -45,7 +45,7 @@ public class LoginController {
         boolean check = false;
 
         for (User user : context.Users.all()) {
-            if (user.getUserName().equals(username)) {
+            if (user.getUserName().equals(username) && !user.isDeleted()) {
                 check = true;
                 break;
             }

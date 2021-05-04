@@ -16,11 +16,10 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -40,11 +39,13 @@ public class EditProfile implements Initializable {
     private TextArea bioText;
     @FXML
     private DatePicker birthday;
+
+
     private boolean isChanged = false;
     private EditProfileListener editProfileListener = new EditProfileListener();
 
 
-    public void submit(ActionEvent event) throws IOException {
+    public void submit(ActionEvent event) throws IOException, InterruptedException {
 
         boolean isReady = true;
 
@@ -88,8 +89,9 @@ public class EditProfile implements Initializable {
             isReady = false;
         }
 
-        if(isReady){
+        if (isReady) {
             myLabel.setText("Your Profile Edited Successfully ! Press Back if you are done");
+            initialize(null, null);
         }
 
     }
@@ -100,16 +102,33 @@ public class EditProfile implements Initializable {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png"));
         File file = fileChooser.showOpenDialog(null);
 
+
         if (file != null) {
 
-            File avatarFile = new File("src/main/resources/Avatars/" + StaticController.getMyUser().getId() + ".png");
+            String pathName = StaticController.getMyUser().getAvatar();
 
-            if (avatarFile.exists()) {
-                avatarFile.delete();
+
+            File avatarFile;
+
+            if (pathName.equals("/images/user.png")) {
+                avatarFile = new File("src/main/resources/Avatars/" + StaticController.getMyUser().getId() + ".png");
+
+            } else {
+
+                avatarFile = new File("src/main/resources" + pathName.substring(0, pathName.length() - 4) + "-1.png");
             }
 
-            Files.copy(file.toPath(), avatarFile.toPath());
+            FileUtils.copyFile(file, avatarFile);
+
+            while (!avatarFile.exists()) {
+
+                myLabel.setText("Wait..");
+
+            }
+
+
             isChanged = true;
+
 
         } else isChanged = false;
 
@@ -137,7 +156,6 @@ public class EditProfile implements Initializable {
         bioText.setText(StaticController.getMyUser().getBiography());
         birthday.setValue(StaticController.getMyUser().getBirthday());
         avatar.setFill(new ImagePattern(new Image(StaticController.getMyUser().getAvatar())));
-
 
     }
 

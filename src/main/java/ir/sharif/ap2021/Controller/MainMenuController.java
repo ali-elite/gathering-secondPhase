@@ -5,15 +5,18 @@ import ir.sharif.ap2021.Model.Chat.Chat;
 import ir.sharif.ap2021.Model.Chat.Message;
 import ir.sharif.ap2021.Model.Thought.Thought;
 import ir.sharif.ap2021.Model.User.User;
+import ir.sharif.ap2021.View.Menu.ForwardSelection;
 import ir.sharif.ap2021.View.Menu.Mainmenu;
 import ir.sharif.ap2021.View.Menu.NewGroup;
 import ir.sharif.ap2021.View.Menu.Notifications;
+import ir.sharif.ap2021.View.ModelView.ChatForwardView;
 import ir.sharif.ap2021.View.ModelView.ChatView;
 import ir.sharif.ap2021.View.ModelView.ThoughtView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -231,7 +234,7 @@ public class MainMenuController {
 
             }
 
-            if (seenCount == 0) {
+            if (seenCount != 0) {
                 ChatView chatView = new ChatView();
                 chatView.setChat(chat);
                 chatView.setUnseen(seenCount);
@@ -264,7 +267,7 @@ public class MainMenuController {
 
             }
 
-            if (seenCount != 0) {
+            if (seenCount == 0) {
                 ChatView chatView = new ChatView();
                 chatView.setChat(chat);
                 chatView.setUnseen(seenCount);
@@ -285,7 +288,6 @@ public class MainMenuController {
 
     }
 
-
     public void group(Mainmenu mainmenu) throws IOException {
 
         User myUser = StaticController.getMyUser();
@@ -304,5 +306,141 @@ public class MainMenuController {
 
     }
 
+    public void changePassword(String password) {
+
+        User theUser = StaticController.getMyUser();
+
+        theUser.setPassword(password);
+
+        context.Users.update(theUser);
+
+    }
+
+    public void lastSeen(String lastSeen) {
+
+        User iUser = StaticController.getMyUser();
+
+        if (lastSeen.equals("Any one")) {
+            iUser.setLSPublic();
+        }
+        if (lastSeen.equals("No one")) {
+            iUser.setLSPrivate();
+        }
+        if (lastSeen.equals("Just followers")) {
+            iUser.setLSSemiPrivate();
+        }
+
+        context.Users.update(iUser);
+    }
+
+    public void changeActivity(boolean diactive) {
+
+        User u = StaticController.getMyUser();
+        u.setActive(!diactive);
+
+        context.Users.update(u);
+
+    }
+
+    public void changePrivacy(boolean isPrivate) {
+
+        User ur = StaticController.getMyUser();
+        ur.setPrivate(isPrivate);
+
+        context.Users.update(ur);
+
+    }
+
+    public void deleteUser(Mainmenu mainmenu) throws IOException {
+
+        User us = StaticController.getMyUser();
+        us.setDeleted(true);
+
+        context.Users.update(us);
+
+        logOut(null);
+    }
+
+    public void logOut(Mainmenu mainmenu) throws IOException {
+
+        Stage stage = StaticController.getMyStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/app.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void forwards(Mainmenu mainmenu) throws IOException {
+
+        ForwardSelection.getChats().clear();
+
+        for (int i = StaticController.getMyUser().getChats().size() - 1; i > -1; i--) {
+
+            Chat chat = context.Chats.get(StaticController.getMyUser().getChats().get(i));
+
+            int seenCount = chat.getMessages().size();
+
+            for (Integer m : chat.getMessages()) {
+
+                Message message = context.Messages.get(m);
+                if (message.getSeenUsers().contains(StaticController.getMyUser().getId())) {
+                    seenCount--;
+                }
+
+            }
+
+            if (seenCount == 0) {
+                ChatForwardView chatView = new ChatForwardView();
+                chatView.setChat(chat);
+                chatView.setUnseen(seenCount);
+
+                for (Integer j : chat.getUsers()) {
+                    if (j != StaticController.getMyUser().getId()) {
+                        chatView.setUser(context.Users.get(j));
+                    }
+                }
+
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/chatForward.fxml"));
+                loader.setController(chatView);
+
+                ForwardSelection.getChats().add((Pane) loader.load());
+            }
+        }
+        for (int i = StaticController.getMyUser().getChats().size() - 1; i > -1; i--) {
+
+            Chat chat = context.Chats.get(StaticController.getMyUser().getChats().get(i));
+
+            int seenCount = chat.getMessages().size();
+
+            for (Integer m : chat.getMessages()) {
+
+                Message message = context.Messages.get(m);
+                if (message.getSeenUsers().contains(StaticController.getMyUser().getId())) {
+                    seenCount--;
+                }
+
+            }
+
+            if (seenCount != 0) {
+                ChatForwardView chatView = new ChatForwardView();
+                chatView.setChat(chat);
+                chatView.setUnseen(seenCount);
+
+                for (Integer j : chat.getUsers()) {
+                    if (j != StaticController.getMyUser().getId()) {
+                        chatView.setUser(context.Users.get(j));
+                    }
+                }
+
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/chatForward.fxml"));
+                loader.setController(chatView);
+
+                ForwardSelection.getChats().add((Pane) loader.load());
+            }
+        }
+
+    }
 
 }

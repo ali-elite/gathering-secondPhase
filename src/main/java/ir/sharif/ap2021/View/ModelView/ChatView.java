@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.View.ModelView;
 
+import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.ChatEvent;
 import ir.sharif.ap2021.Listener.ChatListener;
 import ir.sharif.ap2021.Model.Chat.Chat;
@@ -28,7 +29,7 @@ public class ChatView implements Initializable {
     @FXML
     private Circle avatar;
     @FXML
-    private Label label,unseenText;
+    private Label label, unseenText;
 
 
     public Chat getChat() {
@@ -63,18 +64,23 @@ public class ChatView implements Initializable {
             avatar.setFill(new ImagePattern(new Image("/images/group.png")));
             label.setText(chat.getName());
         } else {
-            avatar.setFill(new ImagePattern(new Image(user.getAvatar())));
-            label.setText(user.getUserName());
+
+            if (user != null) {
+                avatar.setFill(new ImagePattern(new Image(user.getAvatar())));
+                label.setText(user.getUserName());
+            }else {
+                avatar.setFill(new ImagePattern(new Image(StaticController.getMyUser().getAvatar())));
+                label.setText("Saved Messages");
+            }
+
         }
 
         unseenText.setText(String.valueOf(unseen));
     }
 
 
-
-
     public void openChat(MouseEvent mouseEvent) throws IOException {
-        chatListener.eventOccurred(new ChatEvent(this,"open",chat,null));
+        chatListener.eventOccurred(new ChatEvent(this, "open", chat, null));
     }
 
 

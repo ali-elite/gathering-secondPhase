@@ -24,6 +24,7 @@ public class User {
     private final int nextId = 122;
     private boolean isActive = true;
     private boolean isPrivate = false;
+    private boolean isDeleted = false;
     private long reportedTimes = 0;
     private final LocalDateTime lastSeen;
     //    private final ArrayList<Thought> likedThoughts;
@@ -70,6 +71,13 @@ public class User {
         this.lastName = lastName;
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 
     public ArrayList<Integer> getChats() {
         return chats;

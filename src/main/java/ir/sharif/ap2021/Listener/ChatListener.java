@@ -30,6 +30,10 @@ public class ChatListener {
             chatController.open(formEvent);
         }
 
+        if (formEvent.getOrder().equals("forward")) {
+            chatController.forward(formEvent);
+        }
+
 
     }
 

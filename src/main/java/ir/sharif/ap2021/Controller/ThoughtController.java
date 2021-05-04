@@ -2,9 +2,12 @@ package ir.sharif.ap2021.Controller;
 
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.ThoughtEvent;
+import ir.sharif.ap2021.Model.Chat.Chat;
+import ir.sharif.ap2021.Model.Chat.Message;
 import ir.sharif.ap2021.Model.Thought.Thought;
 import ir.sharif.ap2021.Model.User.User;
 import ir.sharif.ap2021.View.Menu.Opinions;
+import ir.sharif.ap2021.View.ModelView.ChatForwardView;
 import ir.sharif.ap2021.View.ModelView.OutProfile;
 import ir.sharif.ap2021.View.ModelView.ThoughtView;
 import javafx.fxml.FXMLLoader;
@@ -91,7 +94,39 @@ public class ThoughtController {
 
         }
 
+        if (e.getType().equals("saveMessage")) {
 
+            Chat chat = null;
+
+            for (Integer i : myUser.getChats()) {
+                if (context.Chats.get(i).getName().equals("savedMessages")) {
+                    chat = context.Chats.get(i);
+                }
+            }
+
+            if(chat == null){
+                chat = new Chat("savedMessages",false);
+                chat.getUsers().add(myUser.getId());
+                myUser.getChats().add(chat.getId());
+                context.Chats.add(chat);
+            }
+
+            Message message = new Message(myUser.getId(),true,e.getThought().getText());
+            context.Messages.add(message);
+
+            chat.getMessages().add(message.getId());
+            context.Chats.update(chat);
+        }
+
+
+        if (e.getType().equals("forwardMessage")) {
+
+            ChatForwardView.setThought(e.getThought());
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/forwardSelection.fxml")));
+            Scene scene = new Scene(root);
+            StaticController.getMyStage().setScene(scene);
+
+        }
 
         context.Thoughts.update(thought);
         context.Users.update(user);

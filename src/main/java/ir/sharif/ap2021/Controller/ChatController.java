@@ -5,6 +5,7 @@ import ir.sharif.ap2021.Event.ChatEvent;
 import ir.sharif.ap2021.Model.Chat.Chat;
 import ir.sharif.ap2021.Model.Chat.Message;
 import ir.sharif.ap2021.View.Menu.ChatMenu;
+import ir.sharif.ap2021.View.ModelView.ChatForwardView;
 import ir.sharif.ap2021.View.ModelView.MessageView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -66,5 +67,18 @@ public class ChatController {
         Scene scene = new Scene(root);
         StaticController.getMyStage().setScene(scene);
 
+    }
+
+    public void forward(ChatEvent formEvent) {
+
+        Chat theChat = formEvent.getChat();
+
+        Message theMessage = new Message(StaticController.getMyUser().getId(),
+                true,ChatForwardView.getThought().getText());
+        context.Messages.add(theMessage);
+
+        theChat.getMessages().add(theMessage.getId());
+
+        context.Chats.update(theChat);
     }
 }
