@@ -6,15 +6,24 @@ import java.util.EventObject;
 
 public class ChatEvent extends EventObject {
 
-    String order;
-    Chat chat;
-    String pm;
+    private String order;
+    private Chat chat;
+    private String pm;
+    private String changed;
 
     public ChatEvent(Object source, String order, Chat chat, String pm) {
         super(source);
         this.order = order;
         this.chat = chat;
         this.pm = pm;
+    }
+
+    public String getChanged() {
+        return changed;
+    }
+
+    public void setChanged(String changed) {
+        this.changed = changed;
     }
 
     public String getOrder() {

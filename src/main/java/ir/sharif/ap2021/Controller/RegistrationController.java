@@ -33,7 +33,7 @@ public class RegistrationController {
         boolean check = true;
 
         for (User user :context.Users.all()) {
-            if (user.getEmail().equals(email)) {
+            if (user.getEmail().equals(email) && !user.isDeleted()) {
                 check = false;
                 break;
             }

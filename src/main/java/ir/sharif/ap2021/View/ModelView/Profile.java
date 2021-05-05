@@ -5,6 +5,7 @@ import ir.sharif.ap2021.Event.UserSelectionEvent;
 import ir.sharif.ap2021.Listener.UserSelectionListener;
 import ir.sharif.ap2021.Model.User.User;
 import ir.sharif.ap2021.Validation.AuthenticationException;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -14,6 +15,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,7 +44,18 @@ public class Profile implements Initializable {
         nicknameLabel.setText(user.getFirstName() + " " + user.getLastName());
         idLabel.setText("@" + user.getUserName());
         lastseenLabel.setText(String.valueOf(user.getLastSeen()));
-        avatar.setFill(new ImagePattern(new Image(user.getAvatar())));
+
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(new File("src/main/resources" + user.getAvatar()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        assert bufferedImage != null;
+        Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+
+        avatar.setFill(new ImagePattern(image));
 
 
         if (user.getBiography() == null) {

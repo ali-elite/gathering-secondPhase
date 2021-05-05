@@ -6,6 +6,7 @@ import ir.sharif.ap2021.Listener.ChatListener;
 import ir.sharif.ap2021.Model.Chat.Chat;
 import ir.sharif.ap2021.Model.Thought.Thought;
 import ir.sharif.ap2021.Model.User.User;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -14,6 +15,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -73,11 +77,32 @@ public class ChatForwardView implements Initializable {
             label.setText(chat.getName());
         } else {
 
+            BufferedImage bufferedImage = null;
+
             if (user != null) {
-                avatar.setFill(new ImagePattern(new Image(user.getAvatar())));
+                try {
+                    bufferedImage = ImageIO.read(new File("src/main/resources" + user.getAvatar()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                assert bufferedImage != null;
+                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+
+                avatar.setFill(new ImagePattern(image));
                 label.setText(user.getUserName());
-            }else {
-                avatar.setFill(new ImagePattern(new Image(StaticController.getMyUser().getAvatar())));
+            } else {
+
+                try {
+                    bufferedImage = ImageIO.read(new File("src/main/resources" + StaticController.getMyUser().getAvatar()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                assert bufferedImage != null;
+                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+
+                avatar.setFill(new ImagePattern(image));
                 label.setText("Saved Messages");
             }
 
@@ -87,14 +112,12 @@ public class ChatForwardView implements Initializable {
     }
 
 
-
     public void forwardChat(MouseEvent mouseEvent) throws IOException {
 
         chatListener.eventOccurred(new ChatEvent(this, "forward", chat, null));
         StaticController.getMyMainMenu().show();
 
     }
-
 
 
 }

@@ -1,1 +1,1 @@
-{"id":45,"isGroup":false,"chatAddress":"./src/main/resources/Chats","name":"savedMessages","users":[122],"messages":[4311]}
+{"id":45,"isGroup":false,"chatAddress":"./src/main/resources/Chats","name":"sag","users":[122,123],"messages":[4311,4312]}

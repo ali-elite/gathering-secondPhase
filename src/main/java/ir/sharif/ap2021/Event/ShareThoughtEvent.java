@@ -6,6 +6,7 @@ public class ShareThoughtEvent extends EventObject {
 
     private String text;
     private int userId;
+    private String change;
 
     public ShareThoughtEvent(Object source, String text, int userId) {
         super(source);
@@ -20,5 +21,13 @@ public class ShareThoughtEvent extends EventObject {
 
     public int getUserId() {
         return userId;
+    }
+
+    public String getChange() {
+        return change;
+    }
+
+    public void setChange(String change) {
+        this.change = change;
     }
 }

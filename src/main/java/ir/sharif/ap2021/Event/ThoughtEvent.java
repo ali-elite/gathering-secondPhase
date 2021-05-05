@@ -8,6 +8,7 @@ public class ThoughtEvent extends EventObject {
     private String type;
     private Thought thought;
     private String mentionText;
+    private String mentionImg;
 
 
 
@@ -32,5 +33,13 @@ public class ThoughtEvent extends EventObject {
 
     public void setMentionText(String mentionText) {
         this.mentionText = mentionText;
+    }
+
+    public String getMentionImg() {
+        return mentionImg;
+    }
+
+    public void setMentionImg(String mentionImg) {
+        this.mentionImg = mentionImg;
     }
 }

@@ -4,6 +4,7 @@ import ir.sharif.ap2021.Event.NotifEvent;
 import ir.sharif.ap2021.Listener.NotifListener;
 import ir.sharif.ap2021.Model.Notification.Notification;
 import ir.sharif.ap2021.Model.User.User;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +14,9 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -79,7 +83,17 @@ public class NotifView implements Initializable {
         }
 
         textLabel.setText(notification.getText());
-        avatar.setFill(new ImagePattern(new Image(user.getAvatar())));
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(new File("src/main/resources" + user.getAvatar()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        assert bufferedImage != null;
+        Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+
+        avatar.setFill(new ImagePattern(image));
 
     }
 

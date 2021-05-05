@@ -14,12 +14,13 @@ public class Thought {
     private int doed;
     private int parent;
     private String type;
+    private String image;
     private long likes;
     private long spamReports;
     private String text;
-    private ArrayList<Integer> opinions;
-    private ArrayList<Integer> likers;
-    private ArrayList<Integer> rethoughters;
+    private final ArrayList<Integer> opinions;
+    private final ArrayList<Integer> likers;
+    private final ArrayList<Integer> rethoughters;
 
 
     private LocalDateTime localDateTime;
@@ -131,4 +132,12 @@ public class Thought {
         spamReports++;
     }
 
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

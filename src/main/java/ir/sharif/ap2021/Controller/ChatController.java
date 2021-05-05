@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -52,6 +53,15 @@ public class ChatController {
     public void send(ChatEvent formEvent) {
 
         Message message = new Message(StaticController.getMyUser().getId(), false, formEvent.getPm());
+
+        if(formEvent.getChanged().equals("changed")){
+            message.setImage("/MessageImages/" + message.getId() + ".png");
+            File old = new File("src/main/resources/MessageImages/" + "311" + ".png");
+            File notOld = new File("src/main/resources/MessageImages/" + message.getId() + ".png");
+
+            old.renameTo(notOld);
+        }
+
         context.Messages.add(message);
 
         formEvent.getChat().getMessages().add(message.getId());
@@ -75,6 +85,11 @@ public class ChatController {
 
         Message theMessage = new Message(StaticController.getMyUser().getId(),
                 true,ChatForwardView.getThought().getText());
+
+        if(ChatForwardView.getThought().getImage() != null){
+            theMessage.setImage(ChatForwardView.getThought().getImage());
+        }
+
         context.Messages.add(theMessage);
 
         theChat.getMessages().add(theMessage.getId());

@@ -5,6 +5,7 @@ import ir.sharif.ap2021.Event.ThoughtEvent;
 import ir.sharif.ap2021.Listener.ThoughtListener;
 import ir.sharif.ap2021.Model.Thought.Thought;
 import ir.sharif.ap2021.Model.User.User;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +20,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -44,7 +49,7 @@ public class ThoughtView implements Initializable {
     @FXML
     private Label likes, rets, opinions, statusLabel, timeLabel;
     @FXML
-    private ImageView likeIMG, retIMG;
+    private ImageView likeIMG, retIMG, tIMG, oIMG;
     @FXML
     private TextArea replyText;
     @FXML
@@ -52,7 +57,7 @@ public class ThoughtView implements Initializable {
     @FXML
     private AnchorPane replyPane;
 
-
+    private boolean isChanged;
     private final ArrayList<Pane> comments = new ArrayList<>();
 
 
@@ -92,6 +97,7 @@ public class ThoughtView implements Initializable {
         this.thought = thought;
     }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -112,7 +118,17 @@ public class ThoughtView implements Initializable {
         likes.setText(String.valueOf(thought.getLikes()));
         rets.setText(String.valueOf(thought.getRethought()));
         opinions.setText(String.valueOf(thought.getOpinions().size()));
-        avatar.setFill(new ImagePattern(new Image(ownerUser.getAvatar())));
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(new File("src/main/resources" + ownerUser.getAvatar()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        assert bufferedImage != null;
+        Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+
+        avatar.setFill(new ImagePattern(image));
 
         if (thought.getType().equals("t")) {
             statusLabel.setText(" Shared his thought:");
@@ -120,12 +136,31 @@ public class ThoughtView implements Initializable {
             statusLabel.setText(" Replied to: " + "@" + doedUser.getUserName());
         }
 
+        if (thought.getImage() != null) {
+
+            BufferedImage bi = null;
+            try {
+                bi = ImageIO.read(new File("src/main/resources" + thought.getImage()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            assert bi != null;
+            Image im = SwingFXUtils.toFXImage(bi, null);
+
+            tIMG.setImage(im);
+
+        }
+
+
         replyBtn.setVisible(false);
         replyText.setVisible(false);
         insertBtn.setVisible(false);
+        oIMG.setVisible(false);
 
 
     }
+
 
     public void reload() {
         initialize(null, null);
@@ -153,6 +188,7 @@ public class ThoughtView implements Initializable {
         replyBtn.setVisible(!replyBtn.isVisible());
         replyText.setVisible(!replyText.isVisible());
         insertBtn.setVisible(!insertBtn.isVisible());
+        oIMG.setVisible(!oIMG.isVisible());
 
     }
 
@@ -224,13 +260,49 @@ public class ThoughtView implements Initializable {
     }
 
 
-
     public void reply(ActionEvent event) throws IOException {
 
         ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "mention", thought);
         thoughtChangeEvent.setMentionText(replyText.getText());
+        if (isChanged) {
+            thoughtChangeEvent.setMentionImg("changed");
+            isChanged = false;
+        }
         thoughtListener.eventOccurred(thoughtChangeEvent);
 
+    }
+
+
+    public void insert(ActionEvent event) throws IOException {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png"));
+        File file = fileChooser.showOpenDialog(StaticController.getMyStage());
+
+
+        if (file != null) {
+
+            Image img = new Image(file.toURI().toString());
+
+            saveToFile(img, "31");
+            oIMG.setImage(img);
+
+            isChanged = true;
+        } else isChanged = false;
+
+    }
+
+
+    public void saveToFile(Image image, String name) throws IOException {
+
+        File fileOutput = new File("src/main/resources/ThoughtImages/" + name + ".png");
+
+        if (fileOutput.exists()) {
+            fileOutput.delete();
+        }
+
+        BufferedImage Bi = SwingFXUtils.fromFXImage(image, null);
+        ImageIO.write(Bi, "png", fileOutput);
     }
 
 }

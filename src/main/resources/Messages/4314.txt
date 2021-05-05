@@ -1,1 +1,0 @@
-{"id":4314,"text":"You Have To Save It!","sender":123,"isForwarded":true,"seenUsers":[123],"messageAddress":"./src/main/resources/Messages"}

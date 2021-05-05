@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -68,6 +69,16 @@ public class ThoughtController {
             thought.getOpinions().add(opinion.getId());
             opinion.setParent(thought.getId());
 
+            if (e.getMentionImg().equals("changed")) {
+                opinion.setImage("/ThoughtImages/" + opinion.getId() + ".png");
+
+
+                File old = new File("src/main/resources/ThoughtImages/" + "31" + ".png");
+                File notOld = new File("src/main/resources/ThoughtImages/" + opinion.getId() + ".png");
+
+                old.renameTo(notOld);
+            }
+
             //didnt add replies to main user but it can be
 
             context.Thoughts.add(opinion);
@@ -104,14 +115,19 @@ public class ThoughtController {
                 }
             }
 
-            if(chat == null){
-                chat = new Chat("savedMessages",false);
+            if (chat == null) {
+                chat = new Chat("savedMessages", false);
                 chat.getUsers().add(myUser.getId());
                 myUser.getChats().add(chat.getId());
                 context.Chats.add(chat);
             }
 
-            Message message = new Message(myUser.getId(),true,e.getThought().getText());
+            Message message = new Message(myUser.getId(), true, e.getThought().getText());
+
+            if(e.getThought().getImage() != null){
+                message.setImage(e.getThought().getImage());
+            }
+
             context.Messages.add(message);
 
             chat.getMessages().add(message.getId());

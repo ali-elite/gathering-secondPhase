@@ -4,21 +4,22 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="250.0" prefWidth="800.0" style="-fx-background-color: #2b0606;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="300.0" prefWidth="800.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Circle fx:id="avatar" fill="DODGERBLUE" layoutX="65.0" layoutY="185.0" radius="51.0" stroke="BLACK" strokeType="INSIDE" />
-      <AnchorPane fx:id="textPane" layoutX="153.0" layoutY="14.0" onMouseEntered="#seen" prefHeight="166.0" prefWidth="575.0" style="-fx-background-color: white;">
+      <Circle fx:id="avatar" fill="DODGERBLUE" layoutX="70.0" layoutY="247.0" radius="45.0" stroke="BLACK" strokeType="INSIDE" />
+      <AnchorPane fx:id="textPane" layoutX="153.0" layoutY="14.0" onMouseEntered="#seen" prefHeight="223.0" prefWidth="615.0" style="-fx-background-color: white;">
          <children>
-            <Label fx:id="textLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="49.0" prefHeight="110.0" prefWidth="542.0" text="Label">
+            <Label fx:id="textLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="49.0" prefHeight="162.0" prefWidth="396.0" text="Label">
                <font>
                   <Font name="Segoe Print" size="16.0" />
                </font></Label>
-            <MenuBar layoutX="530.0" layoutY="1.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: yellow;">
+            <MenuBar fx:id="menuBar" layoutX="575.0" layoutY="1.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: white;">
               <menus>
                 <Menu mnemonicParsing="false" text="...">
                   <items>
@@ -28,18 +29,19 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <Label fx:id="forwardLabel" layoutX="214.0" layoutY="5.0" prefHeight="26.0" prefWidth="90.0" text="Forwarded">
+            <Label fx:id="forwardLabel" alignment="CENTER" layoutX="189.0" layoutY="6.0" prefHeight="26.0" prefWidth="113.0" text="Forwarded" textFill="#132081">
                <font>
-                  <Font name="System Bold Italic" size="14.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="userLabel" layoutX="14.0" prefHeight="37.0" prefWidth="186.0" text="username" textFill="#4d0202db">
+            <Label fx:id="userLabel" alignment="CENTER" prefHeight="38.0" prefWidth="166.0" text="username" textFill="#4d0202db">
                <font>
-                  <Font name="Comic Sans MS Bold" size="23.0" />
+                  <Font name="Comic Sans MS Bold Italic" size="19.0" />
                </font>
             </Label>
+            <ImageView fx:id="messageImg" fitHeight="162.0" fitWidth="187.0" layoutX="420.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-      <Polygon fx:id="triangle" fill="WHITE" layoutX="93.0" layoutY="122.0" points="64.0, -11.600006103515625, 30.79998779296875, 82.79998779296875, 64.0, 58.399993896484375" stroke="WHITE" strokeType="INSIDE" />
+      <Polygon fx:id="triangle" fill="WHITE" layoutX="97.0" layoutY="178.0" points="64.0, -11.600006103515625, 30.79998779296875, 82.79998779296875, 64.0, 58.399993896484375" stroke="WHITE" strokeType="INSIDE" />
    </children>
 </AnchorPane>

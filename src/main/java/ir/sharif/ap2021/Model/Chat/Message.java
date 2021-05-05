@@ -12,6 +12,7 @@ public class Message {
 
     private String text;
     private int sender;
+    private String image;
     private boolean isForwarded;
     private LocalDateTime time;
     private final ArrayList<Integer> seenUsers = new ArrayList<>();
@@ -69,5 +70,13 @@ public class Message {
 
     public ArrayList<Integer> getSeenUsers() {
         return seenUsers;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

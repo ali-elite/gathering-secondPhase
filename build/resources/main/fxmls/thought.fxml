@@ -15,21 +15,22 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #000112;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="text" alignment="TOP_LEFT" layoutX="150.0" layoutY="65.0" prefHeight="122.0" prefWidth="604.0" text="Tweet text" textFill="WHITE">
+      <Label fx:id="text" alignment="TOP_LEFT" layoutX="122.0" layoutY="65.0" prefHeight="115.0" prefWidth="592.0" text="Tweet text" textFill="WHITE">
          <font>
-            <Font name="Freestyle Script" size="27.0" />
+            <Font name="Freestyle Script" size="24.0" />
          </font></Label>
-      <ImageView fx:id="likeIMG" fitHeight="60.0" fitWidth="41.0" layoutX="107.0" layoutY="224.0" onMouseClicked="#like" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="likeIMG" fitHeight="45.0" fitWidth="40.0" layoutX="115.0" layoutY="322.0" onMouseClicked="#like" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/like.png" />
-         </image></ImageView>
-      <Circle fx:id="avatar" fill="DODGERBLUE" layoutX="74.0" layoutY="67.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" />
-      <ImageView fx:id="retIMG" fitHeight="60.0" fitWidth="48.0" layoutX="317.0" layoutY="216.0" onMouseClicked="#ret" pickOnBounds="true">
+         </image>
+      </ImageView>
+      <Circle fx:id="avatar" fill="DODGERBLUE" layoutX="64.0" layoutY="57.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" />
+      <ImageView fx:id="retIMG" fitHeight="50.0" fitWidth="48.0" layoutX="349.0" layoutY="321.0" onMouseClicked="#ret" pickOnBounds="true">
          <image>
             <Image url="@../images/ret.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="opIMG" fitHeight="52.0" fitWidth="48.0" layoutX="561.0" layoutY="225.0" onMouseClicked="#mention" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="opIMG" fitHeight="43.0" fitWidth="48.0" layoutX="594.0" layoutY="328.0" onMouseClicked="#mention" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/comment.png" />
          </image>
@@ -37,17 +38,17 @@
             <ColorAdjust brightness="0.49" contrast="-1.0" hue="0.02" saturation="-0.38" />
          </effect>
       </ImageView>
-      <Label fx:id="likes" alignment="CENTER" layoutX="178.0" layoutY="228.0" prefHeight="36.0" prefWidth="61.0" text="Label">
+      <Label fx:id="likes" alignment="CENTER" layoutX="171.0" layoutY="331.0" prefHeight="36.0" prefWidth="61.0" text="Label">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Label fx:id="rets" alignment="CENTER" layoutX="400.0" layoutY="228.0" prefHeight="36.0" prefWidth="61.0" text="Label">
+      <Label fx:id="rets" alignment="CENTER" layoutX="397.0" layoutY="330.0" prefHeight="36.0" prefWidth="61.0" text="Label">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Label fx:id="opinions" alignment="CENTER" layoutX="660.0" layoutY="228.0" prefHeight="36.0" prefWidth="61.0" text="Label">
+      <Label fx:id="opinions" alignment="CENTER" layoutX="652.0" layoutY="330.0" prefHeight="36.0" prefWidth="61.0" text="Label">
          <font>
             <Font size="19.0" />
          </font>
@@ -68,16 +69,18 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane fx:id="replyPane" layoutY="322.0" prefHeight="177.0" prefWidth="800.0" style="-fx-background-color: yellow;">
+      <AnchorPane fx:id="replyPane" layoutY="382.0" prefHeight="118.0" prefWidth="800.0" style="-fx-background-color: yellow;">
          <children>
-            <Button fx:id="replyBtn" layoutX="204.0" layoutY="138.0" mnemonicParsing="false" onAction="#reply" prefHeight="3.0" prefWidth="166.0" style="-fx-background-color: #000112;" text="Reply" />
-            <TextArea fx:id="replyText" prefHeight="122.0" prefWidth="800.0" promptText="Enter your opinion about this thought">
+            <Button fx:id="replyBtn" layoutX="108.0" layoutY="86.0" mnemonicParsing="false" onAction="#reply" prefHeight="3.0" prefWidth="166.0" style="-fx-background-color: #000112;" text="Reply" />
+            <TextArea fx:id="replyText" prefHeight="75.0" prefWidth="491.0" promptText="Enter your opinion about this thought">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </TextArea>
-            <Button fx:id="insertBtn" layoutX="390.0" layoutY="138.0" mnemonicParsing="false" prefHeight="3.0" prefWidth="166.0" style="-fx-background-color: #000112;" text="Insert Photo" />
+            <Button fx:id="insertBtn" layoutX="594.0" layoutY="85.0" mnemonicParsing="false" onAction="#insert" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #000112;" text="Insert Photo" />
+            <ImageView fx:id="oIMG" fitHeight="61.0" fitWidth="222.0" layoutX="534.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
+      <ImageView fx:id="tIMG" fitHeight="106.0" fitWidth="706.0" layoutX="64.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

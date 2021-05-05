@@ -30,19 +30,8 @@ public class EditProfileController {
         user.setBiography(event.getBio());
 
         if (event.getAvatar().equals("change")) {
-
-            String pathName = StaticController.getMyUser().getAvatar();
-            String avatar;
-
-            if (pathName.equals("/images/user.png")) {
-                avatar = "/Avatars/" + StaticController.getMyUser().getId() +".png";
-            } else {
-                avatar = pathName.substring(0, pathName.length() - 4) + "-1.png";
-            }
-
-            user.setAvatar(avatar);
+            user.setAvatar("/Avatars/" + user.getId() + ".png");
         }
-
 
         context.Users.update(user);
     }
@@ -52,7 +41,8 @@ public class EditProfileController {
         boolean check = true;
 
         for (User user : context.Users.all()) {
-            if (user.getEmail().equals(email) && !user.getEmail().equals(StaticController.getMyUser().getEmail())) {
+            if (user.getEmail().equals(email) && !user.getEmail().equals(StaticController.getMyUser().getEmail())
+                    && !user.isDeleted()) {
                 check = false;
                 break;
             }
@@ -66,7 +56,8 @@ public class EditProfileController {
         boolean check = true;
 
         for (User user : context.Users.all()) {
-            if (user.getUserName().equals(username) && !user.getUserName().equals(StaticController.getMyUser().getUserName())) {
+            if (user.getUserName().equals(username) && !user.getUserName().equals(StaticController.getMyUser().getUserName())
+                    && !user.isDeleted()) {
                 check = false;
                 break;
             }
@@ -74,8 +65,6 @@ public class EditProfileController {
 
         return check;
     }
-
-
 
 
 }
