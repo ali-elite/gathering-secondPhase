@@ -12,9 +12,7 @@ public class MessageController {
 
         Message message = formEvent.getMessage();
 
-
         int myId = StaticController.getMyUser().getId();
-
 
         if (!message.getSeenUsers().contains(myId)) {
             message.getSeenUsers().add(myId);
@@ -25,4 +23,22 @@ public class MessageController {
     }
 
 
+    public void edit(MessageEvent formEvent) {
+
+        Message message = formEvent.getMessage();
+
+        message.setText(formEvent.getEditedText());
+
+        context.Messages.update(message);
+    }
+
+    public void delete(MessageEvent formEvent) {
+
+        Message message = formEvent.getMessage();
+
+        message.setDeleted(true);
+
+        context.Messages.update(message);
+
+    }
 }

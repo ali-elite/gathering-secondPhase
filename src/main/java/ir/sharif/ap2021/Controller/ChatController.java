@@ -4,6 +4,7 @@ import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.ChatEvent;
 import ir.sharif.ap2021.Model.Chat.Chat;
 import ir.sharif.ap2021.Model.Chat.Message;
+import ir.sharif.ap2021.Model.User.User;
 import ir.sharif.ap2021.View.Menu.ChatMenu;
 import ir.sharif.ap2021.View.ModelView.ChatForwardView;
 import ir.sharif.ap2021.View.ModelView.MessageView;
@@ -30,15 +31,19 @@ public class ChatController {
         for (Integer m : chat.getMessages()) {
 
             Message message = context.Messages.get(m);
+            User sender = context.Users.get(message.getSender());
 
-            MessageView messageView = new MessageView();
-            messageView.setMessage(message);
-            messageView.setSender(context.Users.get(message.getSender()));
+            if (sender.isActive() && !sender.isDeleted()) {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/message.fxml"));
-            loader.setController(messageView);
-            ChatMenu.getMessages().add((Pane) loader.load());
-            i++;
+                MessageView messageView = new MessageView();
+                messageView.setMessage(message);
+                messageView.setSender(context.Users.get(message.getSender()));
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/message.fxml"));
+                loader.setController(messageView);
+                ChatMenu.getMessages().add((Pane) loader.load());
+                i++;
+            }
 
             if (i == 5) {
                 break;
@@ -54,7 +59,7 @@ public class ChatController {
 
         Message message = new Message(StaticController.getMyUser().getId(), false, formEvent.getPm());
 
-        if(formEvent.getChanged().equals("changed")){
+        if (formEvent.getChanged().equals("changed")) {
             message.setImage("/MessageImages/" + message.getId() + ".png");
             File old = new File("src/main/resources/MessageImages/" + "311" + ".png");
             File notOld = new File("src/main/resources/MessageImages/" + message.getId() + ".png");
@@ -84,9 +89,9 @@ public class ChatController {
         Chat theChat = formEvent.getChat();
 
         Message theMessage = new Message(StaticController.getMyUser().getId(),
-                true,ChatForwardView.getThought().getText());
+                true, ChatForwardView.getThought().getText());
 
-        if(ChatForwardView.getThought().getImage() != null){
+        if (ChatForwardView.getThought().getImage() != null) {
             theMessage.setImage(ChatForwardView.getThought().getImage());
         }
 

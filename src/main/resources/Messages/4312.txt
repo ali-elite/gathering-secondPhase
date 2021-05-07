@@ -1,1 +1,1 @@
-{"id":4312,"text":"hell yea. cool enough!","sender":123,"image":"/MessageImages/4312.png","isForwarded":false,"seenUsers":[123,122],"messageAddress":"./src/main/resources/Messages"}
+{"id":4312,"text":"and delete this","sender":122,"isForwarded":false,"isDeleted":true,"seenUsers":[122,123],"messageAddress":"./src/main/resources/Messages"}

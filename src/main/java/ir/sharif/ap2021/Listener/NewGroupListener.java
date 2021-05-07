@@ -13,6 +13,10 @@ public class NewGroupListener {
             newGroupController.makeGroup(formEvent);
         }
 
+        if(formEvent.getOrder().equals("groupMessage")){
+            newGroupController.groupMessage(formEvent);
+        }
+
     }
 
 }

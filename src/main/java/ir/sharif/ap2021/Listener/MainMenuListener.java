@@ -48,6 +48,10 @@ public class MainMenuListener {
             mainMenuController.group(mainmenu);
         }
 
+        if (event.getOrder().equals("groupMessage")) {
+            mainMenuController.groupMessage(mainmenu);
+        }
+
         if (event.getOrder().equals("delete")) {
             mainMenuController.deleteUser(mainmenu);
         }
@@ -60,6 +64,13 @@ public class MainMenuListener {
             mainMenuController.forwards(mainmenu);
         }
 
+        if (event.getOrder().equals("unblock")) {
+            mainMenuController.unblock(event);
+        }
+
+        if (event.getOrder().equals("blacklist")) {
+            mainMenuController.blacklist(event);
+        }
     }
 
     public void privacyEventOccurred(PrivacyEvent event) throws IOException {

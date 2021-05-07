@@ -8,6 +8,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToolBar;
@@ -86,13 +87,23 @@ public class ChatMenu implements Initializable {
         if (isChanged) {
             chatEvent.setChanged("changed");
             isChanged = false;
+        } else {
+            chatEvent.setChanged("no");
         }
 
-        chatListener.eventOccurred(chatEvent);
-        textField.setText(null);
-        chosenImg.setImage(null);
+        if (textField.getText().length() <= 300) {
+            chatListener.eventOccurred(chatEvent);
+            textField.setText(null);
+            chosenImg.setImage(null);
 
-        initialize(null, null);
+            initialize(null, null);
+        } else {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Your message's length is beyond 300 characters");
+            alert.showAndWait();
+
+        }
     }
 
     public void attach(ActionEvent event) throws IOException {

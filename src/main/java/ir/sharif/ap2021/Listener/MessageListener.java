@@ -13,6 +13,14 @@ public class MessageListener {
             messageController.seen(formEvent);
         }
 
+        if (formEvent.getOrder().equals("edit")) {
+            messageController.edit(formEvent);
+        }
+
+        if (formEvent.getOrder().equals("delete")) {
+            messageController.delete(formEvent);
+        }
+
     }
 
 }

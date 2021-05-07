@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -47,6 +48,8 @@ public class OutProfile implements Initializable {
     private ImageView followIMG, lockIMG;
     @FXML
     private MenuItem message, block, mute, report, back;
+    @FXML
+    private MenuBar menu;
 
 
     public static String getFrom() {
@@ -90,6 +93,8 @@ public class OutProfile implements Initializable {
     public void doBlock(ActionEvent event) throws IOException, RepeatActionException {
 
         outProfileListener.eventOccurred(new OutProfileEvent(this, user, "block"));
+
+        initialize(null, null);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText("User blocked Successfully!");
@@ -182,10 +187,20 @@ public class OutProfile implements Initializable {
 
         avatar.setFill(new ImagePattern(image));
 
-        if (StaticController.getMyUser().getFollowings().contains(user.getId())) {
-            followIMG.setImage(new Image("/images/unfollow.png"));
+        if (StaticController.getMyUser().getBlackList().contains(user.getId())) {
+            followIMG.setVisible(false);
+            menu.setVisible(false);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("You have blocked this user");
+            alert.show();
+
         } else {
-            followIMG.setImage(new Image("/images/follow.png"));
+            if (StaticController.getMyUser().getFollowings().contains(user.getId())) {
+                followIMG.setImage(new Image("/images/unfollow.png"));
+            } else {
+                followIMG.setImage(new Image("/images/follow.png"));
+            }
         }
 
         if (!user.isPrivate()) {

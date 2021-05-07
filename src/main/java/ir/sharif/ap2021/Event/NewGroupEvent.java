@@ -8,6 +8,7 @@ public class NewGroupEvent extends EventObject {
     String order;
     ArrayList<String> users;
     String name;
+    String changed;
 
     public NewGroupEvent(Object source, String order, ArrayList<String> users, String name) {
 
@@ -40,5 +41,13 @@ public class NewGroupEvent extends EventObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getChanged() {
+        return changed;
+    }
+
+    public void setChanged(String changed) {
+        this.changed = changed;
     }
 }

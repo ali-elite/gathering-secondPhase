@@ -6,6 +6,7 @@ import ir.sharif.ap2021.Listener.ShareThoughtListener;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -30,17 +31,28 @@ public class NewThought {
 
     private boolean isChanged;
 
+
     public void share(ActionEvent event) throws IOException {
 
         ShareThoughtEvent e = new ShareThoughtEvent(this, text.getText(), StaticController.getMyUser().getId());
-        if(isChanged){
+        if (isChanged) {
             e.setChange("changed");
             isChanged = false;
+        } else {
+            e.setChange("no");
         }
         ShareThoughtListener shareThoughtListener = new ShareThoughtListener();
-        shareThoughtListener.eventOccurred(e);
 
-        back(null);
+        if (text.getText().length() <= 300) {
+            shareThoughtListener.eventOccurred(e);
+            back(null);
+        } else {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Your thought's length is beyond 300 characters");
+            alert.showAndWait();
+
+        }
 
     }
 
@@ -64,8 +76,6 @@ public class NewThought {
 
 
     }
-
-
 
 
     public void saveToFile(Image image, String name) throws IOException {

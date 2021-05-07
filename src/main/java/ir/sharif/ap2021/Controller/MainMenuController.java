@@ -1,14 +1,12 @@
 package ir.sharif.ap2021.Controller;
 
 import ir.sharif.ap2021.DB.Context;
+import ir.sharif.ap2021.Event.MainMenuEvent;
 import ir.sharif.ap2021.Model.Chat.Chat;
 import ir.sharif.ap2021.Model.Chat.Message;
 import ir.sharif.ap2021.Model.Thought.Thought;
 import ir.sharif.ap2021.Model.User.User;
-import ir.sharif.ap2021.View.Menu.ForwardSelection;
-import ir.sharif.ap2021.View.Menu.Mainmenu;
-import ir.sharif.ap2021.View.Menu.NewGroup;
-import ir.sharif.ap2021.View.Menu.Notifications;
+import ir.sharif.ap2021.View.Menu.*;
 import ir.sharif.ap2021.View.ModelView.ChatForwardView;
 import ir.sharif.ap2021.View.ModelView.ChatView;
 import ir.sharif.ap2021.View.ModelView.ThoughtView;
@@ -109,7 +107,8 @@ public class MainMenuController {
 
         for (User follower : followers) {
 
-            if (!mainUser.getMuteList().contains(follower.getId()) && follower.isActive()) {
+            if (!mainUser.getMuteList().contains(follower.getId()) && follower.isActive() &&
+            !mainUser.getBlackList().contains(follower.getId()) && !follower.isDeleted()) {
 
                 for (int i = follower.getThoughts().size() - 1; i > -1; i--) {
 
@@ -141,7 +140,8 @@ public class MainMenuController {
 
         for (User following : followings) {
 
-            if (!mainUser.getMuteList().contains(following.getId()) && following.isActive()) {
+            if (!mainUser.getMuteList().contains(following.getId()) && following.isActive() &&
+                    !mainUser.getBlackList().contains(following.getId()) && !following.isDeleted()) {
 
                 for (int i = following.getThoughts().size() - 1; i > -1; i--) {
 
@@ -175,6 +175,7 @@ public class MainMenuController {
 
     public void exploreThought(Mainmenu mainmenu) throws IOException {
 
+        User myUser = StaticController.getMyUser();
 
         Mainmenu.getThoughts().clear();
         int j = 0;
@@ -183,8 +184,10 @@ public class MainMenuController {
             ThoughtView thoughtView = new ThoughtView();
 
             Thought thought = context.Thoughts.all().get(i);
+            User u = context.Users.get(thought.getUser());
 
-            if (thought.getType().equals("t")) {
+            if (thought.getType().equals("t") && !myUser.getBlackList().contains(u.getId())
+            && !myUser.getMuteList().contains(u.getId()) && u.isActive() && !u.isDeleted()) {
 
                 thoughtView.setThought(thought);
                 thoughtView.setOwnerUser(context.Users.get(thought.getUser()));
@@ -206,6 +209,7 @@ public class MainMenuController {
 
         }
     }
+
 
 
     public void notif(Mainmenu mainmenu) throws IOException {
@@ -248,6 +252,7 @@ public class MainMenuController {
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/chat.fxml"));
                 loader.setController(chatView);
+
 
                 Mainmenu.getThoughts().add((Pane) loader.load());
             }
@@ -305,6 +310,8 @@ public class MainMenuController {
         StaticController.getMyStage().setScene(scene);
 
     }
+
+
 
     public void changePassword(String password) {
 
@@ -440,6 +447,52 @@ public class MainMenuController {
                 ForwardSelection.getChats().add((Pane) loader.load());
             }
         }
+
+    }
+
+    public void unblock(MainMenuEvent mainmenu) {
+
+        User unblocked = context.Users.getByName(mainmenu.getUsername());
+
+        User myUser = StaticController.getMyUser();
+
+        myUser.getBlackList().remove((Integer) unblocked.getId());
+
+        context.Users.update(myUser);
+
+    }
+
+    public void blacklist(MainMenuEvent event) throws IOException {
+
+        Blacklist.getUsers().clear();
+
+        for(Integer i : StaticController.getMyUser().getBlackList()){
+            User u = context.Users.get(i);
+            Blacklist.getUsers().add(u.getUserName());
+        }
+
+
+        Stage stage = StaticController.getMyStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/blacklist.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    public void groupMessage(Mainmenu mainmenu) throws IOException {
+
+        User myUser = StaticController.getMyUser();
+
+        ArrayList<String> userItems = new ArrayList<>();
+
+        for (int i = 0; i < myUser.getFollowers().size(); i++) {
+            userItems.add(context.Users.get(myUser.getFollowers().get(myUser.getFollowers().size() - 1 - i)).getUserName());
+        }
+
+        GroupMessage.setUsers(userItems);
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/groupMessage.fxml")));
+        Scene scene = new Scene(root);
+        StaticController.getMyStage().setScene(scene);
 
     }
 

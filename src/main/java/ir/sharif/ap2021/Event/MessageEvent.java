@@ -9,6 +9,7 @@ public class MessageEvent extends EventObject {
 
     String order;
     Message message;
+    String editedText;
 
     public MessageEvent(Object source, String order, Message message) {
         super(source);
@@ -30,5 +31,13 @@ public class MessageEvent extends EventObject {
 
     public void setMessage(Message message) {
         this.message = message;
+    }
+
+    public String getEditedText() {
+        return editedText;
+    }
+
+    public void setEditedText(String editedText) {
+        this.editedText = editedText;
     }
 }

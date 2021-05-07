@@ -268,7 +268,17 @@ public class ThoughtView implements Initializable {
             thoughtChangeEvent.setMentionImg("changed");
             isChanged = false;
         }
-        thoughtListener.eventOccurred(thoughtChangeEvent);
+
+        if (replyText.getText().length() <= 300) {
+            thoughtListener.eventOccurred(thoughtChangeEvent);
+        } else {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Your opinion's length is beyond 300 characters");
+            alert.showAndWait();
+
+        }
+
 
     }
 

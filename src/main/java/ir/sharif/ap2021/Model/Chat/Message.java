@@ -14,6 +14,7 @@ public class Message {
     private int sender;
     private String image;
     private boolean isForwarded;
+    private boolean isDeleted;
     private LocalDateTime time;
     private final ArrayList<Integer> seenUsers = new ArrayList<>();
 
@@ -25,6 +26,7 @@ public class Message {
         this.sender = sender;
         this.isForwarded = isForwarded;
         this.text = text;
+        isDeleted = false;
 
     }
 
@@ -78,5 +80,13 @@ public class Message {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -21,11 +22,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 
-public class Mainmenu {
+public class Mainmenu implements Initializable {
 
     @FXML
     private TabPane mainTabPane;
@@ -44,8 +47,7 @@ public class Mainmenu {
     @FXML
     private ChoiceBox<String> privacy;
     @FXML
-    private CheckBox diactive,privateCheck;
-
+    private CheckBox diactive, privateCheck;
 
     private static Tab selected;
 
@@ -54,7 +56,7 @@ public class Mainmenu {
     private UserSelectionListener userSelectionListener = new UserSelectionListener();
 
 
-    public Tab getSelected() {
+    public static Tab getSelected() {
         return selected;
     }
 
@@ -90,34 +92,9 @@ public class Mainmenu {
     }
 
 
-    public void makeThought(ActionEvent event) throws IOException {
-
-        Stage stage = (Stage) newThoughtBtn.getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/newThought.fxml")));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-
-    }
-
-    public void editProfile(ActionEvent event) throws IOException {
-
-        Stage stage = (Stage) editBtn.getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/editProfile.fxml")));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-
-    }
-
-    public void showNotif(ActionEvent event) throws IOException {
-        mainMenuListener.eventOccurred(new MainMenuEvent(this, "notif", null));
-    }
-
-
-
     public void timeLineUpdate(Event event) {
 
         setSelected(timelineTab);
-
 
         try {
             mainMenuListener.eventOccurred(new MainMenuEvent(this, "timeLineThought", null));
@@ -147,7 +124,6 @@ public class Mainmenu {
 
         VBox vbox = new VBox();
 
-        vbox.getChildren().add(searchPane);
 
         for (Pane p : thoughts) {
             vbox.getChildren().add(p);
@@ -169,8 +145,6 @@ public class Mainmenu {
         }
 
         VBox gatherVBox = new VBox();
-
-        gatherVBox.getChildren().add(bar);
 
         try {
             gatherVBox.getChildren().add(shapeProfile());
@@ -197,7 +171,6 @@ public class Mainmenu {
         }
 
         VBox vbox = new VBox();
-        vbox.getChildren().add(categoryBar);
 
         for (Pane p : thoughts) {
             vbox.getChildren().add(p);
@@ -210,10 +183,50 @@ public class Mainmenu {
 
     public void settingUpdate(Event event) {
 
+        setSelected(setingTab);
+
         String[] items = {"Any one", "No one", "Just followers"};
         privacy.getItems().addAll(items);
 
         diactive.setSelected(!StaticController.getMyUser().isActive());
+    }
+
+
+    public void makeThought(ActionEvent event) throws IOException {
+
+        Stage stage = (Stage) newThoughtBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/newThought.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void editProfile(ActionEvent event) throws IOException {
+
+        Stage stage = (Stage) editBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/editProfile.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void showNotif(ActionEvent event) throws IOException {
+        mainMenuListener.eventOccurred(new MainMenuEvent(this, "notif", null));
+    }
+
+    public void showBlackList(ActionEvent event) throws IOException {
+
+
+        if (StaticController.getMyUser().getBlackList().isEmpty()) {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Your blacklist is empty!");
+            alert.showAndWait();
+
+        } else {
+            mainMenuListener.eventOccurred(new MainMenuEvent(this, "blacklist", null));
+        }
+
     }
 
 
@@ -250,12 +263,16 @@ public class Mainmenu {
 
     }
 
+    public void groupMessage(ActionEvent event) throws IOException {
 
-    public void makeCategory(ActionEvent event) throws IOException {
+        if (StaticController.getMyUser().getFollowers().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Your follower list is empty!");
+            alert.showAndWait();
+        } else {
+            mainMenuListener.eventOccurred(new MainMenuEvent(this, "groupMessage", null));
+        }
 
-    }
-
-    public void categoryMessage(ActionEvent event) {
     }
 
 
@@ -315,7 +332,7 @@ public class Mainmenu {
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 try {
-                    mainMenuListener.eventOccurred(new MainMenuEvent(this,"delete",null));
+                    mainMenuListener.eventOccurred(new MainMenuEvent(this, "delete", null));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -327,8 +344,14 @@ public class Mainmenu {
 
     public void logOut(ActionEvent event) throws IOException {
 
-        mainMenuListener.eventOccurred(new MainMenuEvent(this,"logOut",null));
+        mainMenuListener.eventOccurred(new MainMenuEvent(this, "logOut", null));
+    }
 
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        mainTabPane.getSelectionModel().select(getSelected());
     }
 
 

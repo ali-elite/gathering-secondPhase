@@ -17,18 +17,19 @@
   <tabs>
       <Tab fx:id="gatherTab" onSelectionChanged="#gatherUpdate" text="Gather">
          <content>
-            <ScrollPane fx:id="gatherScroll" fitToHeight="true" fitToWidth="true" prefHeight="560.0" prefWidth="600.0">
-               <content>
+            <AnchorPane>
+               <children>
+                  <ScrollPane fx:id="gatherScroll" fitToHeight="true" fitToWidth="true" layoutY="58.0" prefHeight="514.0" prefWidth="800.0" />
                   <ToolBar fx:id="bar" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: black;" stylesheets="@../css/tab3.css">
                     <items>
-                        <Button fx:id="blackListBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: yellow;" text="BlackList" />
-                        <Button fx:id="notifBtn" mnemonicParsing="false" onAction="#showNotif" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: yellow;" text="Notifications" />
-                      <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editProfile" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: yellow;" text="Edit Profile" />
-                        <Button fx:id="newThoughtBtn" mnemonicParsing="false" onAction="#makeThought" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: yellow;" text="New Thought" />
+                        <Button fx:id="blackListBtn" mnemonicParsing="false" onAction="#showBlackList" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="BlackList" />
+                        <Button fx:id="notifBtn" mnemonicParsing="false" onAction="#showNotif" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="Notifications" />
+                      <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editProfile" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="Edit Profile" />
+                        <Button fx:id="newThoughtBtn" mnemonicParsing="false" onAction="#makeThought" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="New Thought" />
                     </items>
                   </ToolBar>
-               </content>
-            </ScrollPane>
+               </children>
+            </AnchorPane>
          </content>
       </Tab>
     <Tab fx:id="timelineTab" onSelectionChanged="#timeLineUpdate" text="Timeline">
@@ -37,31 +38,32 @@
          </content></Tab>
       <Tab fx:id="exploreTab" onSelectionChanged="#exploreUpdate" text="Explore">
          <content>
-            <ScrollPane fx:id="exploreScroll" fitToWidth="true" prefHeight="571.0" prefWidth="800.0">
-               <content>
+            <AnchorPane>
+               <children>
+                  <ScrollPane fx:id="exploreScroll" fitToWidth="true" layoutY="149.0" prefHeight="422.0" prefWidth="800.0" />
                   <AnchorPane fx:id="searchPane" prefHeight="150.0" prefWidth="800.0" style="-fx-background-color: #2b0606;">
                      <children>
                         <TextField fx:id="searchTextField" layoutX="145.0" layoutY="32.0" prefHeight="35.0" prefWidth="476.0" promptText="Enter username to search" style="-fx-background-color: #000112;" />
                         <Button fx:id="searchBtn" layoutX="273.0" layoutY="97.0" mnemonicParsing="false" onAction="#doSearch" prefHeight="26.0" prefWidth="201.0" style="-fx-background-color: #000112;" text="Search" />
                      </children>
                   </AnchorPane>
-               </content>
-            </ScrollPane>
+               </children>
+            </AnchorPane>
          </content>
       </Tab>
       <Tab fx:id="chatsTab" onSelectionChanged="#chatUpdate" text="Chats">
          <content>
-            <ScrollPane fx:id="chatScroll" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
-               <content>
+            <AnchorPane>
+               <children>
+                  <ScrollPane fx:id="chatScroll" fitToHeight="true" fitToWidth="true" layoutY="60.0" prefHeight="512.0" prefWidth="800.0" />
                   <ToolBar fx:id="categoryBar" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: black;" stylesheets="@../css/tab3.css">
                      <items>
-                        <Button fx:id="categoryMessageBtn" mnemonicParsing="false" onAction="#categoryMessage" prefHeight="34.0" prefWidth="144.0" style="-fx-background-color: yellow;" text="Category Message" />
-                        <Button fx:id="makeCategoryBtn" mnemonicParsing="false" onAction="#makeCategory" prefHeight="34.0" prefWidth="144.0" style="-fx-background-color: yellow;" text="New Category" />
-                        <Button fx:id="makeGroupBtn" mnemonicParsing="false" onAction="#makeGroup" prefHeight="34.0" prefWidth="144.0" style="-fx-background-color: yellow;" text="New Group" />
+                        <Button fx:id="categoryMessageBtn" mnemonicParsing="false" onAction="#groupMessage" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="Group Message" />
+                        <Button fx:id="makeGroupBtn" mnemonicParsing="false" onAction="#makeGroup" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="New Group" />
                      </items>
                   </ToolBar>
-               </content>
-            </ScrollPane>
+               </children>
+            </AnchorPane>
          </content>
       </Tab>
       <Tab fx:id="settingTab" onSelectionChanged="#settingUpdate" text="Setting">

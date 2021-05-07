@@ -1,1 +1,1 @@
-{"id":4311,"text":"wo chek dis out!","sender":122,"image":"/MessageImages/4311.png","isForwarded":false,"seenUsers":[122,123],"messageAddress":"./src/main/resources/Messages"}
+{"id":4311,"text":"this is edited a message!","sender":122,"isForwarded":false,"isDeleted":false,"seenUsers":[122,123],"messageAddress":"./src/main/resources/Messages"}

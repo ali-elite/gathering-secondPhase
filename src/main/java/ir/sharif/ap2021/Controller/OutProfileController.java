@@ -26,10 +26,31 @@ public class OutProfileController {
             User follower = event.getUser();
 
             if (!user.getBlackList().contains(follower.getId())) {
+
                 user.getBlackList().add(follower.getId());
+
+                if (user.getFollowers().contains(follower.getId())) {
+                    user.getFollowers().remove((Integer) follower.getId());
+                }
+
+                if (user.getFollowings().contains(follower.getId())) {
+                    user.getFollowings().remove((Integer) follower.getId());
+                }
+
+
+                if (follower.getFollowers().contains(user.getId())) {
+                    follower.getFollowers().remove((Integer) user.getId());
+                }
+
+                if (follower.getFollowings().contains(user.getId())) {
+                    follower.getFollowings().remove((Integer) user.getId());
+                }
+
             }
 
 
+            context.Users.update(user);
+            context.Users.update(follower);
         }
 
         if (event.getOrder().equals("follow")) {
@@ -91,7 +112,6 @@ public class OutProfileController {
             context.Users.update(follower);
 
         }
-
 
         if (event.getOrder().equals("mute")) {
 
@@ -158,7 +178,6 @@ public class OutProfileController {
 
 
         }
-
 
     }
 
