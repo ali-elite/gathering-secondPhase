@@ -1,0 +1,4 @@
+resourcesPath=src/main/resources/
+imageConfigPath=src/main/resources/config/imageConfig
+fxmlConfigPath=src/main/resources/config/fxmlConfig
+

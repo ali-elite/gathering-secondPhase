@@ -84,7 +84,7 @@
       </ImageView>
       <ToolBar prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: black;">
         <items>
-          <Button mnemonicParsing="false" onAction="#doBack" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="Back" />
+          <Button mnemonicParsing="false" onAction="#doBack" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/mainButtons.css" text="Back" />
         </items>
       </ToolBar>
    </children>

@@ -7,6 +7,7 @@ import ir.sharif.ap2021.Validation.AuthenticationException;
 
 public class LoginController {
 
+
     private Context context;
 
     public LoginController() {
@@ -23,7 +24,6 @@ public class LoginController {
         if (!match(e.getUsername(), e.getPassword())) {
             throw new AuthenticationException("Incorrect Password");
         }
-
 
     }
 

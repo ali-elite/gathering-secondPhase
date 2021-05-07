@@ -2,6 +2,8 @@ package ir.sharif.ap2021.DB;
 
 import com.google.gson.Gson;
 import ir.sharif.ap2021.Model.Chat.Message;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import java.util.Objects;
 
 public class MessageDB implements DBSet<Message>{
 
+    private static final Logger logger = LogManager.getLogger(MessageDB.class);
     private static final String messageAddress = "./src/main/resources/Messages/";
     private static final Gson gson = new Gson();
 
@@ -21,10 +24,12 @@ public class MessageDB implements DBSet<Message>{
             try {
                 Message message = gson.fromJson(new FileReader(f), Message.class);
                 if (message.getId() == id) {
+                    logger.info("message " + id + "loaded from DBFile");
                     return message;
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                logger.error(e.getMessage());
             }
 
         }
@@ -47,6 +52,7 @@ public class MessageDB implements DBSet<Message>{
             messageFile.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
         try {
@@ -54,8 +60,10 @@ public class MessageDB implements DBSet<Message>{
             gson.toJson(message, fileWriter);
             fileWriter.flush();
             fileWriter.close();
+            logger.info("message " + message.getId() + "added");
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -77,8 +85,10 @@ public class MessageDB implements DBSet<Message>{
                     gson.toJson(message, fileWriter);
                     fileWriter.flush();
                     fileWriter.close();
+                    logger.info("message " + message.getId() + "updated");
                 } catch (IOException e) {
                     e.printStackTrace();
+                    logger.error(e.getMessage());
                 }
 
             }

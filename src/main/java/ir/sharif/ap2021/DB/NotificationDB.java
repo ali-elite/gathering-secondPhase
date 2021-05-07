@@ -2,6 +2,8 @@ package ir.sharif.ap2021.DB;
 
 import com.google.gson.Gson;
 import ir.sharif.ap2021.Model.Notification.Notification;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.Objects;
 
 public class NotificationDB implements DBSet<Notification>{
 
-
+    private static final Logger logger = LogManager.getLogger(NotificationDB.class);
     private static final String notifAddress = "./src/main/resources/Notifications/";
     private static final Gson gson = new Gson();
 
@@ -22,10 +24,12 @@ public class NotificationDB implements DBSet<Notification>{
             try {
                 Notification notification = gson.fromJson(new FileReader(f), Notification.class);
                 if (notification.getId() == id) {
+                    logger.info("notification " + id + "loaded from DBFile");
                     return notification;
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                logger.error(e.getMessage());
             }
 
         }
@@ -48,6 +52,7 @@ public class NotificationDB implements DBSet<Notification>{
             notificationFile.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
         try {
@@ -55,8 +60,10 @@ public class NotificationDB implements DBSet<Notification>{
             gson.toJson(notification, fileWriter);
             fileWriter.flush();
             fileWriter.close();
+            logger.info("notification " + notification.getId() + "added");
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
 
@@ -81,8 +88,10 @@ public class NotificationDB implements DBSet<Notification>{
                     gson.toJson(notification, fileWriter);
                     fileWriter.flush();
                     fileWriter.close();
+                    logger.info("notification " + notification.getId() + "updated");
                 } catch (IOException e) {
                     e.printStackTrace();
+                    logger.error(e.getMessage());
                 }
 
             }

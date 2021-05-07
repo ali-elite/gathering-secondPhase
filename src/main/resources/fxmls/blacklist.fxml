@@ -12,7 +12,7 @@
    <children>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: black;">
         <items>
-          <Button fx:id="backBtn" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: yellow;" text="Back" />
+          <Button fx:id="backBtn" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="100.0" stylesheets="@../css/mainButtons.css" text="Back" />
         </items>
       </ToolBar>
       <ListView fx:id="blackList" layoutX="58.0" layoutY="94.0" prefHeight="469.0" prefWidth="686.0" />

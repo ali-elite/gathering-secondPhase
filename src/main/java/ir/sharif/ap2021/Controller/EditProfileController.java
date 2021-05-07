@@ -4,9 +4,12 @@ import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.EditProfileEvent;
 import ir.sharif.ap2021.Model.User.User;
 import ir.sharif.ap2021.Validation.AuthenticationException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class EditProfileController {
 
+    private static final Logger logger = LogManager.getLogger(EditProfileController.class);
     private Context context = new Context();
 
     public void edit(EditProfileEvent event) throws AuthenticationException {
@@ -21,16 +24,31 @@ public class EditProfileController {
 
 
         User user = StaticController.getMyUser();
+
         user.setFirstName(event.getFirst());
+        logger.info("user " + user.getId() + " has changed his/her firstname to " + event.getFirst());
+
         user.setLastName(event.getLast());
+        logger.info("user " + user.getId() + " has changed his/her lastname to " + event.getLast());
+
         user.setUserName(event.getUser());
+        logger.info("user " + user.getId() + " has changed his/her username to " + event.getUser());
+
         user.setPhoneNumber(event.getPhone());
+        logger.info("user " + user.getId() + " has changed his/her phoneNumber to " + event.getPhone());
+
         user.setEmail(event.getEmail());
+        logger.info("user " + user.getId() + " has changed his/her email to " + event.getEmail());
+
         user.setBirthday(event.getBirthday());
+        logger.info("user " + user.getId() + " has changed his/her birthday to " + event.getBirthday());
+
         user.setBiography(event.getBio());
+        logger.info("user " + user.getId() + " has changed his/her biography to " + event.getBio());
 
         if (event.getAvatar().equals("change")) {
             user.setAvatar("/Avatars/" + user.getId() + ".png");
+            logger.info("user " + user.getId() + " has changed his/her avatar");
         }
 
         context.Users.update(user);

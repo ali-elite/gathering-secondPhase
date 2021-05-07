@@ -1,8 +1,9 @@
 package ir.sharif.ap2021.DB;
 
 import com.google.gson.Gson;
-import ir.sharif.ap2021.Model.Thought.Thought;
 import ir.sharif.ap2021.Model.User.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Objects;
 
 public class UserDB implements DBSet<User> {
 
+    private static final Logger logger = LogManager.getLogger(UserDB.class);
     private static final String userAddress = "./src/main/resources/Users/";
     private static final Gson gson = new Gson();
 
@@ -22,11 +24,14 @@ public class UserDB implements DBSet<User> {
             try {
                 User user = gson.fromJson(new FileReader(f), User.class);
                 if (user.getId() == id) {
+                    logger.info("user " + id + "loaded from DBFile");
                     return user;
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                logger.error(e.getMessage());
             }
+
 
         }
 
@@ -48,6 +53,7 @@ public class UserDB implements DBSet<User> {
                 u.add(user);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                logger.error(e.getMessage());
             }
 
         }
@@ -65,6 +71,7 @@ public class UserDB implements DBSet<User> {
             userFile.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
         try {
@@ -72,8 +79,10 @@ public class UserDB implements DBSet<User> {
             gson.toJson(user, fileWriter);
             fileWriter.flush();
             fileWriter.close();
+            logger.info("user " + user.getId() + "added (Singed up)");
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
     }
@@ -96,8 +105,10 @@ public class UserDB implements DBSet<User> {
                     gson.toJson(user, fileWriter);
                     fileWriter.flush();
                     fileWriter.close();
+                    logger.info("user " + user.getId() + "updated");
                 } catch (IOException e) {
                     e.printStackTrace();
+                    logger.error(e.getMessage());
                 }
 
             }
@@ -111,6 +122,7 @@ public class UserDB implements DBSet<User> {
 
         for (User user : all()) {
             if (user.getUserName().equals(username)) {
+                logger.info("user " + user.getId() + "loaded from DBFile by username " + username);
                 return user;
             }
         }

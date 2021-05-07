@@ -49,18 +49,18 @@ public class Mainmenu implements Initializable {
     @FXML
     private CheckBox diactive, privateCheck;
 
-    private static Tab selected;
+    private static int selected;
 
     private static final ArrayList<Pane> thoughts = new ArrayList<>();
     private MainMenuListener mainMenuListener = new MainMenuListener(this);
     private UserSelectionListener userSelectionListener = new UserSelectionListener();
 
 
-    public static Tab getSelected() {
+    public static int getSelected() {
         return selected;
     }
 
-    public static void setSelected(Tab selected) {
+    public static void setSelected(int selected) {
         Mainmenu.selected = selected;
     }
 
@@ -94,7 +94,7 @@ public class Mainmenu implements Initializable {
 
     public void timeLineUpdate(Event event) {
 
-        setSelected(timelineTab);
+        setSelected(1);
 
         try {
             mainMenuListener.eventOccurred(new MainMenuEvent(this, "timeLineThought", null));
@@ -114,7 +114,7 @@ public class Mainmenu implements Initializable {
 
     public void exploreUpdate(Event event) {
 
-        setSelected(exploreTab);
+        setSelected(2);
 
         try {
             mainMenuListener.eventOccurred(new MainMenuEvent(this, "exploreThought", null));
@@ -135,7 +135,7 @@ public class Mainmenu implements Initializable {
 
     public void gatherUpdate(Event event) {
 
-        setSelected(gatherTab);
+        setSelected(0);
 
 
         try {
@@ -162,7 +162,7 @@ public class Mainmenu implements Initializable {
 
     public void chatUpdate(Event event) {
 
-        setSelected(chatsTab);
+        setSelected(3);
 
         try {
             mainMenuListener.eventOccurred(new MainMenuEvent(this, "chats", null));
@@ -183,7 +183,7 @@ public class Mainmenu implements Initializable {
 
     public void settingUpdate(Event event) {
 
-        setSelected(setingTab);
+        setSelected(4);
 
         String[] items = {"Any one", "No one", "Just followers"};
         privacy.getItems().addAll(items);
@@ -351,7 +351,22 @@ public class Mainmenu implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        mainTabPane.getSelectionModel().select(getSelected());
+
+        if(getSelected() == 0)
+        mainTabPane.getSelectionModel().select(gatherTab);
+
+        if(getSelected() == 1)
+            mainTabPane.getSelectionModel().select(timelineTab);
+
+        if(getSelected() == 2)
+            mainTabPane.getSelectionModel().select(exploreTab);
+
+        if(getSelected() == 3)
+            mainTabPane.getSelectionModel().select(chatsTab);
+
+        if(getSelected() == 4)
+            mainTabPane.getSelectionModel().select(setingTab);
+
     }
 
 

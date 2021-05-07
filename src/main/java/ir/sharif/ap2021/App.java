@@ -1,5 +1,7 @@
 package ir.sharif.ap2021;
 
+import ir.sharif.ap2021.Config.FxmlConfig;
+import ir.sharif.ap2021.Config.ImageConfig;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -16,9 +20,15 @@ import java.util.Objects;
 public class App extends Application {
 
 
+    private static final Logger logger = LogManager.getLogger(App.class);
+    private FxmlConfig fxmlConfig = new FxmlConfig();
+    private ImageConfig imageConfig = new ImageConfig();
 
     @FXML
     private Button signBtn,loginBtn;
+
+    public App() throws IOException {
+    }
 
     public static void main(String[] args) {
         launch(args);
@@ -28,13 +38,15 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/app.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getApp())));
 
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image("/images/logo1.jpg"));
+        primaryStage.getIcons().add(new Image(imageConfig.getLogo()));
         primaryStage.show();
+
+        logger.info("App Started");
     }
 
 
@@ -46,11 +58,11 @@ public class App extends Application {
         if(event.getSource()==signBtn){
 
             stage = (Stage) signBtn.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxmls/signup.fxml"));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getSignup())));
         }
         else{
             stage = (Stage) loginBtn.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxmls/login.fxml"));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getLogin())));
         }
 
         Scene scene = new Scene(root);

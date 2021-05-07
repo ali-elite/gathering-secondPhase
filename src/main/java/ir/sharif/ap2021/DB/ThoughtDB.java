@@ -2,7 +2,8 @@ package ir.sharif.ap2021.DB;
 
 import com.google.gson.Gson;
 import ir.sharif.ap2021.Model.Thought.Thought;
-import ir.sharif.ap2021.Model.User.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Objects;
 
 public class ThoughtDB implements DBSet<Thought> {
 
+    private static final Logger logger = LogManager.getLogger(DBSet.class);
     private static final String thoughtAddress = "./src/main/resources/Thoughts/";
     private static final Gson gson = new Gson();
 
@@ -26,6 +28,7 @@ public class ThoughtDB implements DBSet<Thought> {
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                logger.error(e.getMessage());
             }
 
         }
@@ -47,9 +50,11 @@ public class ThoughtDB implements DBSet<Thought> {
                 thoughts.add(thought);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                logger.error(e.getMessage());
             }
 
         }
+
         return thoughts;
     }
 
@@ -64,6 +69,7 @@ public class ThoughtDB implements DBSet<Thought> {
             thoughtFile.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
         try {
@@ -71,8 +77,10 @@ public class ThoughtDB implements DBSet<Thought> {
             gson.toJson(thought, fileWriter);
             fileWriter.flush();
             fileWriter.close();
+            logger.info("thought " + thought.getId() + "added");
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
     }
@@ -96,8 +104,10 @@ public class ThoughtDB implements DBSet<Thought> {
                     gson.toJson(thought, fileWriter);
                     fileWriter.flush();
                     fileWriter.close();
+                    logger.info("thought " + thought.getId() + "updated");
                 } catch (IOException e) {
                     e.printStackTrace();
+                    logger.error(e.getMessage());
                 }
 
             }

@@ -9,8 +9,8 @@
    <children>
       <ToolBar prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: black;">
         <items>
-          <Button fx:id="mainBackBtn" mnemonicParsing="false" onAction="#mainBack" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: yellow;" text="Back to Mainmenu" />
-            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: yellow;" text="Back" />
+          <Button fx:id="mainBackBtn" mnemonicParsing="false" onAction="#mainBack" prefHeight="26.0" prefWidth="142.0" stylesheets="@../css/mainButtons.css" text="MainMenu" />
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#back" prefHeight="15.0" prefWidth="127.0" stylesheets="@../css/glassBtn.css" text="Back" />
         </items>
       </ToolBar>
       <ScrollPane fx:id="Scroll" fitToHeight="true" fitToWidth="true" layoutY="47.0" prefHeight="550.0" prefWidth="800.0">

@@ -15,6 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -23,13 +25,16 @@ import java.util.Objects;
 
 public class MainMenuController {
 
-
+    private static final Logger logger = LogManager.getLogger(MainMenuController.class);
     private Context context = new Context();
 
 
     public void load(Mainmenu mainmenu, String username) throws IOException {
 
-        StaticController.setMyUser(context.Users.getByName(username));
+        User user = context.Users.getByName(username);
+        StaticController.setMyUser(user);
+
+        logger.info("user " + user.getId() + " logged in");
         mainmenu.show();
 
     }

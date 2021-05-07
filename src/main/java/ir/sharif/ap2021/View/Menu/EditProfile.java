@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.View.Menu;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.EditProfileEvent;
 import ir.sharif.ap2021.Listener.EditProfileListener;
@@ -24,6 +25,9 @@ import java.util.ResourceBundle;
 
 public class EditProfile implements Initializable {
 
+
+    ErrorConfig errorConfig = new ErrorConfig();
+
     @FXML
     private TextField firstNameTF, lastNameTf, userNameTF,
             phoneTF, emailTF;
@@ -42,6 +46,8 @@ public class EditProfile implements Initializable {
     private boolean isChanged = false;
     private EditProfileListener editProfileListener = new EditProfileListener();
 
+    public EditProfile() throws IOException {
+    }
 
     public void submit(ActionEvent event) throws IOException, InterruptedException {
 
@@ -49,25 +55,30 @@ public class EditProfile implements Initializable {
 
         if (firstNameTF.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your firstname!!");
+            myLabel.setText(errorConfig.getEnterFirst());
         }
         if (lastNameTf.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your lastname!!");
+            myLabel.setText(errorConfig.getEnterLast());
         }
         if (userNameTF.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your username!");
+            myLabel.setText(errorConfig.getEnterUser());
         }
 
         if (emailTF.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your email address!");
+            myLabel.setText(errorConfig.getEnterEmail());
         }
 
         if (!(emailTF.getText().length() > 6) || !emailTF.getText().contains("@") || !emailTF.getText().endsWith(".com")) {
             isReady = false;
-            myLabel.setText("please enter a valid email address!");
+            myLabel.setText(errorConfig.getValidEmail());
+        }
+
+        if (!phoneTF.getText().equals("") && (phoneTF.getText().length() > 12 || !checkNumber(phoneTF.getText()))) {
+            isReady = false;
+            myLabel.setText(errorConfig.getValidPhone());
         }
 
         String s = "";
@@ -89,7 +100,13 @@ public class EditProfile implements Initializable {
         }
 
         if (isReady) {
-            myLabel.setText("Your Profile Edited Successfully ! Press Back if you are done");
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText(errorConfig.getProfileChanged());
+            alert.showAndWait();
+
+            back(null);
+
         }
 
     }
@@ -107,13 +124,6 @@ public class EditProfile implements Initializable {
 
             saveToFile(img, String.valueOf(StaticController.getMyUser().getId()));
             avatar.setFill(new ImagePattern(img));
-
-            File avatarFile = new File("src/main/resources/Avatars/" + StaticController.getMyUser().getId() + ".png");
-
-            while (!avatarFile.exists()){
-                myLabel.setText("Wait...");
-            }
-
 
             isChanged = true;
 
@@ -163,6 +173,17 @@ public class EditProfile implements Initializable {
         BufferedImage Bi = SwingFXUtils.fromFXImage(image, null);
         ImageIO.write(Bi, "png", fileOutput);
 
+    }
+
+    public boolean checkNumber(String s) {
+
+        for (int i = 0; i < s.length(); i++) {
+            if (!Character.isDigit(s.charAt(i))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }

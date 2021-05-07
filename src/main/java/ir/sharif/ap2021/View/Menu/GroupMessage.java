@@ -149,7 +149,6 @@ public class GroupMessage implements Initializable {
         initialize(null, null);
     }
 
-
     public void saveToFile(Image image, String name) throws IOException {
 
         File fileOutput = new File("src/main/resources/MessageImages/" + name + ".png");

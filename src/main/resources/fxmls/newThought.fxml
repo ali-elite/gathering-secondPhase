@@ -12,9 +12,9 @@
          <font>
             <Font size="18.0" />
          </font></TextArea>
-          <Button fx:id="shareBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#share" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: yellow;" text="Share" />
-          <Button fx:id="photoBtn" layoutX="317.0" layoutY="530.0" mnemonicParsing="false" onAction="#putPhoto" prefHeight="34.0" prefWidth="142.0" style="-fx-background-color: yellow;" text="Insert Photo" />
-          <Button fx:id="backBtn" layoutX="618.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: yellow;" text="Back" />
+          <Button fx:id="shareBtn" layoutX="7.0" layoutY="9.0" mnemonicParsing="false" onAction="#share" prefHeight="26.0" prefWidth="170.0" stylesheets="@../css/confirmBtn.css" text="Share" />
+          <Button fx:id="photoBtn" layoutX="317.0" layoutY="530.0" mnemonicParsing="false" onAction="#putPhoto" prefHeight="34.0" prefWidth="142.0" stylesheets="@../css/glassBtn.css" text="Insert Photo" />
+          <Button fx:id="backBtn" layoutX="635.0" layoutY="6.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="170.0" stylesheets="@../css/mainButtons.css" text="Back" />
       <ImageView fx:id="IMG" fitHeight="243.0" fitWidth="800.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

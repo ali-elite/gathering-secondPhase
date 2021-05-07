@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.View.Menu;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.ChatEvent;
 import ir.sharif.ap2021.Listener.ChatListener;
@@ -30,6 +31,7 @@ public class ChatMenu implements Initializable {
 
 
     ChatListener chatListener = new ChatListener(null);
+    ErrorConfig errorConfig = new ErrorConfig();
 
     private static Chat chat;
     private boolean isChanged;
@@ -44,6 +46,9 @@ public class ChatMenu implements Initializable {
     private ImageView chosenImg;
 
     private static final ArrayList<Pane> messages = new ArrayList<>();
+
+    public ChatMenu() throws IOException {
+    }
 
 
     public Chat getChat() {
@@ -69,7 +74,6 @@ public class ChatMenu implements Initializable {
         }
 
         VBox vbox = new VBox();
-        vbox.getChildren().add(bar);
 
         for (Pane p : messages) {
             vbox.getChildren().add(p);
@@ -100,7 +104,7 @@ public class ChatMenu implements Initializable {
         } else {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Your message's length is beyond 300 characters");
+            alert.setContentText(errorConfig.getMessageLength());
             alert.showAndWait();
 
         }
