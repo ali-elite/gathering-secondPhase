@@ -12,7 +12,7 @@ public class ChatListener {
     ChatView chatView;
 
 
-    public ChatListener(ChatView chatView) {
+    public ChatListener(ChatView chatView) throws IOException {
         this.chatView = chatView;
     }
 

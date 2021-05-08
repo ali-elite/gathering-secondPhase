@@ -11,6 +11,9 @@ public class OutProfileListener {
 
     OutProfileController outProfileController = new OutProfileController();
 
+    public OutProfileListener() throws IOException {
+    }
+
     public void eventOccurred(OutProfileEvent event) throws IOException, RepeatActionException {
         outProfileController.control(event);
     }

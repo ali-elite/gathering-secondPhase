@@ -150,7 +150,7 @@ public class EditProfile implements Initializable {
 
         BufferedImage bufferedImage = null;
         try {
-            bufferedImage = ImageIO.read(new File("src/main/resources" + StaticController.getMyUser().getAvatar()));
+            bufferedImage = ImageIO.read(new File(errorConfig.getMainConfig().getResourcesPath() + StaticController.getMyUser().getAvatar()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -164,7 +164,7 @@ public class EditProfile implements Initializable {
 
     public void saveToFile(Image image, String name) throws IOException {
 
-        File fileOutput = new File("src/main/resources/Avatars/" + name + ".png");
+        File fileOutput = new File(errorConfig.getMainConfig().getResourcesPath() + "/Avatars/" + name + ".png");
 
         if (fileOutput.exists()) {
             fileOutput.delete();

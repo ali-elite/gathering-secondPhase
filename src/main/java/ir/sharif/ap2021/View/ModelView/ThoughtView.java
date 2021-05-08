@@ -1,5 +1,7 @@
 package ir.sharif.ap2021.View.ModelView;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.ImageConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.ThoughtEvent;
 import ir.sharif.ap2021.Listener.ThoughtListener;
@@ -33,6 +35,9 @@ import java.util.ResourceBundle;
 
 public class ThoughtView implements Initializable {
 
+    ErrorConfig errorConfig = new ErrorConfig();
+    ImageConfig imageConfig = new ImageConfig();
+
 
     ThoughtListener thoughtListener = new ThoughtListener(this);
 
@@ -59,6 +64,9 @@ public class ThoughtView implements Initializable {
 
     private boolean isChanged;
     private final ArrayList<Pane> comments = new ArrayList<>();
+
+    public ThoughtView() throws IOException {
+    }
 
 
     public ArrayList<Pane> getComments() {
@@ -98,19 +106,21 @@ public class ThoughtView implements Initializable {
     }
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         if (thought.getLikers().contains(StaticController.getMyUser().getId())) {
-            likeIMG.setImage(new Image("/images/fillLike.png"));
+
+            likeIMG.setImage(new Image(imageConfig.getFillLike()));
         } else {
-            likeIMG.setImage(new Image("/images/like.png"));
+            likeIMG.setImage(new Image(imageConfig.getLike()));
         }
 
         if (thought.getRethoughters().contains(StaticController.getMyUser().getId())) {
-            retIMG.setImage(new Image("/images/fillRet.png"));
+            retIMG.setImage(new Image(imageConfig.getFillRet()));
         } else {
-            retIMG.setImage(new Image("/images/ret.png"));
+            retIMG.setImage(new Image(imageConfig.getRet()));
         }
 
         timeLabel.setText(String.valueOf(thought.getLocalDateTime()));
@@ -120,7 +130,7 @@ public class ThoughtView implements Initializable {
         opinions.setText(String.valueOf(thought.getOpinions().size()));
         BufferedImage bufferedImage = null;
         try {
-            bufferedImage = ImageIO.read(new File("src/main/resources" + ownerUser.getAvatar()));
+            bufferedImage = ImageIO.read(new File(errorConfig.getMainConfig().getResourcesPath() + ownerUser.getAvatar()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -131,16 +141,16 @@ public class ThoughtView implements Initializable {
         avatar.setFill(new ImagePattern(image));
 
         if (thought.getType().equals("t")) {
-            statusLabel.setText(" Shared his thought:");
+            statusLabel.setText(errorConfig.getShareTitle());
         } else {
-            statusLabel.setText(" Replied to: " + "@" + doedUser.getUserName());
+            statusLabel.setText(errorConfig.getReplyTitle() + doedUser.getUserName());
         }
 
         if (thought.getImage() != null) {
 
             BufferedImage bi = null;
             try {
-                bi = ImageIO.read(new File("src/main/resources" + thought.getImage()));
+                bi = ImageIO.read(new File(errorConfig.getMainConfig().getResourcesPath() + thought.getImage()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -211,13 +221,17 @@ public class ThoughtView implements Initializable {
         if (StaticController.getMyUser().getMuteList().contains(thought.getUser())) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("You have already muted the author");
+            alert.setContentText(errorConfig.getAlreadyMuted());
             alert.showAndWait();
 
         } else {
 
             ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "muteAuthor", thought);
             thoughtListener.eventOccurred(thoughtChangeEvent);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText(errorConfig.getMuted());
+            alert.showAndWait();
         }
 
     }
@@ -234,7 +248,7 @@ public class ThoughtView implements Initializable {
         if (mainUser.getId() == ownerUser.getId()) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("This is your thought");
+            alert.setContentText(errorConfig.getYourThought());
             alert.showAndWait();
 
         }
@@ -249,7 +263,7 @@ public class ThoughtView implements Initializable {
         if (thought.getOpinions().isEmpty()) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("No Opinion");
+            alert.setContentText(errorConfig.getYourThought());
             alert.showAndWait();
 
         } else {
@@ -274,7 +288,7 @@ public class ThoughtView implements Initializable {
         } else {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Your opinion's length is beyond 300 characters");
+            alert.setContentText(errorConfig.getOpinionLength());
             alert.showAndWait();
 
         }
@@ -305,7 +319,7 @@ public class ThoughtView implements Initializable {
 
     public void saveToFile(Image image, String name) throws IOException {
 
-        File fileOutput = new File("src/main/resources/ThoughtImages/" + name + ".png");
+        File fileOutput = new File(errorConfig.getMainConfig().getResourcesPath() +"/ThoughtImages/" + name + ".png");
 
         if (fileOutput.exists()) {
             fileOutput.delete();

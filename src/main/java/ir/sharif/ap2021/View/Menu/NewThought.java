@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.View.Menu;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.ShareThoughtEvent;
 import ir.sharif.ap2021.Listener.ShareThoughtListener;
@@ -20,7 +21,8 @@ import java.io.IOException;
 
 public class NewThought {
 
-    ShareThoughtListener shareThoughtListener;
+    ShareThoughtListener shareThoughtListener = new ShareThoughtListener();
+    ErrorConfig errorConfig = new ErrorConfig();
 
     @FXML
     private TextArea text;
@@ -30,6 +32,9 @@ public class NewThought {
     private ImageView IMG;
 
     private boolean isChanged;
+
+    public NewThought() throws IOException {
+    }
 
 
     public void share(ActionEvent event) throws IOException {
@@ -41,7 +46,6 @@ public class NewThought {
         } else {
             e.setChange("no");
         }
-        ShareThoughtListener shareThoughtListener = new ShareThoughtListener();
 
         if (text.getText().length() <= 300) {
             shareThoughtListener.eventOccurred(e);
@@ -49,7 +53,7 @@ public class NewThought {
         } else {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Your thought's length is beyond 300 characters");
+            alert.setContentText(errorConfig.getThoughtLength());
             alert.showAndWait();
 
         }
@@ -77,10 +81,9 @@ public class NewThought {
 
     }
 
-
     public void saveToFile(Image image, String name) throws IOException {
 
-        File fileOutput = new File("src/main/resources/ThoughtImages/" + name + ".png");
+        File fileOutput = new File(errorConfig.getMainConfig().getResourcesPath() + "/ThoughtImages/" + name + ".png");
 
         if (fileOutput.exists()) {
             fileOutput.delete();

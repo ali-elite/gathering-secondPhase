@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.View.ModelView;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
 import ir.sharif.ap2021.Event.NotifEvent;
 import ir.sharif.ap2021.Listener.NotifListener;
 import ir.sharif.ap2021.Model.Notification.Notification;
@@ -23,6 +24,8 @@ import java.util.ResourceBundle;
 
 public class NotifView implements Initializable {
 
+    ErrorConfig errorConfig = new ErrorConfig();
+
     private Notification notification;
     private NotifListener notifListener;
     private User user;
@@ -34,12 +37,15 @@ public class NotifView implements Initializable {
     @FXML
     private Circle avatar;
 
+    public NotifView() throws IOException {
+    }
+
 
     public Notification getNotification() {
         return notification;
     }
 
-    public void setNotification(Notification notification) {
+    public void setNotification(Notification notification) throws IOException {
         this.notification = notification;
         notifListener = new NotifListener(notification);
     }
@@ -85,7 +91,7 @@ public class NotifView implements Initializable {
         textLabel.setText(notification.getText());
         BufferedImage bufferedImage = null;
         try {
-            bufferedImage = ImageIO.read(new File("src/main/resources" + user.getAvatar()));
+            bufferedImage = ImageIO.read(new File(errorConfig.getMainConfig().getResourcesPath() + user.getAvatar()));
         } catch (IOException e) {
             e.printStackTrace();
         }

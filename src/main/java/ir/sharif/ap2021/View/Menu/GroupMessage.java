@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.View.Menu;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.NewGroupEvent;
 import ir.sharif.ap2021.Listener.NewGroupListener;
@@ -27,6 +28,7 @@ import java.util.ResourceBundle;
 
 public class GroupMessage implements Initializable {
 
+    ErrorConfig errorConfig = new ErrorConfig();
     NewGroupListener newGroupListener = new NewGroupListener();
 
     private static ArrayList<String> users;
@@ -41,6 +43,11 @@ public class GroupMessage implements Initializable {
 
 
     private boolean isChanged;
+
+
+    public GroupMessage() throws IOException {
+    }
+
 
     public static void setUsers(ArrayList<String> users) {
         GroupMessage.users = users;
@@ -96,13 +103,13 @@ public class GroupMessage implements Initializable {
                 newGroupListener.eventOccurred(newGroupEvent);
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Message Sent Successfully");
+                alert.setContentText(errorConfig.getMessageSent());
                 alert.showAndWait();
 
             } else {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Your message's length is beyond 300 characters");
+                alert.setContentText(errorConfig.getMessageLength());
                 alert.showAndWait();
 
             }
@@ -111,7 +118,7 @@ public class GroupMessage implements Initializable {
         } else {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Please Enter a message");
+            alert.setContentText(errorConfig.getEnterMessage());
             alert.showAndWait();
 
         }
@@ -151,7 +158,7 @@ public class GroupMessage implements Initializable {
 
     public void saveToFile(Image image, String name) throws IOException {
 
-        File fileOutput = new File("src/main/resources/MessageImages/" + name + ".png");
+        File fileOutput = new File(errorConfig.getMainConfig().getResourcesPath() + "/MessageImages/" + name + ".png");
 
         if (fileOutput.exists()) {
             fileOutput.delete();

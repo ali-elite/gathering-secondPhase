@@ -1,5 +1,7 @@
 package ir.sharif.ap2021.View.Menu;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.FxmlConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.LoginFormEvent;
 import ir.sharif.ap2021.Event.MainMenuEvent;
@@ -21,6 +23,8 @@ import java.util.Objects;
 
 public class Login {
 
+    ErrorConfig errorConfig = new ErrorConfig();
+    FxmlConfig fxmlConfig = new FxmlConfig();
 
     @FXML
     private TextField usernameTF, passwordTF;
@@ -31,6 +35,9 @@ public class Login {
     @FXML
     private Button subBtn, signBtn;
 
+    public Login() throws IOException {
+    }
+
 
     public void submit(ActionEvent event) throws IOException {
 
@@ -38,11 +45,11 @@ public class Login {
 
         if (usernameTF.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your username!!");
+            myLabel.setText(errorConfig.getEnterUser());
         }
         if (passwordTF.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your password!!");
+            myLabel.setText(errorConfig.getEnterPassword());
         }
 
         boolean check;
@@ -76,10 +83,11 @@ public class Login {
     public void SignUp(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) signBtn.getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/signup.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getSignup())));
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
     }
+
 }
 

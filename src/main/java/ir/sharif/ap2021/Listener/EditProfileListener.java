@@ -12,6 +12,8 @@ public class EditProfileListener {
 
     EditProfileController editProfileController = new EditProfileController();
 
+    public EditProfileListener() throws IOException {
+    }
 
     public void eventOccurred(EditProfileEvent event) throws IOException, AuthenticationException {
         editProfileController.edit(event);

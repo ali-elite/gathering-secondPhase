@@ -15,7 +15,7 @@ public class ThoughtListener {
     ThoughtController thoughtController = new ThoughtController();
 
 
-    public ThoughtListener(ThoughtView thoughtView) {
+    public ThoughtListener(ThoughtView thoughtView) throws IOException {
         this.thoughtView = thoughtView;
     }
 

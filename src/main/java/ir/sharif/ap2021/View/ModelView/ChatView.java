@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.View.ModelView;
 
+import ir.sharif.ap2021.Config.ImageConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.ChatEvent;
 import ir.sharif.ap2021.Listener.ChatListener;
@@ -25,6 +26,7 @@ public class ChatView implements Initializable {
 
 
     ChatListener chatListener = new ChatListener(null);
+    ImageConfig imageConfig = new ImageConfig();
 
     private Chat chat;
     private User user;
@@ -34,6 +36,9 @@ public class ChatView implements Initializable {
     private Circle avatar;
     @FXML
     private Label label, unseenText;
+
+    public ChatView() throws IOException {
+    }
 
 
     public Chat getChat() {
@@ -65,14 +70,14 @@ public class ChatView implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         if (chat.isGroup()) {
-            avatar.setFill(new ImagePattern(new Image("/images/group.png")));
+            avatar.setFill(new ImagePattern(new Image(imageConfig.getGroup())));
             label.setText(chat.getName());
         } else {
 
             if (user != null) {
                 BufferedImage bufferedImage = null;
                 try {
-                    bufferedImage = ImageIO.read(new File("src/main/resources" +user.getAvatar()));
+                    bufferedImage = ImageIO.read(new File(imageConfig.getMainConfig().getResourcesPath() +user.getAvatar()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -88,7 +93,7 @@ public class ChatView implements Initializable {
 
                 BufferedImage bufferedImage = null;
                 try {
-                    bufferedImage = ImageIO.read(new File("src/main/resources" + StaticController.getMyUser().getAvatar()));
+                    bufferedImage = ImageIO.read(new File(imageConfig.getMainConfig().getResourcesPath() + StaticController.getMyUser().getAvatar()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -1,6 +1,9 @@
 package ir.sharif.ap2021.View.ModelView;
 
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.FxmlConfig;
+import ir.sharif.ap2021.Config.ImageConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.OutProfileEvent;
 import ir.sharif.ap2021.Event.UserSelectionEvent;
@@ -36,6 +39,10 @@ import java.util.ResourceBundle;
 
 public class OutProfile implements Initializable {
 
+    ErrorConfig errorConfig = new ErrorConfig();
+    ImageConfig imageConfig = new ImageConfig();
+    FxmlConfig fxmlConfig = new FxmlConfig();
+
     private static User user;
     private static String from;
 
@@ -45,11 +52,14 @@ public class OutProfile implements Initializable {
     @FXML
     private Label bioLabel, statusLabel, followerNumberLabel, nicknameLabel, idLabel, lastseenLabel, followingNumberLabel;
     @FXML
-    private ImageView followIMG, lockIMG;
+    private ImageView followIMG, lockIMG, muteIMG;
     @FXML
     private MenuItem message, block, mute, report, back;
     @FXML
     private MenuBar menu;
+
+    public OutProfile() throws IOException {
+    }
 
 
     public static String getFrom() {
@@ -71,7 +81,7 @@ public class OutProfile implements Initializable {
 
     public void show() throws IOException {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/outProfile.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getOutProfile())));
         Scene scene = new Scene(root);
         StaticController.getMyStage().setScene(scene);
 
@@ -82,7 +92,7 @@ public class OutProfile implements Initializable {
 
         if (user.isPrivate() && !user.getFollowers().contains(StaticController.getMyUser().getId())) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("You need to follow this user before starting a conversation!");
+            alert.setContentText(errorConfig.getFollowBefore());
             alert.showAndWait();
         } else {
             outProfileListener.eventOccurred(new OutProfileEvent(this, user, "message"));
@@ -97,7 +107,7 @@ public class OutProfile implements Initializable {
         initialize(null, null);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("User blocked Successfully!");
+        alert.setContentText(errorConfig.getBlocked());
         alert.showAndWait();
 
     }
@@ -105,10 +115,7 @@ public class OutProfile implements Initializable {
     public void doMute(ActionEvent event) throws IOException, RepeatActionException {
 
         outProfileListener.eventOccurred(new OutProfileEvent(this, user, "mute"));
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("User muted or Unmuted Successfully!");
-        alert.showAndWait();
+        initialize(null, null);
     }
 
     public void doReport(ActionEvent event) throws IOException, RepeatActionException {
@@ -116,7 +123,7 @@ public class OutProfile implements Initializable {
         outProfileListener.eventOccurred(new OutProfileEvent(this, user, "report"));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("User reported Successfully!");
+        alert.setContentText(errorConfig.getReported());
         alert.showAndWait();
     }
 
@@ -138,7 +145,7 @@ public class OutProfile implements Initializable {
         if (user.isPrivate()) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Your follow request has sent successfully!");
+            alert.setContentText(errorConfig.getRequestSent());
             alert.showAndWait();
 
         }
@@ -173,11 +180,20 @@ public class OutProfile implements Initializable {
         followingNumberLabel.setText(String.valueOf(user.getFollowings().size()));
         nicknameLabel.setText(user.getFirstName() + " " + user.getLastName());
         idLabel.setText("@" + user.getUserName());
-        lastseenLabel.setText(String.valueOf(user.getLastSeen()));
+
+
+        if (user.getLastSeenPrivacy().equals("Public")) {
+            lastseenLabel.setText(String.valueOf(user.getLastSeen()));
+        } else if (user.getLastSeenPrivacy().equals("SemiPrivate") && StaticController.getMyUser().getFollowers().contains(user.getId())) {
+            lastseenLabel.setText(String.valueOf(user.getLastSeen()));
+        } else if (user.getLastSeenPrivacy().equals("Private")) {
+            lastseenLabel.setText(errorConfig.getLastSeenRecently());
+        }
+
 
         BufferedImage bufferedImage = null;
         try {
-            bufferedImage = ImageIO.read(new File("src/main/resources" + user.getAvatar()));
+            bufferedImage = ImageIO.read(new File(errorConfig.getMainConfig().getResourcesPath() + user.getAvatar()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -192,14 +208,14 @@ public class OutProfile implements Initializable {
             menu.setVisible(false);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("You have blocked this user");
+            alert.setContentText(errorConfig.getAlreadyBlocked());
             alert.show();
 
         } else {
             if (StaticController.getMyUser().getFollowings().contains(user.getId())) {
-                followIMG.setImage(new Image("/images/unfollow.png"));
+                followIMG.setImage(new Image(imageConfig.getUnfollow()));
             } else {
-                followIMG.setImage(new Image("/images/follow.png"));
+                followIMG.setImage(new Image(imageConfig.getFollow()));
             }
         }
 
@@ -207,14 +223,18 @@ public class OutProfile implements Initializable {
             lockIMG.setImage(null);
         }
 
+        if (!StaticController.getMyUser().getMuteList().contains(user.getId())) {
+            muteIMG.setImage(null);
+        }
+
         if (user.getBiography() == null) {
-            bioLabel.setText(" No BiO ");
+            bioLabel.setText(":)))");
         } else {
             bioLabel.setText(user.getBiography());
         }
 
         if (StaticController.getMyUser().getFollowers().contains(user.getId())) {
-            statusLabel.setText("Follows you");
+            statusLabel.setText(errorConfig.getFollowsYou());
         } else statusLabel.setText(" ");
 
 

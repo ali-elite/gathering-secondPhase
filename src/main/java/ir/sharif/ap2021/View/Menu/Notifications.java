@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.View.Menu;
 
+import ir.sharif.ap2021.Config.FxmlConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.NotifEvent;
 import ir.sharif.ap2021.Listener.NotifListener;
@@ -25,6 +26,8 @@ import java.util.ResourceBundle;
 
 public class Notifications implements Initializable {
 
+    FxmlConfig fxmlConfig = new FxmlConfig();
+
     private NotifListener notifListener = new NotifListener(null);
     private static final ArrayList<Pane> notifViews = new ArrayList<>();
 
@@ -35,6 +38,9 @@ public class Notifications implements Initializable {
     @FXML
     private Button backBtn;
 
+    public Notifications() throws IOException {
+    }
+
     public static ArrayList<Pane> getNotifViews() {
         return notifViews;
     }
@@ -42,7 +48,7 @@ public class Notifications implements Initializable {
     public void show() throws IOException {
 
         Stage stage = (Stage) StaticController.getMyStage().getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/notifications.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getNotifications())));
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
@@ -50,14 +56,8 @@ public class Notifications implements Initializable {
 
 
     public void back(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/mainmenu.fxml")));
-        Scene scene = new Scene(root);
-        StaticController.getMyStage().setScene(scene);
-
-
+        StaticController.getMyMainMenu().show();
     }
-
 
 
     @Override

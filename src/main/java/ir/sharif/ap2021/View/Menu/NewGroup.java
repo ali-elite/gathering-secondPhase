@@ -1,5 +1,7 @@
 package ir.sharif.ap2021.View.Menu;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.FxmlConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.NewGroupEvent;
 import ir.sharif.ap2021.Listener.NewGroupListener;
@@ -25,6 +27,8 @@ import java.util.ResourceBundle;
 public class NewGroup implements Initializable {
 
     NewGroupListener newGroupListener = new NewGroupListener();
+    ErrorConfig errorConfig = new ErrorConfig();
+    FxmlConfig fxmlConfig = new FxmlConfig();
 
     private static ArrayList<String> users;
     private String selectedUser;
@@ -34,6 +38,8 @@ public class NewGroup implements Initializable {
     @FXML
     private TextField nameText;
 
+    public NewGroup() throws IOException {
+    }
 
     public static void setUsers(ArrayList<String> users) {
         NewGroup.users = users;
@@ -77,13 +83,13 @@ public class NewGroup implements Initializable {
             newGroupListener.eventOccurred(new NewGroupEvent(this, "makeGroup", names, nameText.getText()));
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Group Created Successfully");
+            alert.setContentText(errorConfig.getGroupCreated());
             alert.showAndWait();
 
         } else {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Please Enter a name");
+            alert.setContentText(errorConfig.getEnterName());
             alert.showAndWait();
 
         }
@@ -94,9 +100,7 @@ public class NewGroup implements Initializable {
 
     public void back(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/mainmenu.fxml")));
-        Scene scene = new Scene(root);
-        StaticController.getMyStage().setScene(scene);
+        StaticController.getMyMainMenu().show();
 
 
     }
@@ -106,6 +110,15 @@ public class NewGroup implements Initializable {
         followerList.getItems().clear();
         selectedList.getItems().clear();
         initialize(null, null);
+    }
+
+
+    public void show() throws IOException {
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getNewGroup())));
+        Scene scene = new Scene(root);
+        StaticController.getMyStage().setScene(scene);
+
     }
 
 }

@@ -11,7 +11,7 @@ public class NotifListener {
      NotifController notifController = new NotifController();
      Notification notification;
 
-    public NotifListener(Notification notification) {
+    public NotifListener(Notification notification) throws IOException {
         this.notification = notification;
     }
 

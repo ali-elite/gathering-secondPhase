@@ -25,6 +25,9 @@ public class Blacklist implements Initializable {
     @FXML
     private ListView<String> blackList;
 
+    public Blacklist() throws IOException {
+    }
+
 
     public static ArrayList<String> getUsers() {
         return users;

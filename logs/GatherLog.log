@@ -3,3 +3,113 @@
 [INFO ] 2021-05-08 01:45:23.719 [JavaFX Application Thread] App - App Started
 [INFO ] 2021-05-08 01:46:34.472 [JavaFX Application Thread] App - App Started
 [INFO ] 2021-05-08 02:00:25.281 [JavaFX Application Thread] App - App Started
+[INFO ] 2021-05-08 21:55:51.512 [JavaFX Application Thread] App - App Started
+[INFO ] 2021-05-09 02:28:11.725 [JavaFX Application Thread] App - App Started
+[INFO ] 2021-05-09 02:28:46.660 [JavaFX Application Thread] UserDB - user 122loaded from DBFile by username a
+[INFO ] 2021-05-09 02:28:46.661 [JavaFX Application Thread] MainMenuController - user 122 logged in
+[INFO ] 2021-05-09 02:30:57.326 [JavaFX Application Thread] App - App Started
+[INFO ] 2021-05-09 02:31:00.870 [JavaFX Application Thread] UserDB - user 122loaded from DBFile by username a
+[INFO ] 2021-05-09 02:31:00.871 [JavaFX Application Thread] MainMenuController - user 122 logged in
+[INFO ] 2021-05-09 02:31:01.074 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:05.164 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:27.543 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:27.544 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:40.913 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:41.308 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:46.772 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:47.375 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:47.976 [JavaFX Application Thread] UserDB - user 124loaded from DBFile
+[INFO ] 2021-05-09 02:31:47.981 [JavaFX Application Thread] UserDB - user 125loaded from DBFile
+[INFO ] 2021-05-09 02:31:50.649 [JavaFX Application Thread] UserDB - user 124loaded from DBFile
+[INFO ] 2021-05-09 02:31:50.652 [JavaFX Application Thread] UserDB - user 125loaded from DBFile
+[INFO ] 2021-05-09 02:31:50.670 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:50.671 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:51.067 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:51.071 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:51.072 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.165 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.166 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.492 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.507 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.508 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.902 [JavaFX Application Thread] ChatDB - chat 46loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.907 [JavaFX Application Thread] MessageDB - message 4313loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.907 [JavaFX Application Thread] ChatDB - chat 45loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.908 [JavaFX Application Thread] MessageDB - message 4311loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.909 [JavaFX Application Thread] MessageDB - message 4312loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.910 [JavaFX Application Thread] ChatDB - chat 46loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.912 [JavaFX Application Thread] MessageDB - message 4313loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.917 [JavaFX Application Thread] UserDB - user 125loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.920 [JavaFX Application Thread] UserDB - user 124loaded from DBFile
+[INFO ] 2021-05-09 02:31:55.925 [JavaFX Application Thread] UserDB - user 123loaded from DBFile
+[INFO ] 2021-05-09 02:31:57.128 [JavaFX Application Thread] ChatDB - chat 45loaded from DBFile
+[INFO ] 2021-05-09 02:31:57.129 [JavaFX Application Thread] MessageDB - message 4311loaded from DBFile
+[INFO ] 2021-05-09 02:31:57.130 [JavaFX Application Thread] MessageDB - message 4312loaded from DBFile
+[INFO ] 2021-05-09 02:31:57.132 [JavaFX Application Thread] UserDB - user 123loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.087 [JavaFX Application Thread] ChatDB - chat 46loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.090 [JavaFX Application Thread] MessageDB - message 4313loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.090 [JavaFX Application Thread] ChatDB - chat 45loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.091 [JavaFX Application Thread] MessageDB - message 4311loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.092 [JavaFX Application Thread] MessageDB - message 4312loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.093 [JavaFX Application Thread] ChatDB - chat 46loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.094 [JavaFX Application Thread] MessageDB - message 4313loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.096 [JavaFX Application Thread] UserDB - user 125loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.098 [JavaFX Application Thread] UserDB - user 124loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.100 [JavaFX Application Thread] UserDB - user 123loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.121 [JavaFX Application Thread] ChatDB - chat 45loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.123 [JavaFX Application Thread] MessageDB - message 4311loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.125 [JavaFX Application Thread] MessageDB - message 4312loaded from DBFile
+[INFO ] 2021-05-09 02:31:58.127 [JavaFX Application Thread] UserDB - user 123loaded from DBFile
+[INFO ] 2021-05-09 02:32:03.033 [JavaFX Application Thread] UserDB - user 124loaded from DBFile
+[INFO ] 2021-05-09 02:32:03.037 [JavaFX Application Thread] UserDB - user 125loaded from DBFile
+[INFO ] 2021-05-09 02:34:20.920 [JavaFX Application Thread] App - App Started
+[INFO ] 2021-05-09 02:34:24.284 [JavaFX Application Thread] UserDB - user 123loaded from DBFile by username b
+[INFO ] 2021-05-09 02:34:24.284 [JavaFX Application Thread] MainMenuController - user 123 logged in
+[INFO ] 2021-05-09 02:35:01.728 [JavaFX Application Thread] App - App Started
+[INFO ] 2021-05-09 02:35:04.448 [JavaFX Application Thread] UserDB - user 122loaded from DBFile by username a
+[INFO ] 2021-05-09 02:35:04.448 [JavaFX Application Thread] MainMenuController - user 122 logged in
+[INFO ] 2021-05-09 02:35:04.529 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:35:05.206 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:35:08.373 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:35:08.783 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:35:09.324 [JavaFX Application Thread] UserDB - user 124loaded from DBFile
+[INFO ] 2021-05-09 02:35:09.331 [JavaFX Application Thread] UserDB - user 125loaded from DBFile
+[INFO ] 2021-05-09 02:36:15.575 [JavaFX Application Thread] App - App Started
+[INFO ] 2021-05-09 02:36:18.680 [JavaFX Application Thread] UserDB - user 122loaded from DBFile by username a
+[INFO ] 2021-05-09 02:36:18.681 [JavaFX Application Thread] MainMenuController - user 122 logged in
+[INFO ] 2021-05-09 02:36:18.786 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:36:19.527 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:36:23.207 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:36:23.627 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:36:24.183 [JavaFX Application Thread] UserDB - user 124loaded from DBFile
+[INFO ] 2021-05-09 02:36:24.187 [JavaFX Application Thread] UserDB - user 125loaded from DBFile
+[INFO ] 2021-05-09 02:37:28.061 [JavaFX Application Thread] App - App Started
+[INFO ] 2021-05-09 02:37:30.896 [JavaFX Application Thread] UserDB - user 122loaded from DBFile by username a
+[INFO ] 2021-05-09 02:37:30.896 [JavaFX Application Thread] MainMenuController - user 122 logged in
+[INFO ] 2021-05-09 02:37:30.980 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:37:31.683 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:37:34.790 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:37:35.221 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:37:35.753 [JavaFX Application Thread] UserDB - user 124loaded from DBFile
+[INFO ] 2021-05-09 02:37:35.760 [JavaFX Application Thread] UserDB - user 125loaded from DBFile
+[INFO ] 2021-05-09 02:38:38.707 [JavaFX Application Thread] App - App Started
+[INFO ] 2021-05-09 02:38:45.296 [JavaFX Application Thread] UserDB - user 122loaded from DBFile by username a
+[INFO ] 2021-05-09 02:38:45.297 [JavaFX Application Thread] MainMenuController - user 122 logged in
+[INFO ] 2021-05-09 02:38:45.366 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:38:46.164 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:39:29.837 [JavaFX Application Thread] App - App Started
+[INFO ] 2021-05-09 02:39:33.115 [JavaFX Application Thread] UserDB - user 122loaded from DBFile by username a
+[INFO ] 2021-05-09 02:39:33.115 [JavaFX Application Thread] MainMenuController - user 122 logged in
+[INFO ] 2021-05-09 02:39:33.188 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:39:34.034 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:39:45.771 [JavaFX Application Thread] DBSet - thought 79130added
+[INFO ] 2021-05-09 02:39:45.787 [JavaFX Application Thread] UserDB - user 122updated
+[INFO ] 2021-05-09 02:39:45.844 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:39:46.182 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:39:46.527 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:39:48.787 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:39:49.306 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:39:49.656 [JavaFX Application Thread] UserDB - user 122loaded from DBFile
+[INFO ] 2021-05-09 02:39:50.216 [JavaFX Application Thread] UserDB - user 124loaded from DBFile
+[INFO ] 2021-05-09 02:39:50.223 [JavaFX Application Thread] UserDB - user 125loaded from DBFile
+[INFO ] 2021-05-09 02:39:50.250 [JavaFX Application Thread] UserDB - user 122loaded from DBFile

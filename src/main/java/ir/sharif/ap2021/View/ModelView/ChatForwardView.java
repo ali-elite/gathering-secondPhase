@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.View.ModelView;
 
+import ir.sharif.ap2021.Config.ImageConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.ChatEvent;
 import ir.sharif.ap2021.Listener.ChatListener;
@@ -24,6 +25,8 @@ import java.util.ResourceBundle;
 
 public class ChatForwardView implements Initializable {
 
+    ImageConfig imageConfig = new ImageConfig();
+
     ChatListener chatListener = new ChatListener(null);
 
     private Chat chat;
@@ -35,6 +38,9 @@ public class ChatForwardView implements Initializable {
     private Circle avatar;
     @FXML
     private Label label, unseenText;
+
+    public ChatForwardView() throws IOException {
+    }
 
 
     public Chat getChat() {
@@ -73,7 +79,7 @@ public class ChatForwardView implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         if (chat.isGroup()) {
-            avatar.setFill(new ImagePattern(new Image("/images/group.png")));
+            avatar.setFill(new ImagePattern(new Image(imageConfig.getGroup())));
             label.setText(chat.getName());
         } else {
 
@@ -81,7 +87,7 @@ public class ChatForwardView implements Initializable {
 
             if (user != null) {
                 try {
-                    bufferedImage = ImageIO.read(new File("src/main/resources" + user.getAvatar()));
+                    bufferedImage = ImageIO.read(new File(imageConfig.getMainConfig().getResourcesPath() + user.getAvatar()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -94,7 +100,7 @@ public class ChatForwardView implements Initializable {
             } else {
 
                 try {
-                    bufferedImage = ImageIO.read(new File("src/main/resources" + StaticController.getMyUser().getAvatar()));
+                    bufferedImage = ImageIO.read(new File(imageConfig.getMainConfig().getResourcesPath() + StaticController.getMyUser().getAvatar()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -118,6 +124,7 @@ public class ChatForwardView implements Initializable {
         StaticController.getMyMainMenu().show();
 
     }
+
 
 
 }

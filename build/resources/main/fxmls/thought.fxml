@@ -53,8 +53,14 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Label fx:id="timeLabel" alignment="TOP_LEFT" layoutX="475.0" layoutY="26.0" prefHeight="36.0" prefWidth="237.0" text="Time" />
-      <Label fx:id="statusLabel" layoutX="150.0" layoutY="18.0" prefHeight="30.0" prefWidth="278.0" text="Reply Status" />
+      <Label fx:id="timeLabel" alignment="TOP_LEFT" layoutX="465.0" layoutY="21.0" prefHeight="30.0" prefWidth="238.0" text="Time" textFill="#ee00ff">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="statusLabel" layoutX="150.0" layoutY="18.0" prefHeight="30.0" prefWidth="278.0" text="Reply Status" textFill="#00ff33">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
       <MenuBar layoutX="732.0" layoutY="33.0" prefHeight="22.0" prefWidth="32.0" style="-fx-background-color: #000112;">
         <menus>
           <Menu mnemonicParsing="false" style="-fx-background-color: yellow;" text="...">
@@ -71,13 +77,13 @@
       </MenuBar>
       <AnchorPane fx:id="replyPane" layoutY="382.0" prefHeight="118.0" prefWidth="800.0" style="-fx-background-color: yellow;">
          <children>
-            <Button fx:id="replyBtn" layoutX="108.0" layoutY="86.0" mnemonicParsing="false" onAction="#reply" prefHeight="3.0" prefWidth="166.0" style="-fx-background-color: #000112;" text="Reply" />
+            <Button fx:id="replyBtn" layoutX="106.0" layoutY="82.0" mnemonicParsing="false" onAction="#reply" prefHeight="32.0" prefWidth="106.0" stylesheets="@../css/glassBtn.css" text="Reply" />
             <TextArea fx:id="replyText" prefHeight="75.0" prefWidth="491.0" promptText="Enter your opinion about this thought">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </TextArea>
-            <Button fx:id="insertBtn" layoutX="594.0" layoutY="85.0" mnemonicParsing="false" onAction="#insert" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #000112;" text="Insert Photo" />
+            <Button fx:id="insertBtn" layoutX="593.0" layoutY="82.0" mnemonicParsing="false" onAction="#insert" prefHeight="32.0" prefWidth="139.0" stylesheets="@../css/glassBtn.css" text="Insert Photo" />
             <ImageView fx:id="oIMG" fitHeight="61.0" fitWidth="222.0" layoutX="534.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>

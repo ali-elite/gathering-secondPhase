@@ -13,7 +13,7 @@ public class MainMenuListener {
     MainMenuController mainMenuController = new MainMenuController();
     Mainmenu mainmenu;
 
-    public MainMenuListener(Mainmenu mainmenu) {
+    public MainMenuListener(Mainmenu mainmenu) throws IOException {
         this.mainmenu = mainmenu;
     }
 

@@ -10,6 +10,9 @@ public class UserSelectionListener {
 
     UserSelectionController userSelectionController = new UserSelectionController();
 
+    public UserSelectionListener() throws IOException {
+    }
+
     public void eventOccurred(UserSelectionEvent event) throws IOException, AuthenticationException {
         userSelectionController.set(event);
     }

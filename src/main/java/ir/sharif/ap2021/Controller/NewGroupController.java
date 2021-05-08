@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.Controller;
 
+import ir.sharif.ap2021.Config.MainConfig;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.NewGroupEvent;
 import ir.sharif.ap2021.Model.Chat.Chat;
@@ -7,11 +8,16 @@ import ir.sharif.ap2021.Model.Chat.Message;
 import ir.sharif.ap2021.Model.User.User;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class NewGroupController {
 
     Context context = new Context();
+    MainConfig mainConfig = new MainConfig();
+
+    public NewGroupController() throws IOException {
+    }
 
 
     public void makeGroup(NewGroupEvent formEvent) {
@@ -52,12 +58,12 @@ public class NewGroupController {
 
         Chat gp = new Chat("This is a group message", true);
 
-        Message message = new Message(StaticController.getMyUser().getId(),false,formEvent.getName());
+        Message message = new Message(StaticController.getMyUser().getId(), false, formEvent.getName());
 
-        if(formEvent.getChanged().equals("changed")){
+        if (formEvent.getChanged().equals("changed")) {
             message.setImage("/MessageImages/" + message.getId() + ".png");
-            File old = new File("src/main/resources/MessageImages/" + "311" + ".png");
-            File notOld = new File("src/main/resources/MessageImages/" + message.getId() + ".png");
+            File old = new File(mainConfig.getResourcesPath() + "/MessageImages/" + "311" + ".png");
+            File notOld = new File(mainConfig.getResourcesPath() + "/MessageImages/" + message.getId() + ".png");
 
             old.renameTo(notOld);
         }

@@ -1,5 +1,7 @@
 package ir.sharif.ap2021.View.Menu;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.FxmlConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.MainMenuEvent;
 import ir.sharif.ap2021.Event.RegistrationFormEvent;
@@ -22,6 +24,10 @@ import java.util.Objects;
 
 public class Signup {
 
+    FxmlConfig fxmlConfig = new FxmlConfig();
+    ErrorConfig errorConfig = new ErrorConfig();
+
+
     private FormListener formListener;
     @FXML
     private TextField firstNameTF;
@@ -40,6 +46,9 @@ public class Signup {
     @FXML
     private Button subBtn,loginBtn;
 
+    public Signup() throws IOException {
+    }
+
 
     public void submit(ActionEvent event) throws IOException {
 
@@ -47,35 +56,35 @@ public class Signup {
 
         if (firstNameTF.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your firstname!!");
+            myLabel.setText(errorConfig.getEnterFirst());
         }
         if (lastNameTf.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your lastname!!");
+            myLabel.setText(errorConfig.getEnterLast());
         }
         if (userNameTF.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your username!");
+            myLabel.setText(errorConfig.getEnterUser());
         }
         if (passwordTF.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your password!");
+            myLabel.setText(errorConfig.getEnterPassword());
         }
         if (emailTF.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please enter your email address!");
+            myLabel.setText(errorConfig.getEnterEmail());
         }
         if (repeatTF.getText().equals("")) {
             isReady = false;
-            myLabel.setText("please repeat your password!");
+            myLabel.setText(errorConfig.getEnterRepeat());
         }
         if (!repeatTF.getText().equals(passwordTF.getText())) {
             isReady = false;
-            myLabel.setText("passwords don't match!");
+            myLabel.setText(errorConfig.getMatchPassword());
         }
         if (!(emailTF.getText().length() > 6) || !emailTF.getText().contains("@") || !emailTF.getText().endsWith(".com")) {
             isReady = false;
-            myLabel.setText("please enter a valid email address!");
+            myLabel.setText(errorConfig.getValidEmail());
         }
 
         boolean check;
@@ -117,11 +126,9 @@ public class Signup {
     public void login(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) loginBtn.getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/login.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getLogin())));
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
-
     }
 }
 

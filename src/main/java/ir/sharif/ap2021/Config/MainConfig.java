@@ -13,9 +13,10 @@ public class MainConfig {
     private String imageConfigPath;
     private String fxmlConfigPath;
     private String errorConfigPath;
+    private String itemConfigPath;
 
 
-    MainConfig() throws IOException {
+    public MainConfig() throws IOException {
         setProperties();
     }
 
@@ -29,6 +30,7 @@ public class MainConfig {
         imageConfigPath = properties.getProperty("imageConfigPath");
         fxmlConfigPath = properties.getProperty("fxmlConfigPath");
         errorConfigPath = properties.getProperty("errorConfigPath");
+        itemConfigPath = properties.getProperty("itemConfigPath");
 
     }
 
@@ -47,5 +49,9 @@ public class MainConfig {
 
     public String getErrorConfigPath() {
         return errorConfigPath;
+    }
+
+    public String getItemConfigPath() {
+        return itemConfigPath;
     }
 }

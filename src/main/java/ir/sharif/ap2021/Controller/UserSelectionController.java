@@ -1,21 +1,22 @@
 package ir.sharif.ap2021.Controller;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.UserSelectionEvent;
 import ir.sharif.ap2021.Model.User.User;
 import ir.sharif.ap2021.Validation.AuthenticationException;
 import ir.sharif.ap2021.View.Menu.UserSelect;
 import ir.sharif.ap2021.View.ModelView.OutProfile;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class UserSelectionController {
 
+    ErrorConfig errorConfig = new ErrorConfig();
     Context context = new Context();
+
+    public UserSelectionController() throws IOException {
+    }
 
     public void set(UserSelectionEvent event) throws IOException, AuthenticationException {
 
@@ -58,7 +59,7 @@ public class UserSelectionController {
         if (event.getOrder().equals("load")) {
 
             if (!exist(event.getUsername())) {
-                throw new AuthenticationException("Username doesn't exist");
+                throw new AuthenticationException(errorConfig.getNoUserExists());
             }
 
             OutProfile.setUser(context.Users.getByName(event.getUsername()));
@@ -69,11 +70,7 @@ public class UserSelectionController {
         }
 
         if (event.getOrder().equals("normal")) {
-
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/mainmenu.fxml")));
-            Scene scene = new Scene(root);
-            StaticController.getMyStage().setScene(scene);
-
+            StaticController.getMyMainMenu().show();
         }
 
 

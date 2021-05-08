@@ -1,5 +1,8 @@
 package ir.sharif.ap2021.View.Menu;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.FxmlConfig;
+import ir.sharif.ap2021.Config.ItemConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.MainMenuEvent;
 import ir.sharif.ap2021.Event.PrivacyEvent;
@@ -30,6 +33,11 @@ import java.util.ResourceBundle;
 
 public class Mainmenu implements Initializable {
 
+    ItemConfig itemConfig = new ItemConfig();
+    ErrorConfig errorConfig = new ErrorConfig();
+    FxmlConfig fxmlConfig = new FxmlConfig();
+
+
     @FXML
     private TabPane mainTabPane;
     @FXML
@@ -56,6 +64,10 @@ public class Mainmenu implements Initializable {
     private UserSelectionListener userSelectionListener = new UserSelectionListener();
 
 
+    public Mainmenu() throws IOException {
+    }
+
+
     public static int getSelected() {
         return selected;
     }
@@ -72,12 +84,14 @@ public class Mainmenu implements Initializable {
         return thoughts;
     }
 
+
+
     public Pane shapeProfile() throws IOException {
 
         Profile profile = new Profile();
         profile.setUser(StaticController.getMyUser());
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/profile.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getProfile()));
         loader.setController(profile);
 
         return loader.load();
@@ -85,7 +99,7 @@ public class Mainmenu implements Initializable {
 
     public void show() throws IOException {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/mainmenu.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getMainmenu())));
         Scene scene = new Scene(root);
         StaticController.getMyStage().setScene(scene);
 
@@ -185,7 +199,7 @@ public class Mainmenu implements Initializable {
 
         setSelected(4);
 
-        String[] items = {"Any one", "No one", "Just followers"};
+        String[] items = {itemConfig.getAnyOne(), itemConfig.getNoOne(), itemConfig.getJustFollowers()};
         privacy.getItems().addAll(items);
 
         diactive.setSelected(!StaticController.getMyUser().isActive());
@@ -195,7 +209,7 @@ public class Mainmenu implements Initializable {
     public void makeThought(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) newThoughtBtn.getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/newThought.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getNewThought())));
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
@@ -204,7 +218,7 @@ public class Mainmenu implements Initializable {
     public void editProfile(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) editBtn.getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/editProfile.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getEditProfile())));
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
@@ -216,16 +230,16 @@ public class Mainmenu implements Initializable {
 
     public void showBlackList(ActionEvent event) throws IOException {
 
-
         if (StaticController.getMyUser().getBlackList().isEmpty()) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Your blacklist is empty!");
+            alert.setContentText(errorConfig.getEmptyBlacklist());
             alert.showAndWait();
 
         } else {
             mainMenuListener.eventOccurred(new MainMenuEvent(this, "blacklist", null));
         }
+
 
     }
 
@@ -234,7 +248,7 @@ public class Mainmenu implements Initializable {
 
         if (searchTextField.getText().equals(StaticController.getMyUser().getUserName())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("You cannot search yourself");
+            alert.setContentText(errorConfig.getSearchYourself());
             alert.showAndWait();
         } else {
 
@@ -254,7 +268,7 @@ public class Mainmenu implements Initializable {
 
         if (StaticController.getMyUser().getFollowers().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Your follower list is empty!");
+            alert.setContentText(errorConfig.getEmptyFollower());
             alert.showAndWait();
         } else {
             mainMenuListener.eventOccurred(new MainMenuEvent(this, "group", null));
@@ -267,7 +281,7 @@ public class Mainmenu implements Initializable {
 
         if (StaticController.getMyUser().getFollowers().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Your follower list is empty!");
+            alert.setContentText(errorConfig.getEmptyFollower());
             alert.showAndWait();
         } else {
             mainMenuListener.eventOccurred(new MainMenuEvent(this, "groupMessage", null));
@@ -280,18 +294,18 @@ public class Mainmenu implements Initializable {
 
         if (!password.getText().equals(repeat.getText())) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Passwords are not match");
+            alert.setContentText(errorConfig.getMatchPassword());
             alert.showAndWait();
         } else if (password.getText().equals("") | repeat.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Please fill both fields");
+            alert.setContentText(errorConfig.getEnterBoth());
             alert.showAndWait();
         } else {
             mainMenuListener.privacyEventOccurred(new PrivacyEvent(this, "changePassword", password.getText()
                     , null, false));
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Password Changed Successfully");
+            alert.setContentText(errorConfig.getPasswordChanged());
             alert.showAndWait();
         }
 
@@ -302,7 +316,7 @@ public class Mainmenu implements Initializable {
                 , privacy.getValue(), false));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Lastseen Privacy Changed Successfully");
+        alert.setContentText(errorConfig.getLastSeenChanged());
         alert.showAndWait();
     }
 
@@ -311,7 +325,7 @@ public class Mainmenu implements Initializable {
                 , null, diactive.isSelected()));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Activity Changed Successfully");
+        alert.setContentText(errorConfig.getActivityChanged());
         alert.showAndWait();
     }
 
@@ -320,14 +334,14 @@ public class Mainmenu implements Initializable {
                 , null, privateCheck.isSelected()));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Privacy Changed Successfully");
+        alert.setContentText(errorConfig.getPrivacyChanged());
         alert.showAndWait();
     }
 
     public void deleteUser(ActionEvent event) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Are you sure you wanna leave the gathering? :( ");
+        alert.setContentText(errorConfig.getSureDelete());
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
@@ -343,28 +357,26 @@ public class Mainmenu implements Initializable {
     }
 
     public void logOut(ActionEvent event) throws IOException {
-
         mainMenuListener.eventOccurred(new MainMenuEvent(this, "logOut", null));
     }
-
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        if(getSelected() == 0)
-        mainTabPane.getSelectionModel().select(gatherTab);
+        if (getSelected() == 0)
+            mainTabPane.getSelectionModel().select(gatherTab);
 
-        if(getSelected() == 1)
+        if (getSelected() == 1)
             mainTabPane.getSelectionModel().select(timelineTab);
 
-        if(getSelected() == 2)
+        if (getSelected() == 2)
             mainTabPane.getSelectionModel().select(exploreTab);
 
-        if(getSelected() == 3)
+        if (getSelected() == 3)
             mainTabPane.getSelectionModel().select(chatsTab);
 
-        if(getSelected() == 4)
+        if (getSelected() == 4)
             mainTabPane.getSelectionModel().select(setingTab);
 
     }

@@ -20,6 +20,7 @@ public class FxmlConfig {
     private String mainmenu;
     private String message;
     private String newGroup;
+    private String newThought;
     private String notif;
     private String notifications;
     private String opinions;
@@ -56,6 +57,7 @@ public class FxmlConfig {
         mainmenu = properties.getProperty("mainmenu");
         message = properties.getProperty("message");
         newGroup = properties.getProperty("newGroup");
+        newThought = properties.getProperty("newThought");
         notif = properties.getProperty("notif");
         notifications = properties.getProperty("notifications");
         opinions = properties.getProperty("opinions");
@@ -155,5 +157,9 @@ public class FxmlConfig {
 
     public String getUserSelection() {
         return userSelection;
+    }
+
+    public String getNewThought() {
+        return newThought;
     }
 }

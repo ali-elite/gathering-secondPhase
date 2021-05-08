@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.Controller;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.EditProfileEvent;
 import ir.sharif.ap2021.Model.User.User;
@@ -7,19 +8,27 @@ import ir.sharif.ap2021.Validation.AuthenticationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
+
 public class EditProfileController {
+
+
+    ErrorConfig errorConfig = new ErrorConfig();
 
     private static final Logger logger = LogManager.getLogger(EditProfileController.class);
     private Context context = new Context();
 
+    public EditProfileController() throws IOException {
+    }
+
     public void edit(EditProfileEvent event) throws AuthenticationException {
 
         if (!emailCheck(event.getEmail())) {
-            throw new AuthenticationException("Email Already Exists!");
+            throw new AuthenticationException(errorConfig.getEmailExists());
         }
 
         if (!usernameCheck(event.getUser())) {
-            throw new AuthenticationException("Username Already Exists!");
+            throw new AuthenticationException(errorConfig.getUserExists());
         }
 
 

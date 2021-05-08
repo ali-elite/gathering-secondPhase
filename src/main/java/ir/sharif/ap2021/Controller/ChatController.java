@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.Controller;
 
+import ir.sharif.ap2021.Config.FxmlConfig;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.ChatEvent;
 import ir.sharif.ap2021.Model.Chat.Chat;
@@ -9,18 +10,18 @@ import ir.sharif.ap2021.View.Menu.ChatMenu;
 import ir.sharif.ap2021.View.ModelView.ChatForwardView;
 import ir.sharif.ap2021.View.ModelView.MessageView;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 
 public class ChatController {
 
+    FxmlConfig fxmlConfig = new FxmlConfig();
     Context context = new Context();
 
+    public ChatController() throws IOException {
+    }
 
     public void loadChats(ChatEvent formEvent) throws IOException {
 
@@ -39,7 +40,7 @@ public class ChatController {
                 messageView.setMessage(message);
                 messageView.setSender(context.Users.get(message.getSender()));
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/message.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getMessage()));
                 loader.setController(messageView);
                 ChatMenu.getMessages().add((Pane) loader.load());
                 i++;
@@ -61,8 +62,8 @@ public class ChatController {
 
         if (formEvent.getChanged().equals("changed")) {
             message.setImage("/MessageImages/" + message.getId() + ".png");
-            File old = new File("src/main/resources/MessageImages/" + "311" + ".png");
-            File notOld = new File("src/main/resources/MessageImages/" + message.getId() + ".png");
+            File old = new File(fxmlConfig.getMainConfig().getResourcesPath()+"/MessageImages/" + "311" + ".png");
+            File notOld = new File(fxmlConfig.getMainConfig().getResourcesPath()+"/MessageImages/" + message.getId() + ".png");
 
             old.renameTo(notOld);
         }
@@ -75,13 +76,10 @@ public class ChatController {
     }
 
     public void open(ChatEvent formEvent) throws IOException {
-
         ChatMenu.setChat(formEvent.getChat());
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/chatmenu.fxml")));
-        Scene scene = new Scene(root);
-        StaticController.getMyStage().setScene(scene);
-
+        ChatMenu chatMenu = new ChatMenu();
+        chatMenu.show();
     }
 
     public void forward(ChatEvent formEvent) {

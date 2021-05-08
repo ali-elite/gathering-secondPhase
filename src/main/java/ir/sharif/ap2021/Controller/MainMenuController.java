@@ -1,5 +1,8 @@
 package ir.sharif.ap2021.Controller;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.FxmlConfig;
+import ir.sharif.ap2021.Config.ItemConfig;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.MainMenuEvent;
 import ir.sharif.ap2021.Model.Chat.Chat;
@@ -25,8 +28,15 @@ import java.util.Objects;
 
 public class MainMenuController {
 
+    ErrorConfig errorConfig = new ErrorConfig();
+    FxmlConfig fxmlConfig = new FxmlConfig();
+    ItemConfig itemConfig = new ItemConfig();
+
     private static final Logger logger = LogManager.getLogger(MainMenuController.class);
     private Context context = new Context();
+
+    public MainMenuController() throws IOException {
+    }
 
 
     public void load(Mainmenu mainmenu, String username) throws IOException {
@@ -55,7 +65,7 @@ public class MainMenuController {
             thoughtView.setOwnerUser(context.Users.get(thought.getUser()));
             thoughtView.setMainUser(StaticController.getMyUser());
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/thought.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getThought()));
             loader.setController(thoughtView);
             Mainmenu.getThoughts().add((Pane) loader.load());
         }
@@ -97,7 +107,7 @@ public class MainMenuController {
                     thoughtView.setDoedUser(context.Users.get(thought.getDoed()));
 
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/thought.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getThought()));
                     loader.setController(thoughtView);
 
 
@@ -113,7 +123,7 @@ public class MainMenuController {
         for (User follower : followers) {
 
             if (!mainUser.getMuteList().contains(follower.getId()) && follower.isActive() &&
-            !mainUser.getBlackList().contains(follower.getId()) && !follower.isDeleted()) {
+                    !mainUser.getBlackList().contains(follower.getId()) && !follower.isDeleted()) {
 
                 for (int i = follower.getThoughts().size() - 1; i > -1; i--) {
 
@@ -129,7 +139,7 @@ public class MainMenuController {
                         thoughtView.setDoedUser(context.Users.get(thought1.getDoed()));
 
 
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/thought.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getThought()));
                         loader.setController(thoughtView);
 
 
@@ -163,12 +173,11 @@ public class MainMenuController {
                         thoughtView.setDoedUser(context.Users.get(thought2.getDoed()));
 
 
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/thought.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getThought()));
                         loader.setController(thoughtView);
 
 
                         Mainmenu.getThoughts().add((Pane) loader.load());
-
                     }
 
                 }
@@ -192,7 +201,7 @@ public class MainMenuController {
             User u = context.Users.get(thought.getUser());
 
             if (thought.getType().equals("t") && !myUser.getBlackList().contains(u.getId())
-            && !myUser.getMuteList().contains(u.getId()) && u.isActive() && !u.isDeleted()) {
+                    && !myUser.getMuteList().contains(u.getId()) && u.isActive() && !u.isDeleted()) {
 
                 thoughtView.setThought(thought);
                 thoughtView.setOwnerUser(context.Users.get(thought.getUser()));
@@ -200,7 +209,7 @@ public class MainMenuController {
                 thoughtView.setDoedUser(context.Users.get(thought.getDoed()));
 
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/thought.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getThought()));
                 loader.setController(thoughtView);
 
 
@@ -214,7 +223,6 @@ public class MainMenuController {
 
         }
     }
-
 
 
     public void notif(Mainmenu mainmenu) throws IOException {
@@ -255,7 +263,7 @@ public class MainMenuController {
                 }
 
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/chat.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getChat()));
                 loader.setController(chatView);
 
 
@@ -289,7 +297,7 @@ public class MainMenuController {
                 }
 
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/chat.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getChat()));
                 loader.setController(chatView);
 
                 Mainmenu.getThoughts().add((Pane) loader.load());
@@ -309,13 +317,10 @@ public class MainMenuController {
         }
 
         NewGroup.setUsers(userItems);
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/newGroup.fxml")));
-        Scene scene = new Scene(root);
-        StaticController.getMyStage().setScene(scene);
+        NewGroup newGroup = new NewGroup();
+        newGroup.show();
 
     }
-
 
 
     public void changePassword(String password) {
@@ -332,13 +337,13 @@ public class MainMenuController {
 
         User iUser = StaticController.getMyUser();
 
-        if (lastSeen.equals("Any one")) {
+        if (lastSeen.equals(itemConfig.getAnyOne())) {
             iUser.setLSPublic();
         }
-        if (lastSeen.equals("No one")) {
+        if (lastSeen.equals(itemConfig.getNoOne())) {
             iUser.setLSPrivate();
         }
-        if (lastSeen.equals("Just followers")) {
+        if (lastSeen.equals(itemConfig.getJustFollowers())) {
             iUser.setLSSemiPrivate();
         }
 
@@ -376,7 +381,7 @@ public class MainMenuController {
     public void logOut(Mainmenu mainmenu) throws IOException {
 
         Stage stage = StaticController.getMyStage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/app.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getApp())));
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
@@ -413,7 +418,7 @@ public class MainMenuController {
                 }
 
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/chatForward.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getChatForward()));
                 loader.setController(chatView);
 
                 ForwardSelection.getChats().add((Pane) loader.load());
@@ -446,7 +451,7 @@ public class MainMenuController {
                 }
 
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/chatForward.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getChatForward()));
                 loader.setController(chatView);
 
                 ForwardSelection.getChats().add((Pane) loader.load());
@@ -471,14 +476,14 @@ public class MainMenuController {
 
         Blacklist.getUsers().clear();
 
-        for(Integer i : StaticController.getMyUser().getBlackList()){
+        for (Integer i : StaticController.getMyUser().getBlackList()) {
             User u = context.Users.get(i);
             Blacklist.getUsers().add(u.getUserName());
         }
 
 
         Stage stage = StaticController.getMyStage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/blacklist.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getBlacklist())));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
@@ -495,7 +500,7 @@ public class MainMenuController {
 
         GroupMessage.setUsers(userItems);
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/groupMessage.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getGroupMessage())));
         Scene scene = new Scene(root);
         StaticController.getMyStage().setScene(scene);
 

@@ -1,5 +1,6 @@
 package ir.sharif.ap2021.View.ModelView;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.UserSelectionEvent;
 import ir.sharif.ap2021.Listener.UserSelectionListener;
@@ -24,12 +25,17 @@ import java.util.ResourceBundle;
 
 public class Profile implements Initializable {
 
+    ErrorConfig errorConfig = new ErrorConfig();
+
     private User user;
     private UserSelectionListener userSelectionListener = new UserSelectionListener();
     @FXML
     private Circle avatar;
     @FXML
     private Label bioLabel, statusLabel, followerNumberLabel, nicknameLabel, idLabel, lastseenLabel, followingNumberLabel;
+
+    public Profile() throws IOException {
+    }
 
     public void setUser(User user) {
         this.user = user;
@@ -47,7 +53,7 @@ public class Profile implements Initializable {
 
         BufferedImage bufferedImage = null;
         try {
-            bufferedImage = ImageIO.read(new File("src/main/resources" + user.getAvatar()));
+            bufferedImage = ImageIO.read(new File(errorConfig.getMainConfig().getResourcesPath() + user.getAvatar()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,13 +65,13 @@ public class Profile implements Initializable {
 
 
         if (user.getBiography() == null) {
-            bioLabel.setText(" No BiO ");
+            bioLabel.setText(":)))");
         } else {
             bioLabel.setText(user.getBiography());
         }
 
         if (StaticController.getMyUser().getFollowers().contains(user.getId())) {
-            statusLabel.setText("Follows you");
+            statusLabel.setText(errorConfig.getFollowsYou());
         } else statusLabel.setText(" ");
 
     }
@@ -75,7 +81,7 @@ public class Profile implements Initializable {
 
         if (StaticController.getMyUser().getFollowers().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Your follower list is empty!");
+            alert.setContentText(errorConfig.getEmptyFollower());
             alert.showAndWait();
         } else {
             userSelectionListener.eventOccurred(new UserSelectionEvent(this,"follower",null,null));
@@ -88,7 +94,7 @@ public class Profile implements Initializable {
 
         if (StaticController.getMyUser().getFollowings().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Your following list is empty!");
+            alert.setContentText(errorConfig.getEmptyFollowing());
             alert.showAndWait();
         } else {
             userSelectionListener.eventOccurred(new UserSelectionEvent(this,"following",null,null));

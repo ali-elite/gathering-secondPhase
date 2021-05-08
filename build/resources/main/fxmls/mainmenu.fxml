@@ -13,19 +13,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane fx:id="mainTabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/tab3.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Menu.Mainmenu">
+<TabPane fx:id="mainTabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/tabpane.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ir.sharif.ap2021.View.Menu.Mainmenu">
   <tabs>
       <Tab fx:id="gatherTab" onSelectionChanged="#gatherUpdate" text="Gather">
          <content>
             <AnchorPane>
                <children>
                   <ScrollPane fx:id="gatherScroll" fitToHeight="true" fitToWidth="true" layoutY="58.0" prefHeight="514.0" prefWidth="800.0" />
-                  <ToolBar fx:id="bar" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: black;" stylesheets="@../css/tab3.css">
+                  <ToolBar fx:id="bar" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: black;" stylesheets="@../css/tabpane.css">
                     <items>
-                        <Button fx:id="blackListBtn" mnemonicParsing="false" onAction="#showBlackList" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="BlackList" />
-                        <Button fx:id="notifBtn" mnemonicParsing="false" onAction="#showNotif" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="Notifications" />
-                      <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editProfile" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="Edit Profile" />
-                        <Button fx:id="newThoughtBtn" mnemonicParsing="false" onAction="#makeThought" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="New Thought" />
+                        <Button fx:id="blackListBtn" mnemonicParsing="false" onAction="#showBlackList" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/mainButtons.css" text="BlackList" />
+                        <Button fx:id="notifBtn" mnemonicParsing="false" onAction="#showNotif" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/mainButtons.css" text="Notifications" />
+                      <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editProfile" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/mainButtons.css" text="Edit Profile" />
+                        <Button fx:id="newThoughtBtn" mnemonicParsing="false" onAction="#makeThought" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/mainButtons.css" text="New Thought" />
                     </items>
                   </ToolBar>
                </children>
@@ -41,10 +41,10 @@
             <AnchorPane>
                <children>
                   <ScrollPane fx:id="exploreScroll" fitToWidth="true" layoutY="149.0" prefHeight="422.0" prefWidth="800.0" />
-                  <AnchorPane fx:id="searchPane" prefHeight="150.0" prefWidth="800.0" style="-fx-background-color: #2b0606;">
+                  <AnchorPane fx:id="searchPane" prefHeight="150.0" prefWidth="800.0" style="-fx-background-color: black;">
                      <children>
-                        <TextField fx:id="searchTextField" layoutX="145.0" layoutY="32.0" prefHeight="35.0" prefWidth="476.0" promptText="Enter username to search" style="-fx-background-color: #000112;" />
-                        <Button fx:id="searchBtn" layoutX="273.0" layoutY="97.0" mnemonicParsing="false" onAction="#doSearch" prefHeight="26.0" prefWidth="201.0" style="-fx-background-color: #000112;" text="Search" />
+                        <TextField fx:id="searchTextField" layoutX="145.0" layoutY="32.0" prefHeight="35.0" prefWidth="476.0" promptText="Enter username to search" style="-fx-background-color: yellow;" />
+                        <Button fx:id="searchBtn" layoutX="294.0" layoutY="89.0" mnemonicParsing="false" onAction="#doSearch" prefHeight="26.0" prefWidth="201.0" stylesheets="@../css/mainButtons.css" text="Search" />
                      </children>
                   </AnchorPane>
                </children>
@@ -56,10 +56,10 @@
             <AnchorPane>
                <children>
                   <ScrollPane fx:id="chatScroll" fitToHeight="true" fitToWidth="true" layoutY="60.0" prefHeight="512.0" prefWidth="800.0" />
-                  <ToolBar fx:id="categoryBar" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: black;" stylesheets="@../css/tab3.css">
+                  <ToolBar fx:id="categoryBar" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: black;" stylesheets="@../css/tabpane.css">
                      <items>
-                        <Button fx:id="categoryMessageBtn" mnemonicParsing="false" onAction="#groupMessage" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="Group Message" />
-                        <Button fx:id="makeGroupBtn" mnemonicParsing="false" onAction="#makeGroup" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: yellow;" text="New Group" />
+                        <Button fx:id="categoryMessageBtn" mnemonicParsing="false" onAction="#groupMessage" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/mainButtons.css" text="Group Message" />
+                        <Button fx:id="makeGroupBtn" mnemonicParsing="false" onAction="#makeGroup" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/mainButtons.css" text="New Group" />
                      </items>
                   </ToolBar>
                </children>
@@ -68,38 +68,35 @@
       </Tab>
       <Tab fx:id="settingTab" onSelectionChanged="#settingUpdate" text="Setting">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
                <children>
-                  <ToolBar layoutX="1.0" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: black;">
-                    <items>
-                      <Button mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="390.0" style="-fx-background-color: red;" text="Delete User" />
-                        <Button mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="390.0" style="-fx-background-color: skyblue;" text="Log Out" />
-                    </items>
-                  </ToolBar>
                   <AnchorPane layoutX="1.0" layoutY="50.0" prefHeight="522.0" prefWidth="800.0" style="-fx-background-color: black;">
                      <children>
-                        <TextField fx:id="password" layoutX="36.0" layoutY="23.0" prefHeight="40.0" prefWidth="474.0" promptText="Enter your new password..." />
+                        <TextField fx:id="password" layoutX="35.0" layoutY="45.0" prefHeight="40.0" prefWidth="450.0" promptText="Enter your new password..." />
                         <Pane layoutX="3.0" layoutY="146.0" prefHeight="19.0" prefWidth="800.0" style="-fx-background-color: yellow;" />
-                        <TextField fx:id="repeat" layoutX="35.0" layoutY="82.0" prefHeight="40.0" prefWidth="476.0" promptText="Repeat your new password..." />
-                        <Button layoutX="585.0" layoutY="50.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="64.0" prefWidth="140.0" style="-fx-background-color: lime;" text="Change Password" />
+                        <TextField fx:id="repeat" layoutX="35.0" layoutY="95.0" prefHeight="40.0" prefWidth="450.0" promptText="Repeat your new password..." />
+                        <Button layoutX="591.0" layoutY="77.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="64.0" prefWidth="140.0" stylesheets="@../css/confirmBtn.css" text="Change Password" />
                         <ChoiceBox fx:id="privacy" layoutX="46.0" layoutY="181.0" prefHeight="26.0" prefWidth="226.0" style="-fx-background-color: yellow;" />
                         <Pane layoutX="3.0" layoutY="295.0" prefHeight="19.0" prefWidth="800.0" style="-fx-background-color: yellow;" />
-                        <Button layoutX="531.0" layoutY="208.0" mnemonicParsing="false" onAction="#confirmLsPrivacy" prefHeight="43.0" prefWidth="218.0" style="-fx-background-color: lime;" text="Confrim Accout Last Seen Privacy" />
+                        <Button layoutX="591.0" layoutY="207.0" mnemonicParsing="false" onAction="#confirmLsPrivacy" prefHeight="43.0" prefWidth="319.0" stylesheets="@../css/confirmBtn.css" text="Confirm LastSeen" />
                         <CheckBox fx:id="diactive" alignment="CENTER" layoutX="46.0" layoutY="450.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="268.0" text="Diactive Account" textFill="RED">
                            <font>
                               <Font name="System Bold" size="23.0" />
                            </font>
                         </CheckBox>
-                        <Button layoutX="531.0" layoutY="445.0" mnemonicParsing="false" onAction="#confirmActivity" prefHeight="43.0" prefWidth="218.0" style="-fx-background-color: lime;" text="Confrim Accout Activity" />
+                        <Button layoutX="591.0" layoutY="449.0" mnemonicParsing="false" onAction="#confirmActivity" prefHeight="43.0" prefWidth="218.0" stylesheets="@../css/confirmBtn.css" text="Confrim Accout Activity" />
                         <Pane layoutX="2.0" layoutY="405.0" prefHeight="19.0" prefWidth="800.0" style="-fx-background-color: yellow;" />
                         <CheckBox fx:id="privateCheck" alignment="CENTER" layoutX="46.0" layoutY="338.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="268.0" text="Private" textFill="#f2ff00">
                            <font>
                               <Font name="System Bold" size="23.0" />
                            </font>
                         </CheckBox>
-                        <Button layoutX="531.0" layoutY="338.0" mnemonicParsing="false" onAction="#confirmPrivacy" prefHeight="43.0" prefWidth="218.0" style="-fx-background-color: lime;" text="Confrim Privacy" />
+                        <Button layoutX="591.0" layoutY="337.0" mnemonicParsing="false" onAction="#confirmPrivacy" prefHeight="43.0" prefWidth="218.0" stylesheets="@../css/confirmBtn.css" text="Confrim Privacy" />
+                        <Pane layoutX="2.0" layoutY="14.0" prefHeight="19.0" prefWidth="800.0" style="-fx-background-color: yellow;" />
                      </children>
                   </AnchorPane>
+                <Button layoutX="71.0" layoutY="17.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="390.0" style="-fx-background-color: red;" stylesheets="@../css/deleteBtn.css" text="Delete User" />
+                  <Button layoutX="543.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="390.0" stylesheets="@../css/logoutBtn.css" text="Log Out" />
                </children></AnchorPane>
         </content>
       </Tab>

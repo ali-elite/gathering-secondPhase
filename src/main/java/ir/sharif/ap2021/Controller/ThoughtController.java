@@ -1,30 +1,32 @@
 package ir.sharif.ap2021.Controller;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.FxmlConfig;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.ThoughtEvent;
 import ir.sharif.ap2021.Model.Chat.Chat;
 import ir.sharif.ap2021.Model.Chat.Message;
 import ir.sharif.ap2021.Model.Thought.Thought;
 import ir.sharif.ap2021.Model.User.User;
+import ir.sharif.ap2021.View.Menu.ForwardSelection;
 import ir.sharif.ap2021.View.Menu.Opinions;
 import ir.sharif.ap2021.View.ModelView.ChatForwardView;
 import ir.sharif.ap2021.View.ModelView.OutProfile;
 import ir.sharif.ap2021.View.ModelView.ThoughtView;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public class ThoughtController {
 
+    ErrorConfig errorConfig = new ErrorConfig();
+    FxmlConfig fxmlConfig = new FxmlConfig();
     Context context;
 
-    public ThoughtController() {
+    public ThoughtController() throws IOException {
         context = new Context();
     }
 
@@ -73,8 +75,8 @@ public class ThoughtController {
                 opinion.setImage("/ThoughtImages/" + opinion.getId() + ".png");
 
 
-                File old = new File("src/main/resources/ThoughtImages/" + "31" + ".png");
-                File notOld = new File("src/main/resources/ThoughtImages/" + opinion.getId() + ".png");
+                File old = new File(errorConfig.getMainConfig().getResourcesPath() + "/ThoughtImages/" + "31" + ".png");
+                File notOld = new File(errorConfig.getMainConfig().getResourcesPath() + "/ThoughtImages/" + opinion.getId() + ".png");
 
                 old.renameTo(notOld);
             }
@@ -110,13 +112,13 @@ public class ThoughtController {
             Chat chat = null;
 
             for (Integer i : myUser.getChats()) {
-                if (context.Chats.get(i).getName().equals("savedMessages")) {
+                if (context.Chats.get(i).getName().equals(errorConfig.getSavedMessages())) {
                     chat = context.Chats.get(i);
                 }
             }
 
             if (chat == null) {
-                chat = new Chat("savedMessages", false);
+                chat = new Chat(errorConfig.getSavedMessages(), false);
                 chat.getUsers().add(myUser.getId());
                 myUser.getChats().add(chat.getId());
                 context.Chats.add(chat);
@@ -124,7 +126,7 @@ public class ThoughtController {
 
             Message message = new Message(myUser.getId(), true, e.getThought().getText());
 
-            if(e.getThought().getImage() != null){
+            if (e.getThought().getImage() != null) {
                 message.setImage(e.getThought().getImage());
             }
 
@@ -138,9 +140,9 @@ public class ThoughtController {
         if (e.getType().equals("forwardMessage")) {
 
             ChatForwardView.setThought(e.getThought());
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/forwardSelection.fxml")));
-            Scene scene = new Scene(root);
-            StaticController.getMyStage().setScene(scene);
+
+            ForwardSelection forwardSelection = new ForwardSelection();
+            forwardSelection.show();
 
         }
 
@@ -169,15 +171,14 @@ public class ThoughtController {
             thoughtView.setDoedUser(context.Users.get(opinion.getDoed()));
 
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/thought.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getThought()));
             loader.setController(thoughtView);
 
             Opinions.getOpinions().add((Pane) loader.load());
         }
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/opinions.fxml")));
-        Scene scene = new Scene(root);
-        StaticController.getMyStage().setScene(scene);
+        Opinions opinions = new Opinions();
+        opinions.show();
 
     }
 

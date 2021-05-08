@@ -5,9 +5,14 @@ import ir.sharif.ap2021.Event.LoginFormEvent;
 import ir.sharif.ap2021.Event.RegistrationFormEvent;
 import ir.sharif.ap2021.Validation.AuthenticationException;
 
+import java.io.IOException;
+
 public class LoginFormListener implements FormListener {
 
     LoginController loginController = new LoginController();
+
+    public LoginFormListener() throws IOException {
+    }
 
     @Override
     public void eventOccurred(RegistrationFormEvent formEvent) throws AuthenticationException {

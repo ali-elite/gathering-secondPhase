@@ -1,16 +1,19 @@
 package ir.sharif.ap2021.Controller;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.LoginFormEvent;
 import ir.sharif.ap2021.Model.User.User;
 import ir.sharif.ap2021.Validation.AuthenticationException;
 
+import java.io.IOException;
+
 public class LoginController {
 
-
+ErrorConfig errorConfig = new ErrorConfig();
     private Context context;
 
-    public LoginController() {
+    public LoginController() throws IOException {
 
         context = new Context();
     }
@@ -18,11 +21,11 @@ public class LoginController {
     public void login(LoginFormEvent e) throws AuthenticationException {
 
         if (!exist(e.getUsername())) {
-            throw new AuthenticationException("Username doesn't exist");
+            throw new AuthenticationException(errorConfig.getNoUserExists());
         }
 
         if (!match(e.getUsername(), e.getPassword())) {
-            throw new AuthenticationException("Incorrect Password");
+            throw new AuthenticationException(errorConfig.getIncorrectPass());
         }
 
     }

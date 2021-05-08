@@ -1,5 +1,7 @@
 package ir.sharif.ap2021.Controller;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.FxmlConfig;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Model.Notification.Notification;
 import ir.sharif.ap2021.Model.User.User;
@@ -12,7 +14,12 @@ import java.io.IOException;
 
 public class NotifController {
 
+    FxmlConfig fxmlConfig = new FxmlConfig();
+    ErrorConfig errorConfig = new ErrorConfig();
     private Context context = new Context();
+
+    public NotifController() throws IOException {
+    }
 
 
     public void load() throws IOException {
@@ -27,7 +34,7 @@ public class NotifController {
             notifView.setNotification(notification);
             notifView.setUser(context.Users.get(notification.getSender()));
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/notif.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlConfig.getNotif()));
             loader.setController(notifView);
 
             Notifications.getNotifViews().add((Pane) loader.load());
@@ -43,9 +50,9 @@ public class NotifController {
         user.getFollowers().add(sender.getId());
         sender.getFollowings().add(user.getId());
 
-        notification.setText("User " + sender.getUserName() + " followed you!");
+        notification.setText(sender.getUserName() + errorConfig.getFollowedYou());
 
-        Notification myNotif = new Notification(false, user, sender, "You followed " + user.getUserName());
+        Notification myNotif = new Notification(false, user, sender, errorConfig.getYouFollowed()+ user.getUserName());
         sender.getNotifications().add(myNotif.getId());
 
         notification.setAnswered(true);
@@ -63,9 +70,9 @@ public class NotifController {
         User sender = context.Users.get(notification.getSender());
 
 
-        notification.setText("You rejected " + sender.getUserName() + "'s offer to follow you'");
+        notification.setText(errorConfig.getYouRejected()+ sender.getUserName());
 
-        Notification myNotif = new Notification(false, user, sender, user.getUserName() + "Has rejected your request to follow");
+        Notification myNotif = new Notification(false, user, sender, user.getUserName() + errorConfig.getRejectedYou());
         sender.getNotifications().add(myNotif.getId());
 
         notification.setAnswered(true);
@@ -85,7 +92,7 @@ public class NotifController {
         User sender = context.Users.get(notification.getSender());
 
 
-        notification.setText("You silently rejected " + sender.getUserName() + "'s offer to follow you'");
+        notification.setText(errorConfig.getYouSilentRejected() + sender.getUserName());
 
         notification.setAnswered(true);
 

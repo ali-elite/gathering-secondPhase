@@ -1,5 +1,7 @@
 package ir.sharif.ap2021.Controller;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.FxmlConfig;
 import ir.sharif.ap2021.DB.Context;
 import ir.sharif.ap2021.Event.OutProfileEvent;
 import ir.sharif.ap2021.Model.Chat.Chat;
@@ -7,16 +9,18 @@ import ir.sharif.ap2021.Model.Notification.Notification;
 import ir.sharif.ap2021.Model.User.User;
 import ir.sharif.ap2021.Validation.RepeatActionException;
 import ir.sharif.ap2021.View.Menu.ChatMenu;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class OutProfileController {
 
+    FxmlConfig fxmlConfig = new FxmlConfig();
+    ErrorConfig errorConfig = new ErrorConfig();
+
     Context context = new Context();
+
+    public OutProfileController() throws IOException {
+    }
 
     public void control(OutProfileEvent event) throws RepeatActionException, IOException {
 
@@ -63,10 +67,10 @@ public class OutProfileController {
                 user.getFollowings().remove((Integer) follower.getId());
                 follower.getFollowers().remove((Integer) user.getId());
 
-                Notification unfollowedYou = new Notification(false, user, follower, "User " + user.getUserName() + " unfollowed you!");
+                Notification unfollowedYou = new Notification(false, user, follower, user.getUserName() + errorConfig.getUnfollowedYou());
                 follower.getNotifications().add(unfollowedYou.getId());
 
-                Notification youUnfollowed = new Notification(false, follower, user, "You Unfollowed " + follower.getUserName());
+                Notification youUnfollowed = new Notification(false, follower, user, errorConfig.getYouUnfollowed()+ follower.getUserName());
                 user.getNotifications().add(youUnfollowed.getId());
 
                 context.Notifications.add(unfollowedYou);
@@ -81,12 +85,12 @@ public class OutProfileController {
                         Notification notification = context.Notifications.get(i);
 
                         if (notification.getSender() == user.getId()) {
-                            throw new RepeatActionException("You have Already Sent a Request to this user!");
+                            throw new RepeatActionException(errorConfig.getAlreadyRequested());
                         }
 
                     }
 
-                    Notification n = new Notification(true, user, follower, "User " + user.getUserName() + " has sent you a request");
+                    Notification n = new Notification(true, user, follower, user.getUserName() + errorConfig.getRequested());
                     follower.getNotifications().add(n.getId());
                     context.Notifications.add(n);
 
@@ -96,10 +100,10 @@ public class OutProfileController {
                     follower.getFollowers().add(user.getId());
 
 
-                    Notification followedYou = new Notification(false, user, follower, "User " + user.getUserName() + " followed you!");
+                    Notification followedYou = new Notification(false, user, follower, user.getUserName() +errorConfig.getFollowedYou());
                     follower.getNotifications().add(followedYou.getId());
 
-                    Notification youFollowed = new Notification(false, follower, user, "You followed " + follower.getUserName());
+                    Notification youFollowed = new Notification(false, follower, user, errorConfig.getYouFollowed()+ follower.getUserName());
                     user.getNotifications().add(youFollowed.getId());
 
                     context.Notifications.add(followedYou);
@@ -157,7 +161,7 @@ public class OutProfileController {
                 User user1 = StaticController.getMyUser();
                 User user2 = event.getUser();
 
-                Chat chat = new Chat("sag", false);
+                Chat chat = new Chat(user1.getUserName()+" with "+user2.getUserName(), false);
 
                 chat.getUsers().add(StaticController.getMyUser().getId());
                 chat.getUsers().add(event.getUser().getId());
@@ -171,11 +175,8 @@ public class OutProfileController {
                 context.Users.update(user2);
             }
 
-
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxmls/chatmenu.fxml")));
-            Scene scene = new Scene(root);
-            StaticController.getMyStage().setScene(scene);
-
+            ChatMenu chatMenu = new ChatMenu();
+            chatMenu.show();
 
         }
 

@@ -1,5 +1,7 @@
 package ir.sharif.ap2021.View.ModelView;
 
+import ir.sharif.ap2021.Config.ErrorConfig;
+import ir.sharif.ap2021.Config.ItemConfig;
 import ir.sharif.ap2021.Controller.StaticController;
 import ir.sharif.ap2021.Event.MessageEvent;
 import ir.sharif.ap2021.Listener.MessageListener;
@@ -14,8 +16,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 
@@ -28,6 +30,8 @@ import java.util.ResourceBundle;
 
 public class MessageView implements Initializable {
 
+    ItemConfig itemConfig = new ItemConfig();
+    ErrorConfig errorConfig = new ErrorConfig();
     MessageListener messageListener = new MessageListener();
 
     private Message message;
@@ -49,6 +53,9 @@ public class MessageView implements Initializable {
     private Button editBtn;
     @FXML
     private TextArea editTextArea;
+
+    public MessageView() throws IOException {
+    }
 
 
     public Message getMessage() {
@@ -75,27 +82,27 @@ public class MessageView implements Initializable {
         forwardLabel.setVisible(message.isForwarded());
 
         if (message.isDeleted()) {
-            textLabel.setText("This message is deleted");
-            textPane.setStyle("-fx-background-color: red");
-            menuBar.setStyle("-fx-background-color: red");
-            triangle.setFill(Color.RED);
-            triangle.setStroke(Color.RED);
+            textLabel.setText(itemConfig.getDeleteText());
+            textPane.setStyle(itemConfig.getDeleteStyle());
+            menuBar.setStyle(itemConfig.getDeleteStyle());
+            triangle.setFill(Paint.valueOf(itemConfig.getDeleteColor()));
+            triangle.setStroke(Paint.valueOf(itemConfig.getDeleteColor()));
             menuBar.setVisible(false);
             messageImg.setVisible(false);
         } else {
             textLabel.setText(message.getText());
             if (sender.getId() == StaticController.getMyUser().getId()) {
-                textPane.setStyle("-fx-background-color: lime");
-                menuBar.setStyle("-fx-background-color: lime");
-                triangle.setFill(Color.LIME);
-                triangle.setStroke(Color.LIME);
+                textPane.setStyle(itemConfig.getOwnStyle());
+                menuBar.setStyle(itemConfig.getOwnStyle());
+                triangle.setFill(Paint.valueOf(itemConfig.getOwnColor()));
+                triangle.setStroke(Paint.valueOf(itemConfig.getOwnColor()));
                 messageImg.setVisible(true);
             }
         }
 
         BufferedImage bufferedImage = null;
         try {
-            bufferedImage = ImageIO.read(new File("src/main/resources" + sender.getAvatar()));
+            bufferedImage = ImageIO.read(new File(errorConfig.getMainConfig().getResourcesPath() + sender.getAvatar()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -109,7 +116,7 @@ public class MessageView implements Initializable {
         if (message.getImage() != null) {
             BufferedImage bI = null;
             try {
-                bI = ImageIO.read(new File("src/main/resources" + message.getImage()));
+                bI = ImageIO.read(new File(errorConfig.getMainConfig().getResourcesPath() + message.getImage()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -137,7 +144,7 @@ public class MessageView implements Initializable {
         if (message.isForwarded()) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("You can't edit a forwarded message");
+            alert.setContentText(errorConfig.getEditForwarded());
             alert.showAndWait();
 
 

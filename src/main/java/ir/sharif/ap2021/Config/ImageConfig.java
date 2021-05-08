@@ -9,7 +9,14 @@ public class ImageConfig {
     private MainConfig mainConfig = new MainConfig();
 
     private String logo;
+    private String group;
+    private String follow;
+    private String unfollow;
 
+    private String fillLike;
+    private String like;
+    private String fillRet;
+    private String ret;
 
 
     public ImageConfig() throws IOException {
@@ -23,10 +30,50 @@ public class ImageConfig {
         properties.load(fileReader);
 
         logo = properties.getProperty("logo");
+        group = properties.getProperty("group");
+        follow = properties.getProperty("follow");
+        unfollow = properties.getProperty("unfollow");
+        fillLike = properties.getProperty("fillLike");
+        like = properties.getProperty("like");
+        fillRet = properties.getProperty("fillRet");
+        ret = properties.getProperty("ret");
 
+
+    }
+
+    public MainConfig getMainConfig() {
+        return mainConfig;
     }
 
     public String getLogo() {
         return logo;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public String getFollow() {
+        return follow;
+    }
+
+    public String getUnfollow() {
+        return unfollow;
+    }
+
+    public String getFillLike() {
+        return fillLike;
+    }
+
+    public String getLike() {
+        return like;
+    }
+
+    public String getFillRet() {
+        return fillRet;
+    }
+
+    public String getRet() {
+        return ret;
     }
 }
