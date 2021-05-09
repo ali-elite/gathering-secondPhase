@@ -3,9 +3,14 @@ package ir.sharif.ap2021.Listener;
 import ir.sharif.ap2021.Controller.MessageController;
 import ir.sharif.ap2021.Event.MessageEvent;
 
+import java.io.IOException;
+
 public class MessageListener {
 
     MessageController messageController = new MessageController();
+
+    public MessageListener() throws IOException {
+    }
 
     public void eventOccurred(MessageEvent formEvent) {
 

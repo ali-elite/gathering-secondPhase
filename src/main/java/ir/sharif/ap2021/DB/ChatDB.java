@@ -1,6 +1,7 @@
 package ir.sharif.ap2021.DB;
 
 import com.google.gson.Gson;
+import ir.sharif.ap2021.Config.MainConfig;
 import ir.sharif.ap2021.Model.Chat.Chat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,11 +10,16 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class ChatDB implements DBSet<Chat>{
+public class ChatDB implements DBSet<Chat> {
 
+    MainConfig mainConfig = new MainConfig();
     private static final Logger logger = LogManager.getLogger(ChatDB.class);
-    private static final String chatAddress = "./src/main/resources/Chats/";
+    private static String chatAddress;
     private static final Gson gson = new Gson();
+
+    public ChatDB() throws IOException {
+        chatAddress = mainConfig.getResourcesPath() + "/Chats/";
+    }
 
     @Override
     public Chat get(int id) {
@@ -95,7 +101,6 @@ public class ChatDB implements DBSet<Chat>{
         }
 
     }
-
 
 
     @Override

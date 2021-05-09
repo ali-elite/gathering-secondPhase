@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #000112;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="text" alignment="TOP_LEFT" layoutX="122.0" layoutY="65.0" prefHeight="115.0" prefWidth="592.0" text="Tweet text" textFill="WHITE">
+      <Label fx:id="text" alignment="TOP_LEFT" layoutX="80.0" layoutY="117.0" prefHeight="115.0" prefWidth="659.0" text="Tweet text" textFill="WHITE">
          <font>
             <Font name="Freestyle Script" size="24.0" />
          </font></Label>
@@ -87,6 +87,11 @@
             <ImageView fx:id="oIMG" fitHeight="61.0" fitWidth="222.0" layoutX="534.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-      <ImageView fx:id="tIMG" fitHeight="106.0" fitWidth="706.0" layoutX="64.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="tIMG" fitHeight="75.0" fitWidth="729.0" layoutX="35.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="namesLabel" layoutX="127.0" layoutY="54.0" prefHeight="43.0" prefWidth="491.0" text="Label" textFill="#ff5a00">
+         <font>
+            <Font name="Corbel Bold" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

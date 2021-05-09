@@ -18,7 +18,7 @@ public class ShareThoughtController {
     public ShareThoughtController() throws IOException {
     }
 
-    public void share(ShareThoughtEvent formEvent) {
+    public void share(ShareThoughtEvent formEvent) throws IOException {
 
         User user = StaticController.getMyUser();
 

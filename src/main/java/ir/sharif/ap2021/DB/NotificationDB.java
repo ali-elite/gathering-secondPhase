@@ -1,6 +1,7 @@
 package ir.sharif.ap2021.DB;
 
 import com.google.gson.Gson;
+import ir.sharif.ap2021.Config.MainConfig;
 import ir.sharif.ap2021.Model.Notification.Notification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,11 +10,16 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class NotificationDB implements DBSet<Notification>{
+public class NotificationDB implements DBSet<Notification> {
 
+    MainConfig mainConfig = new MainConfig();
     private static final Logger logger = LogManager.getLogger(NotificationDB.class);
-    private static final String notifAddress = "./src/main/resources/Notifications/";
+    private static String notifAddress;
     private static final Gson gson = new Gson();
+
+    public NotificationDB() throws IOException {
+        notifAddress = mainConfig.getResourcesPath() + "/Notifications/";
+    }
 
 
     @Override

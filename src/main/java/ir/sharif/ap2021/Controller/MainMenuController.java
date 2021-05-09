@@ -97,7 +97,8 @@ public class MainMenuController {
 
                 Thought thought = context.Thoughts.get(mainUser.getThoughts().get(i));
 
-                if (thought.getLocalDateTime().isAfter(LocalDateTime.now().minusDays(1))) {
+                if (thought.getLocalDateTime().isAfter(LocalDateTime.now().minusDays(1))
+                        && thought.getSpamReports() < 20) {
 
                     ThoughtView thoughtView = new ThoughtView();
 
@@ -129,7 +130,9 @@ public class MainMenuController {
 
                     Thought thought1 = context.Thoughts.get(follower.getThoughts().get(i));
 
-                    if (thought1.getLocalDateTime().isAfter(LocalDateTime.now().minusDays(1))) {
+                    if (!thoughts.contains(thought1.getId())
+                            && thought1.getLocalDateTime().isAfter(LocalDateTime.now().minusDays(1))
+                            && thought1.getSpamReports() < 20) {
 
                         ThoughtView thoughtView = new ThoughtView();
 
@@ -163,7 +166,8 @@ public class MainMenuController {
                     Thought thought2 = context.Thoughts.get(following.getThoughts().get(i));
 
                     if (!thoughts.contains(thought2.getId())
-                            && thought2.getLocalDateTime().isAfter(LocalDateTime.now().minusDays(1))) {
+                            && thought2.getLocalDateTime().isAfter(LocalDateTime.now().minusDays(1))
+                            && thought2.getSpamReports() < 20) {
 
                         ThoughtView thoughtView = new ThoughtView();
 
@@ -201,7 +205,9 @@ public class MainMenuController {
             User u = context.Users.get(thought.getUser());
 
             if (thought.getType().equals("t") && !myUser.getBlackList().contains(u.getId())
-                    && !myUser.getMuteList().contains(u.getId()) && u.isActive() && !u.isDeleted()) {
+                    && !myUser.getMuteList().contains(u.getId()) && u.isActive() && !u.isDeleted()
+                    && thought.getSpamReports() < 20 &&
+                    !u.isPrivate()) {
 
                 thoughtView.setThought(thought);
                 thoughtView.setOwnerUser(context.Users.get(thought.getUser()));
@@ -371,9 +377,24 @@ public class MainMenuController {
     public void deleteUser(Mainmenu mainmenu) throws IOException {
 
         User us = StaticController.getMyUser();
+
         us.setDeleted(true);
+        us.setFirstName("Deleted");
+        us.setLastName("account");
+        us.setUserName("deletedAccount");
 
         context.Users.update(us);
+
+        for (User user : context.Users.all()) {
+            if (user.getFollowers().contains(us.getId())) {
+                user.getFollowers().remove((Integer) us.getId());
+                context.Users.update(user);
+            }
+            if (user.getFollowings().contains(us.getId())) {
+                user.getFollowings().remove((Integer) us.getId());
+                context.Users.update(user);
+            }
+        }
 
         logOut(null);
     }

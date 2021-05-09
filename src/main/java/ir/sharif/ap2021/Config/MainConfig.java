@@ -31,7 +31,6 @@ public class MainConfig {
         fxmlConfigPath = properties.getProperty("fxmlConfigPath");
         errorConfigPath = properties.getProperty("errorConfigPath");
         itemConfigPath = properties.getProperty("itemConfigPath");
-
     }
 
 

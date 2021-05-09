@@ -1,1 +1,0 @@
-{"id":4312,"text":"and delete this","sender":122,"isForwarded":false,"isDeleted":true,"seenUsers":[122,123],"messageAddress":"./src/main/resources/Messages"}

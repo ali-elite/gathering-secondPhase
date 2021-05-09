@@ -1,14 +1,18 @@
 package ir.sharif.ap2021.Model.Thought;
 
+import ir.sharif.ap2021.Config.MainConfig;
 import ir.sharif.ap2021.Model.User.User;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
 public class Thought {
+
+MainConfig mainConfig = new MainConfig();
 
     private int user;
     private int doed;
@@ -27,11 +31,13 @@ public class Thought {
     private long rethought;
     private static int nextId = 79127;
     private int id;
-    private static final String thoughtAddress = "./src/main/resources/Thoughts";
+    private static String thoughtAddress;
 
 
 
-    public Thought(String type, User user, User doed, String text, LocalDateTime localDateTime) {
+    public Thought(String type, User user, User doed, String text, LocalDateTime localDateTime) throws IOException {
+
+        thoughtAddress = mainConfig.getResourcesPath() +"/Thoughts";
 
         this.type = type;
         this.localDateTime = localDateTime;

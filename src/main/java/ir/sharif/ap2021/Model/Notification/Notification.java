@@ -1,11 +1,15 @@
 package ir.sharif.ap2021.Model.Notification;
 
+import ir.sharif.ap2021.Config.MainConfig;
 import ir.sharif.ap2021.Model.User.User;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 
 public class Notification {
+
+    MainConfig mainConfig = new MainConfig();
 
     private int sender;
     private int recevier;
@@ -14,9 +18,11 @@ public class Notification {
     private String text;
     private int id;
     private final int nextId = 1445;
-    private final String notificationAddress = "./src/main/resources/Notifications";
+    private String notificationAddress;
 
-    public Notification(boolean isRequest,User sender, User recevier, String text) {
+    public Notification(boolean isRequest,User sender, User recevier, String text) throws IOException {
+
+        notificationAddress = mainConfig.getResourcesPath() + "/Notifications";
 
         this.id = nextId + Objects.requireNonNull(new File(notificationAddress).listFiles()).length;
         this.sender = sender.getId();
@@ -26,7 +32,9 @@ public class Notification {
         isAnswered = false;
     }
 
-    public Notification(boolean isRequest,int sender, int recevier,String text) {
+    public Notification(boolean isRequest,int sender, int recevier,String text) throws IOException {
+
+        notificationAddress = mainConfig.getResourcesPath() + "/Notifications";
 
         this.id = nextId + Objects.requireNonNull(new File(notificationAddress).listFiles()).length;
         this.sender = sender;

@@ -56,7 +56,7 @@ public class ChatController {
     }
 
 
-    public void send(ChatEvent formEvent) {
+    public void send(ChatEvent formEvent) throws IOException {
 
         Message message = new Message(StaticController.getMyUser().getId(), false, formEvent.getPm());
 
@@ -82,7 +82,7 @@ public class ChatController {
         chatMenu.show();
     }
 
-    public void forward(ChatEvent formEvent) {
+    public void forward(ChatEvent formEvent) throws IOException {
 
         Chat theChat = formEvent.getChat();
 

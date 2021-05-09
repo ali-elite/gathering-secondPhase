@@ -75,7 +75,7 @@ public class NewGroup implements Initializable {
     }
 
 
-    public void createGroup(ActionEvent event) {
+    public void createGroup(ActionEvent event) throws IOException {
 
         ArrayList<String> names = new ArrayList<>(selectedList.getItems());
 

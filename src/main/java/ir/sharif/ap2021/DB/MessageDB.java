@@ -1,6 +1,7 @@
 package ir.sharif.ap2021.DB;
 
 import com.google.gson.Gson;
+import ir.sharif.ap2021.Config.MainConfig;
 import ir.sharif.ap2021.Model.Chat.Message;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,9 +13,14 @@ import java.util.Objects;
 
 public class MessageDB implements DBSet<Message>{
 
+    MainConfig mainConfig = new MainConfig();
     private static final Logger logger = LogManager.getLogger(MessageDB.class);
-    private static final String messageAddress = "./src/main/resources/Messages/";
+    private static  String messageAddress ;
     private static final Gson gson = new Gson();
+
+    public MessageDB() throws IOException {
+        messageAddress = mainConfig.getResourcesPath() + "/Messages/";
+    }
 
     @Override
     public Message get(int id) {

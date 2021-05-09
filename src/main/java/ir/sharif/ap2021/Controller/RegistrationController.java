@@ -17,7 +17,7 @@ public class RegistrationController {
         context = new Context();
     }
 
-    public void register(RegistrationFormEvent e) throws AuthenticationException {
+    public void register(RegistrationFormEvent e) throws AuthenticationException, IOException {
 
         if(!emailCheck(e.getEmail())){
             throw new AuthenticationException(errorConfig.getEmailExists());

@@ -1,6 +1,7 @@
 package ir.sharif.ap2021.DB;
 
 import com.google.gson.Gson;
+import ir.sharif.ap2021.Config.MainConfig;
 import ir.sharif.ap2021.Model.Thought.Thought;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,9 +12,14 @@ import java.util.Objects;
 
 public class ThoughtDB implements DBSet<Thought> {
 
+    MainConfig mainConfig = new MainConfig();
     private static final Logger logger = LogManager.getLogger(DBSet.class);
-    private static final String thoughtAddress = "./src/main/resources/Thoughts/";
+    private static String thoughtAddress;
     private static final Gson gson = new Gson();
+
+    public ThoughtDB() throws IOException {
+        thoughtAddress = mainConfig.getResourcesPath() + "/Thoughts/";
+    }
 
     @Override
     public Thought get(int id) {

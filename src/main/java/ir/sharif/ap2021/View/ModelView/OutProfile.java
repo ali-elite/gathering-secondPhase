@@ -90,10 +90,11 @@ public class OutProfile implements Initializable {
 
     public void doMessage(ActionEvent event) throws RepeatActionException, IOException {
 
-        if (user.isPrivate() && !user.getFollowers().contains(StaticController.getMyUser().getId())) {
+        if (!user.getFollowers().contains(StaticController.getMyUser().getId())) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText(errorConfig.getFollowBefore());
             alert.showAndWait();
+
         } else {
             outProfileListener.eventOccurred(new OutProfileEvent(this, user, "message"));
         }
@@ -129,10 +130,11 @@ public class OutProfile implements Initializable {
 
     public void doFollow(MouseEvent mouseEvent) throws IOException {
 
+        boolean rep = false;
         try {
 
             outProfileListener.eventOccurred(new OutProfileEvent(this, user, "follow"));
-            initialize(null, null);
+
 
         } catch (RepeatActionException e) {
 
@@ -140,9 +142,11 @@ public class OutProfile implements Initializable {
             alert.setContentText(e.getMessage());
             alert.showAndWait();
 
+            rep = true;
+
         }
 
-        if (user.isPrivate()) {
+        if (!rep && user.isPrivate()) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText(errorConfig.getRequestSent());
@@ -150,6 +154,7 @@ public class OutProfile implements Initializable {
 
         }
 
+        initialize(null, null);
 
     }
 
@@ -176,70 +181,80 @@ public class OutProfile implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        followerNumberLabel.setText(String.valueOf(user.getFollowers().size()));
-        followingNumberLabel.setText(String.valueOf(user.getFollowings().size()));
-        nicknameLabel.setText(user.getFirstName() + " " + user.getLastName());
-        idLabel.setText("@" + user.getUserName());
 
+        if (!user.isActive()) {
 
-        if (user.getLastSeenPrivacy().equals("Public")) {
-            lastseenLabel.setText(String.valueOf(user.getLastSeen()));
-        } else if (user.getLastSeenPrivacy().equals("SemiPrivate") && StaticController.getMyUser().getFollowers().contains(user.getId())) {
-            lastseenLabel.setText(String.valueOf(user.getLastSeen()));
-        } else if (user.getLastSeenPrivacy().equals("Private")) {
-            lastseenLabel.setText(errorConfig.getLastSeenRecently());
-        }
-
-
-        BufferedImage bufferedImage = null;
-        try {
-            bufferedImage = ImageIO.read(new File(errorConfig.getMainConfig().getResourcesPath() + user.getAvatar()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        assert bufferedImage != null;
-        Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-
-        avatar.setFill(new ImagePattern(image));
-
-        if (StaticController.getMyUser().getBlackList().contains(user.getId())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText(errorConfig.getDeactiveUser());
+            alert.show();
             followIMG.setVisible(false);
             menu.setVisible(false);
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText(errorConfig.getAlreadyBlocked());
-            alert.show();
+            followingNumberLabel.setVisible(false);
+            followerNumberLabel.setVisible(false);
+            lockIMG.setVisible(false);
+            muteIMG.setVisible(false);
 
         } else {
-            if (StaticController.getMyUser().getFollowings().contains(user.getId())) {
-                followIMG.setImage(new Image(imageConfig.getUnfollow()));
-            } else {
-                followIMG.setImage(new Image(imageConfig.getFollow()));
+
+            followerNumberLabel.setText(String.valueOf(user.getFollowers().size()));
+            followingNumberLabel.setText(String.valueOf(user.getFollowings().size()));
+            nicknameLabel.setText(user.getFirstName() + " " + user.getLastName());
+            idLabel.setText("@" + user.getUserName());
+
+
+            if (user.getLastSeenPrivacy().equals("Public")) {
+                lastseenLabel.setText(String.valueOf(user.getLastSeen()));
+            } else if (user.getLastSeenPrivacy().equals("SemiPrivate") && StaticController.getMyUser().getFollowers().contains(user.getId())) {
+                lastseenLabel.setText(String.valueOf(user.getLastSeen()));
+            } else if (user.getLastSeenPrivacy().equals("Private")) {
+                lastseenLabel.setText(errorConfig.getLastSeenRecently());
             }
+
+
+            BufferedImage bufferedImage = null;
+            try {
+                bufferedImage = ImageIO.read(new File(errorConfig.getMainConfig().getResourcesPath() + user.getAvatar()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            assert bufferedImage != null;
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+
+            avatar.setFill(new ImagePattern(image));
+
+            if (StaticController.getMyUser().getBlackList().contains(user.getId())) {
+                followIMG.setVisible(false);
+                menu.setVisible(false);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText(errorConfig.getAlreadyBlocked());
+                alert.show();
+
+            } else {
+                if (StaticController.getMyUser().getFollowings().contains(user.getId())) {
+                    followIMG.setImage(new Image(imageConfig.getUnfollow()));
+                } else {
+                    followIMG.setImage(new Image(imageConfig.getFollow()));
+                }
+            }
+
+            lockIMG.setVisible(user.isPrivate());
+            muteIMG.setVisible(StaticController.getMyUser().getMuteList().contains(user.getId()));
+
+            if (user.getBiography() == null) {
+                bioLabel.setText(":)))");
+            } else {
+                bioLabel.setText(user.getBiography());
+            }
+
+            if (StaticController.getMyUser().getFollowers().contains(user.getId())) {
+                statusLabel.setText(errorConfig.getFollowsYou());
+            } else statusLabel.setText(" ");
+
+
         }
-
-        if (!user.isPrivate()) {
-            lockIMG.setImage(null);
-        }
-
-        if (!StaticController.getMyUser().getMuteList().contains(user.getId())) {
-            muteIMG.setImage(null);
-        }
-
-        if (user.getBiography() == null) {
-            bioLabel.setText(":)))");
-        } else {
-            bioLabel.setText(user.getBiography());
-        }
-
-        if (StaticController.getMyUser().getFollowers().contains(user.getId())) {
-            statusLabel.setText(errorConfig.getFollowsYou());
-        } else statusLabel.setText(" ");
-
 
     }
-
-
 }
 

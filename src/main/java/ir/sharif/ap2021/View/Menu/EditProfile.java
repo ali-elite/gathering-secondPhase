@@ -76,10 +76,10 @@ public class EditProfile implements Initializable {
             myLabel.setText(errorConfig.getValidEmail());
         }
 
-        if (!phoneTF.getText().equals("") && (phoneTF.getText().length() > 12 || !checkNumber(phoneTF.getText()))) {
-            isReady = false;
-            myLabel.setText(errorConfig.getValidPhone());
-        }
+//        if (!phoneTF.getText().equals("") && (phoneTF.getText().length() > 12 || !checkNumber(phoneTF.getText()))) {
+//            isReady = false;
+//            myLabel.setText(errorConfig.getValidPhone());
+//        }
 
         String s = "";
         if (isChanged) {

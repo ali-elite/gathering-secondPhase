@@ -2,6 +2,7 @@ package ir.sharif.ap2021;
 
 import ir.sharif.ap2021.Config.FxmlConfig;
 import ir.sharif.ap2021.Config.ImageConfig;
+import ir.sharif.ap2021.DB.Directories;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,10 +39,11 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+        Directories directories = new Directories();
+        directories.setDirectoires();
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlConfig.getApp())));
-
         Scene scene = new Scene(root);
-
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(imageConfig.getLogo()));
         primaryStage.show();

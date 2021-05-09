@@ -12,11 +12,11 @@ public class ImageConfig {
     private String group;
     private String follow;
     private String unfollow;
-
     private String fillLike;
     private String like;
     private String fillRet;
     private String ret;
+    private String user;
 
 
     public ImageConfig() throws IOException {
@@ -37,7 +37,7 @@ public class ImageConfig {
         like = properties.getProperty("like");
         fillRet = properties.getProperty("fillRet");
         ret = properties.getProperty("ret");
-
+        user = properties.getProperty("user");
 
     }
 
@@ -75,5 +75,9 @@ public class ImageConfig {
 
     public String getRet() {
         return ret;
+    }
+
+    public String getUser() {
+        return user;
     }
 }

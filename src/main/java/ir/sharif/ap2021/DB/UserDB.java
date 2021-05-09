@@ -1,6 +1,7 @@
 package ir.sharif.ap2021.DB;
 
 import com.google.gson.Gson;
+import ir.sharif.ap2021.Config.MainConfig;
 import ir.sharif.ap2021.Model.User.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,9 +12,14 @@ import java.util.Objects;
 
 public class UserDB implements DBSet<User> {
 
+    MainConfig mainConfig = new MainConfig();
     private static final Logger logger = LogManager.getLogger(UserDB.class);
-    private static final String userAddress = "./src/main/resources/Users/";
+    private static String userAddress;
     private static final Gson gson = new Gson();
+
+    public UserDB() throws IOException {
+        userAddress = mainConfig.getResourcesPath() + "/Users/";
+    }
 
     @Override
     public User get(int id) {

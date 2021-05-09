@@ -15,7 +15,7 @@ public class RegistrationFormListener implements FormListener {
     }
 
     @Override
-    public void eventOccurred(RegistrationFormEvent formEvent) throws AuthenticationException {
+    public void eventOccurred(RegistrationFormEvent formEvent) throws AuthenticationException, IOException {
         registrationController.register(formEvent);
     }
 

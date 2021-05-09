@@ -9,7 +9,7 @@ profileChanged=your profile changed successfully
 messageSent=Message Sent Successfully
 enterMessage=Please Enter a message
 enterPassword=please enter your password
-enterRepeat=please repeat your email address
+enterRepeat=please repeat your password
 emptyBlacklist=your black list is empty
 searchYourself=you can not search yourself
 emptyFollower=your follower list is empty
@@ -43,17 +43,19 @@ emailExists=Email Already Exists
 userExists=Username Already Exists
 noUserExists=Username doesn't exist
 incorrectPass=Incorrect Password
-followedYou= followed you
+followedYou=followed you
 youFollowed=You followed
-rejectedYou= Has rejected your request to follow
+rejectedYou=Has rejected your request to follow
 youRejected=You rejected
 youSilentRejected=You silently rejected
 unfollowedYou= unfollowedYou
 youUnfollowed=You unfollowed
 alreadyRequested=You have already sent a request to this user
-requested= has sent you a request
+requested=has sent you a request
 savedMessages=SavedMessages
 lastSeenRecently=Last Seen Recently
+spammed=Spam reported successfully
+deactiveUser= Sorry This User has deactivated
 
 
 

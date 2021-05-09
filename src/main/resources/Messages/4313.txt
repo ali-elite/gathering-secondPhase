@@ -1,1 +1,0 @@
-{"id":4313,"text":"this is a group message test!","sender":122,"image":"/MessageImages/4313.png","isForwarded":false,"isDeleted":true,"seenUsers":[122,125,124],"messageAddress":"./src/main/resources/Messages"}

@@ -16,8 +16,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 
@@ -85,8 +85,8 @@ public class MessageView implements Initializable {
             textLabel.setText(itemConfig.getDeleteText());
             textPane.setStyle(itemConfig.getDeleteStyle());
             menuBar.setStyle(itemConfig.getDeleteStyle());
-            triangle.setFill(Paint.valueOf(itemConfig.getDeleteColor()));
-            triangle.setStroke(Paint.valueOf(itemConfig.getDeleteColor()));
+            triangle.setFill(Color.valueOf(itemConfig.getDeleteColor()));
+            triangle.setStroke(Color.valueOf(itemConfig.getDeleteColor()));
             menuBar.setVisible(false);
             messageImg.setVisible(false);
         } else {
@@ -94,8 +94,8 @@ public class MessageView implements Initializable {
             if (sender.getId() == StaticController.getMyUser().getId()) {
                 textPane.setStyle(itemConfig.getOwnStyle());
                 menuBar.setStyle(itemConfig.getOwnStyle());
-                triangle.setFill(Paint.valueOf(itemConfig.getOwnColor()));
-                triangle.setStroke(Paint.valueOf(itemConfig.getOwnColor()));
+                triangle.setFill(Color.valueOf(itemConfig.getOwnColor()));
+                triangle.setStroke(Color.valueOf(itemConfig.getOwnColor()));
                 messageImg.setVisible(true);
             }
         }

@@ -52,7 +52,7 @@ public class ThoughtView implements Initializable {
     @FXML
     private Circle avatar;
     @FXML
-    private Label likes, rets, opinions, statusLabel, timeLabel;
+    private Label likes, rets, opinions, statusLabel, timeLabel,namesLabel;
     @FXML
     private ImageView likeIMG, retIMG, tIMG, oIMG;
     @FXML
@@ -106,7 +106,6 @@ public class ThoughtView implements Initializable {
     }
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -123,6 +122,7 @@ public class ThoughtView implements Initializable {
             retIMG.setImage(new Image(imageConfig.getRet()));
         }
 
+        namesLabel.setText(ownerUser.getFirstName() + " " + ownerUser.getLastName());
         timeLabel.setText(String.valueOf(thought.getLocalDateTime()));
         text.setText(thought.getText());
         likes.setText(String.valueOf(thought.getLikes()));
@@ -241,6 +241,10 @@ public class ThoughtView implements Initializable {
         ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "spam", thought);
         thoughtListener.eventOccurred(thoughtChangeEvent);
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(errorConfig.getSpammed());
+        alert.showAndWait();
+
     }
 
     public void authorProfile(ActionEvent event) throws IOException {
@@ -281,10 +285,13 @@ public class ThoughtView implements Initializable {
         if (isChanged) {
             thoughtChangeEvent.setMentionImg("changed");
             isChanged = false;
+        } else {
+            thoughtChangeEvent.setMentionImg("no");
         }
 
         if (replyText.getText().length() <= 300) {
             thoughtListener.eventOccurred(thoughtChangeEvent);
+            replyText.setText(null);
         } else {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -319,7 +326,7 @@ public class ThoughtView implements Initializable {
 
     public void saveToFile(Image image, String name) throws IOException {
 
-        File fileOutput = new File(errorConfig.getMainConfig().getResourcesPath() +"/ThoughtImages/" + name + ".png");
+        File fileOutput = new File(errorConfig.getMainConfig().getResourcesPath() + "/ThoughtImages/" + name + ".png");
 
         if (fileOutput.exists()) {
             fileOutput.delete();

@@ -65,6 +65,10 @@ public class ErrorConfig {
     private String requested;
     private String savedMessages;
     private String lastSeenRecently;
+    private String spammed;
+    private String deactiveUser;
+
+
 
     public ErrorConfig() throws IOException {
         setProperties();
@@ -133,7 +137,8 @@ public class ErrorConfig {
         requested = properties.getProperty("requested");
         savedMessages = properties.getProperty("savedMessages");
         lastSeenRecently = properties.getProperty("lastSeenRecently");
-
+        spammed = properties.getProperty("spammed");
+        deactiveUser = properties.getProperty("deactiveUser");
     }
 
     public MainConfig getMainConfig() {
@@ -362,5 +367,13 @@ public class ErrorConfig {
 
     public String getLastSeenRecently() {
         return lastSeenRecently;
+    }
+
+    public String getSpammed() {
+        return spammed;
+    }
+
+    public String getDeactiveUser() {
+        return deactiveUser;
     }
 }

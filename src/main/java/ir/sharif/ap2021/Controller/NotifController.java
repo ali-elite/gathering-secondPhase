@@ -42,7 +42,7 @@ public class NotifController {
     }
 
 
-    public void accept(Notification notification) {
+    public void accept(Notification notification) throws IOException {
 
         User user = StaticController.getMyUser();
         User sender = context.Users.get(notification.getSender());
@@ -50,29 +50,29 @@ public class NotifController {
         user.getFollowers().add(sender.getId());
         sender.getFollowings().add(user.getId());
 
-        notification.setText(sender.getUserName() + errorConfig.getFollowedYou());
+        notification.setText(sender.getUserName() + " "+ errorConfig.getFollowedYou());
 
-        Notification myNotif = new Notification(false, user, sender, errorConfig.getYouFollowed()+ user.getUserName());
+        Notification myNotif = new Notification(false, user, sender, errorConfig.getYouFollowed()+" "+ user.getUserName());
         sender.getNotifications().add(myNotif.getId());
+        context.Notifications.add(myNotif);
+
 
         notification.setAnswered(true);
-
-        context.Notifications.add(myNotif);
         context.Notifications.update(notification);
         context.Users.update(user);
         context.Users.update(sender);
     }
 
 
-    public void reject(Notification notification) {
+    public void reject(Notification notification) throws IOException {
 
         User user = StaticController.getMyUser();
         User sender = context.Users.get(notification.getSender());
 
 
-        notification.setText(errorConfig.getYouRejected()+ sender.getUserName());
+        notification.setText(errorConfig.getYouRejected()+" "+ sender.getUserName());
 
-        Notification myNotif = new Notification(false, user, sender, user.getUserName() + errorConfig.getRejectedYou());
+        Notification myNotif = new Notification(false, user, sender, user.getUserName() +" "+ errorConfig.getRejectedYou());
         sender.getNotifications().add(myNotif.getId());
 
         notification.setAnswered(true);
@@ -92,7 +92,7 @@ public class NotifController {
         User sender = context.Users.get(notification.getSender());
 
 
-        notification.setText(errorConfig.getYouSilentRejected() + sender.getUserName());
+        notification.setText(errorConfig.getYouSilentRejected() +" "+ sender.getUserName());
 
         notification.setAnswered(true);
 

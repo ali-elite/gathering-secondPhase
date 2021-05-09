@@ -1,1 +1,0 @@
-{"id":46,"isGroup":true,"chatAddress":"./src/main/resources/Chats","name":"This is a group message","users":[125,124,123,122],"messages":[4313]}

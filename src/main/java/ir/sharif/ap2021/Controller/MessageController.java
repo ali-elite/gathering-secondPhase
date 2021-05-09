@@ -6,10 +6,15 @@ import ir.sharif.ap2021.Model.Chat.Message;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
+
 public class MessageController {
 
     Context context = new Context();
     private static final Logger logger = LogManager.getLogger(MessageController.class);
+
+    public MessageController() throws IOException {
+    }
 
     public void seen(MessageEvent formEvent) {
 

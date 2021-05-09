@@ -6,6 +6,8 @@ import ir.sharif.ap2021.Model.Notification.Notification;
 import ir.sharif.ap2021.Model.Thought.Thought;
 import ir.sharif.ap2021.Model.User.User;
 
+import java.io.IOException;
+
 public class Context {
 
     public DBSet<User> Users = new UserDB();
@@ -13,4 +15,9 @@ public class Context {
     public DBSet<Notification> Notifications = new NotificationDB();
     public DBSet<Message> Messages = new MessageDB();
     public DBSet<Chat> Chats = new ChatDB();
+
+
+    public Context() throws IOException {
+    }
+
 }

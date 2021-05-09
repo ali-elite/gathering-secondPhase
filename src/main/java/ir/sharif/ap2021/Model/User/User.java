@@ -1,6 +1,9 @@
 package ir.sharif.ap2021.Model.User;
 
+import ir.sharif.ap2021.Config.ImageConfig;
+
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -9,6 +12,8 @@ import java.util.Objects;
 
 public class User {
 
+
+    ImageConfig imageConfig = new ImageConfig();
 
     public String firstName;
     public String lastName;
@@ -27,20 +32,19 @@ public class User {
     private boolean isDeleted = false;
     private long reportedTimes = 0;
     private final LocalDateTime lastSeen;
-    //    private final ArrayList<Thought> likedThoughts;
     private final ArrayList<Integer> thoughts;
     private final ArrayList<Integer> followers;
     private final ArrayList<Integer> followings;
-    //    private final ArrayList<UserCategory> categories;
     private final ArrayList<Integer> blackList;
     private final ArrayList<Integer> muteList;
     private final ArrayList<Integer> notifications;
     private final ArrayList<Integer> chats;
-    private final String userAddress = "./src/main/resources/Users";
+    private static String userAddress;
 
 
+    public User(String firstName, String lastName, String userName, String email, String password) throws IOException {
 
-    public User(String firstName, String lastName, String userName, String email, String password) {
+        userAddress = imageConfig.getMainConfig().getResourcesPath() + "/Users";
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,12 +53,10 @@ public class User {
         this.password = password;
         this.id = nextId + Objects.requireNonNull(new File(userAddress).listFiles()).length;
         this.lastSeen = LocalDateTime.now();
-        this.avatar = "/images/user.png";
-//        likedThoughts = new ArrayList<>();
+        this.avatar = imageConfig.getUser();
         thoughts = new ArrayList<>();
         followers = new ArrayList<>();
         followings = new ArrayList<>();
-//        categories = new ArrayList<>();
         blackList = new ArrayList<>();
         notifications = new ArrayList<>();
         muteList = new ArrayList<>();
@@ -150,10 +152,6 @@ public class User {
     public ArrayList<Integer> getFollowings() {
         return followings;
     }
-
-//    public ArrayList<Thought> getLikedThoughts() {
-//        return likedThoughts;
-//    }
 
     public ArrayList<Integer> getBlackList() {
         return blackList;

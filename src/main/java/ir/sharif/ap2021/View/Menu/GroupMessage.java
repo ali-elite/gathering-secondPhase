@@ -83,7 +83,7 @@ public class GroupMessage implements Initializable {
     }
 
 
-    public void sendMessage(ActionEvent event) {
+    public void sendMessage(ActionEvent event) throws IOException {
 
         ArrayList<String> names = new ArrayList<>(selectedList.getItems());
 

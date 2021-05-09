@@ -25,7 +25,7 @@ public class ItemConfig {
     private void setProperties() throws IOException {
 
         Properties properties = new Properties();
-        FileReader fileReader = new FileReader(mainConfig.getImageConfigPath());
+        FileReader fileReader = new FileReader(mainConfig.getItemConfigPath());
         properties.load(fileReader);
 
         anyOne = properties.getProperty("anyOne");

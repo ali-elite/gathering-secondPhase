@@ -12,7 +12,7 @@ public class NewGroupListener {
     public NewGroupListener() throws IOException {
     }
 
-    public void eventOccurred(NewGroupEvent formEvent) {
+    public void eventOccurred(NewGroupEvent formEvent) throws IOException {
 
         if(formEvent.getOrder().equals("makeGroup")){
             newGroupController.makeGroup(formEvent);

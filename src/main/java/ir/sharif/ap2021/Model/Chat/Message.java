@@ -1,11 +1,17 @@
 package ir.sharif.ap2021.Model.Chat;
 
+import ir.sharif.ap2021.Config.MainConfig;
+
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Message {
+
+
+    MainConfig mainConfig = new MainConfig();
 
     private int id;
     private static int nextId = 4311;
@@ -18,9 +24,11 @@ public class Message {
     private LocalDateTime time;
     private final ArrayList<Integer> seenUsers = new ArrayList<>();
 
-    private final String messageAddress = "./src/main/resources/Messages";
+    private String messageAddress;
 
-    public Message(int sender, boolean isForwarded,String text) {
+    public Message(int sender, boolean isForwarded, String text) throws IOException {
+
+        messageAddress = mainConfig.getResourcesPath() + "/Messages";
 
         this.id = nextId + Objects.requireNonNull(new File(messageAddress).listFiles()).length;
         this.sender = sender;

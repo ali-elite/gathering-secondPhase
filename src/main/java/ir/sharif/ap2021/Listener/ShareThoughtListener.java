@@ -14,7 +14,7 @@ public class ShareThoughtListener {
     public ShareThoughtListener() throws IOException {
     }
 
-    public void eventOccurred(ShareThoughtEvent formEvent) {
+    public void eventOccurred(ShareThoughtEvent formEvent) throws IOException {
         shareThoughtController.share(formEvent);
     }
 }

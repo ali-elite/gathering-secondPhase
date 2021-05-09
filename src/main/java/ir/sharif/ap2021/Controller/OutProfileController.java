@@ -67,13 +67,12 @@ public class OutProfileController {
                 user.getFollowings().remove((Integer) follower.getId());
                 follower.getFollowers().remove((Integer) user.getId());
 
-                Notification unfollowedYou = new Notification(false, user, follower, user.getUserName() + errorConfig.getUnfollowedYou());
+                Notification unfollowedYou = new Notification(false, user, follower, user.getUserName() +" "+ errorConfig.getUnfollowedYou());
                 follower.getNotifications().add(unfollowedYou.getId());
-
-                Notification youUnfollowed = new Notification(false, follower, user, errorConfig.getYouUnfollowed()+ follower.getUserName());
-                user.getNotifications().add(youUnfollowed.getId());
-
                 context.Notifications.add(unfollowedYou);
+
+                Notification youUnfollowed = new Notification(false, follower, user, errorConfig.getYouUnfollowed()+" "+ follower.getUserName());
+                user.getNotifications().add(youUnfollowed.getId());
                 context.Notifications.add(youUnfollowed);
 
             } else {
@@ -83,14 +82,14 @@ public class OutProfileController {
                     for (Integer i : follower.getNotifications()) {
 
                         Notification notification = context.Notifications.get(i);
-
-                        if (notification.getSender() == user.getId()) {
+                        if (notification.getSender() == user.getId() && !notification.isAnswered() && notification.isRequest()) {
                             throw new RepeatActionException(errorConfig.getAlreadyRequested());
                         }
 
+
                     }
 
-                    Notification n = new Notification(true, user, follower, user.getUserName() + errorConfig.getRequested());
+                    Notification n = new Notification(true, user, follower, user.getUserName() +" "+ errorConfig.getRequested());
                     follower.getNotifications().add(n.getId());
                     context.Notifications.add(n);
 
@@ -100,13 +99,12 @@ public class OutProfileController {
                     follower.getFollowers().add(user.getId());
 
 
-                    Notification followedYou = new Notification(false, user, follower, user.getUserName() +errorConfig.getFollowedYou());
+                    Notification followedYou = new Notification(false, user, follower, user.getUserName() +" "+errorConfig.getFollowedYou());
                     follower.getNotifications().add(followedYou.getId());
-
-                    Notification youFollowed = new Notification(false, follower, user, errorConfig.getYouFollowed()+ follower.getUserName());
-                    user.getNotifications().add(youFollowed.getId());
-
                     context.Notifications.add(followedYou);
+
+                    Notification youFollowed = new Notification(false, follower, user, errorConfig.getYouFollowed()+" "+ follower.getUserName());
+                    user.getNotifications().add(youFollowed.getId());
                     context.Notifications.add(youFollowed);
 
                 }
@@ -114,7 +112,6 @@ public class OutProfileController {
 
             context.Users.update(user);
             context.Users.update(follower);
-
         }
 
         if (event.getOrder().equals("mute")) {

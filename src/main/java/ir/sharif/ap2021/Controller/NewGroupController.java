@@ -20,7 +20,7 @@ public class NewGroupController {
     }
 
 
-    public void makeGroup(NewGroupEvent formEvent) {
+    public void makeGroup(NewGroupEvent formEvent) throws IOException {
 
         ArrayList<User> users = new ArrayList<>();
         User myUser = StaticController.getMyUser();
@@ -47,7 +47,7 @@ public class NewGroupController {
     }
 
 
-    public void groupMessage(NewGroupEvent formEvent) {
+    public void groupMessage(NewGroupEvent formEvent) throws IOException {
 
         ArrayList<User> users = new ArrayList<>();
         User myUser = StaticController.getMyUser();
