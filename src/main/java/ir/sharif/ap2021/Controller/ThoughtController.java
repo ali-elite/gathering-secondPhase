@@ -56,10 +56,11 @@ public class ThoughtController {
                 thought.minusRethought();
                 thought.getRethoughters().remove((Integer) StaticController.getMyUser().getId());
 
-                for (int i = myUser.getThoughts().size() - 1; i > -1; i--) {
+                for (int i = 0; i <myUser.getThoughts().size() -1; i++) {
 
                     if (myUser.getThoughts().get(i) == thought.getId()) {
                         myUser.getThoughts().remove(myUser.getThoughts().get(i));
+                        break;
                     }
 
                 }

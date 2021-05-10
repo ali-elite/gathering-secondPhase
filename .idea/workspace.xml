@@ -4,143 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b02af008-67f3-44e0-a566-d039f828105c" name="Default Changelist" comment="11th Commit&#10;config set&#10;need a last check for last commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/Directories.java" afterDir="false" />
+    <list default="true" id="b02af008-67f3-44e0-a566-d039f828105c" name="Default Changelist" comment="12th Commit&#10;this is last commit i guess">
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Config/ErrorConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Config/ErrorConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Config/ImageConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Config/ImageConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Config/ItemConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Config/ItemConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Config/MainConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Config/MainConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/ChatController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/MainMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/MessageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/NewGroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/NewGroupController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/NotifController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/NotifController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/OutProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/OutProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/RegistrationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/RegistrationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/ShareThoughtController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/ShareThoughtController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/ThoughtController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Controller/ThoughtController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/ChatDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/ChatDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/Context.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/Context.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/MessageDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/MessageDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/NotificationDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/NotificationDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/ThoughtDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/ThoughtDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/UserDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/DB/UserDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Listener/FormListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Listener/FormListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Listener/MessageListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Listener/MessageListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Listener/NewGroupListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Listener/NewGroupListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Listener/RegistrationFormListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Listener/RegistrationFormListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Listener/ShareThoughtListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Listener/ShareThoughtListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/Chat/Chat.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/Chat/Chat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/Chat/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/Chat/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/Notification/Notification.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/Notification/Notification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/Thought/Thought.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/Thought/Thought.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/User/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/Model/User/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Menu/EditProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Menu/EditProfile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Menu/GroupMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Menu/GroupMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Menu/NewGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/Menu/NewGroup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/ModelView/MessageView.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/ModelView/MessageView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/ModelView/OutProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/ModelView/OutProfile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/ModelView/ThoughtView.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ir/sharif/ap2021/View/ModelView/ThoughtView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Avatars/122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Chats/45.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Chats/45.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Chats/46.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Chats/46.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/MessageImages/4311.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/MessageImages/4312.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/MessageImages/4313.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Messages/4311.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Messages/4311.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Messages/4312.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Messages/4312.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Messages/4313.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Messages/4313.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Notifications/1445.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Notifications/1445.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Notifications/1446.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Notifications/1446.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/ThoughtImages/79127.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/ThoughtImages/79128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Avatars/123.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Chats/45.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Chats/46.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Chats/47.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Chats/48.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Chats/49.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Messages/4311.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Messages/4312.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Messages/4313.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Messages/4314.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Messages/4315.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Messages/4316.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Notifications/1445.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Notifications/1446.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Notifications/1447.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Notifications/1448.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Notifications/1449.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Notifications/1450.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Notifications/1451.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Notifications/1452.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/ThoughtImages/79130.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/Thoughts/79127.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Thoughts/79127.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/Thoughts/79128.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Thoughts/79128.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/Thoughts/79129.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Thoughts/79129.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Thoughts/79130.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/Users/122.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Users/122.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Users/123.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Users/123.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Users/124.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Users/124.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Users/125.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/config/errorConfig" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/config/errorConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/config/imageConfig" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/config/imageConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/config/itemConfig" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/config/itemConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/fxmls/outProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxmls/outProfile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/fxmls/profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxmls/profile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/fxmls/thought.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxmls/thought.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Users/123.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Users/124.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/GatherLog.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/GatherLog.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Config/ErrorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Config/ErrorConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Config/ImageConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Config/ImageConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Config/ItemConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Config/ItemConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Config/MainConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Config/MainConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/NewGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/NewGroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/NotifController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/NotifController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/OutProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/OutProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/ShareThoughtController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/ShareThoughtController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/ThoughtController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Controller/ThoughtController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/ChatDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/ChatDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/Context.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/MessageDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/MessageDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/NotificationDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/NotificationDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/ThoughtDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/ThoughtDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/UserDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/DB/UserDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/FormListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/FormListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/MessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/MessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/NewGroupListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/NewGroupListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/RegistrationFormListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/RegistrationFormListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/ShareThoughtListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Listener/ShareThoughtListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/Chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/Chat/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/Chat/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/Chat/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/Notification/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/Notification/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/Thought/Thought.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/Thought/Thought.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/User/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/User/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Menu/EditProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Menu/EditProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Menu/GroupMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Menu/GroupMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Menu/NewGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/Menu/NewGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/ModelView/MessageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/ModelView/MessageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/ModelView/OutProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/ModelView/OutProfile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/ModelView/ThoughtView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/View/ModelView/ThoughtView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Avatars/122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Chats/45.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Chats/46.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MessageImages/4311.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MessageImages/4312.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MessageImages/4313.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages/4311.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages/4312.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Messages/4313.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Notifications/1445.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Notifications/1446.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ThoughtImages/79127.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ThoughtImages/79128.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Thoughts/79127.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Thoughts/79128.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Thoughts/79129.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Thoughts/79130.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Users/122.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Users/123.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Users/124.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Users/125.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/errorConfig" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/errorConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/imageConfig" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/imageConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/itemConfig" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/itemConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxmls/outProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxmls/outProfile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxmls/profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxmls/profile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxmls/thought.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxmls/thought.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +127,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Login/view" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/ir/sharif/ap2021/Model/Thought" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -359,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620512058353</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="12th Commit&#10;this is last commit i guess">
+      <created>1620603501065</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1620603501081</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -391,7 +305,8 @@
     <MESSAGE value="9th Commit&#10;going for logger and config" />
     <MESSAGE value="10th Commit&#10;working on config&#10;start error messages from group message class" />
     <MESSAGE value="11th Commit&#10;config set&#10;need a last check for last commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="11th Commit&#10;config set&#10;need a last check for last commit" />
+    <MESSAGE value="12th Commit&#10;this is last commit i guess" />
+    <option name="LAST_COMMIT_MESSAGE" value="12th Commit&#10;this is last commit i guess" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gathering___secondPhase$gathering___secondPhase__run_.ic" NAME="gathering - secondPhase [run] Coverage Results" MODIFIED="1619219044101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

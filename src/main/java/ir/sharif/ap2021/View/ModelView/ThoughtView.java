@@ -190,6 +190,7 @@ public class ThoughtView implements Initializable {
 
         ThoughtEvent thoughtChangeEvent = new ThoughtEvent(this, "ret", thought);
         thoughtListener.eventOccurred(thoughtChangeEvent);
+        StaticController.getMyMainMenu().show();
 
     }
 
